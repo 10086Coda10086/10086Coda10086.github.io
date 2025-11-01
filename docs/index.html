@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
-    
+    <script src='https://blog.meekdai.com/Gmeek/plugins/GmeekVercount.js'></script>
     <link rel="icon" href="https://avatars.githubusercontent.com/u/103094747?v=4"><script>
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
@@ -14,7 +14,7 @@
 <meta property="og:title" content="Reality Me">
 <meta property="og:description" content="我不在乎过去和未来 再怎么着我活在今天">
 <meta property="og:type" content="blog">
-<meta property="og:url" content="https://10086Coda10086.github.io">
+<meta property="og:url" content="neo.realityme.top">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/103094747?v=4">
 <title>Reality Me</title>
 
@@ -58,14 +58,14 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <h1>
     <img src="https://avatars.githubusercontent.com/u/103094747?v=4" class="avatar circle" id="avatarImg" alt="avatar"><a class="blogTitle">Reality Me</a></h1>
 <div class="title-right">
-    <a href="https://10086Coda10086.github.io/tag.html" id="buttonSearch" class="btn btn-invisible circle" title="搜索">
+    <a href="neo.realityme.top/tag.html" id="buttonSearch" class="btn btn-invisible circle" title="搜索">
         <svg class="octicon" width="16" height="16" >
             <path id="pathSearch" fill-rule="evenodd"></path>
         </svg>
     </a>
     
     
-    <a href="https://10086Coda10086.github.io/rss.xml" target="_blank" id="buttonRSS" class="btn btn-invisible circle" title="RSS">
+    <a href="neo.realityme.top/rss.xml" target="_blank" id="buttonRSS" class="btn btn-invisible circle" title="RSS">
         <svg class="octicon" width="16" height="16" >
             <path id="pathRSS" fill-rule="evenodd"></path>
         </svg>
@@ -80,7 +80,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     <div id="content">
 <div style="margin-bottom: 16px;">我不在乎过去和未来 再怎么着我活在今天</div>
 <nav class="SideNav border">
-<a class="SideNav-item d-flex flex-items-center flex-justify-between" href="post/san-zhong-fei-qing-jing-shi-xi-ju-%20%20-di-er-mu-%E2%80%94%E2%80%94-xiang-xue.html">
+<a class="SideNav-item d-flex flex-items-center flex-justify-between" href="post/5.html">
     <div class="d-flex flex-items-center">
         <svg class="SideNav-icon octicon" style="witdh:16px;height:16px"><path class="svgTop0" d=""></path>
         </svg>
@@ -91,7 +91,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
         <span class="Label LabelName" style="background-color:#c5def5"><object><a style="color:#fff" href="tag.html#Post">Post</a></object></span>
         <span class="Label LabelTime" style="background-color:#0969da">2025-11-01</span>
     </div>
-</a><a class="SideNav-item d-flex flex-items-center flex-justify-between" href="post/san-zhong-fei-qing-jing-shi-xi-ju.html">
+</a><a class="SideNav-item d-flex flex-items-center flex-justify-between" href="post/4.html">
     <div class="d-flex flex-items-center">
         <svg class="SideNav-icon octicon" style="witdh:16px;height:16px"><path class="svgTop0" d=""></path>
         </svg>
@@ -105,7 +105,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </a>
 </nav>
 </div>
-    <div id="footer"><div id="footer1">Copyright © <span id="copyrightYear"></span> <a href="https://10086Coda10086.github.io">Reality Me</a></div>
+    <div id="footer"><div id="footer1">Copyright © <span id="copyrightYear"></span> <a href="neo.realityme.top">Reality Me</a></div>
 <div id="footer2">
     <span id="runday"></span><span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a></span>
 </div>
@@ -114,8 +114,8 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 var now=new Date();
 document.getElementById("copyrightYear").innerHTML=now.getFullYear();
 
-if(""!=""){
-    var startSite=new Date("");
+if("11/01/2025"!=""){
+    var startSite=new Date("11/01/2025");
     var diff=now.getTime()-startSite.getTime();
     var diffDay=Math.floor(diff/(1000*60*60*24));
     document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";
