@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
+    <script src='https://blog.meekdai.com/Gmeek/plugins/GmeekVercount.js'></script>
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/103094747?v=4"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+<meta name="description" content="# 从零开始的小主机折腾记#2
+
+## 续上一章：Docker 相关事项补充
+
+上一章中关于 Docker 的内容相对偏多，如果对 Docker 还不太熟悉，可以先用下面这个**最简单的验证与补救方法**。">
+<meta property="og:title" content="从零开始的小主机折腾记#2">
+<meta property="og:description" content="# 从零开始的小主机折腾记#2
+
+## 续上一章：Docker 相关事项补充
+
+上一章中关于 Docker 的内容相对偏多，如果对 Docker 还不太熟悉，可以先用下面这个**最简单的验证与补救方法**。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://neo.realityme.top/post/8.html">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/103094747?v=4">
+<title>从零开始的小主机折腾记#2</title>
+<link href="//unpkg.com/@wooorm/starry-night@2.1.1/style/both.css" rel="stylesheet" />
+
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+.copy-feedback {
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 50px;
+    color: var(--color-fg-on-emphasis);
+    background-color: var(--color-fg-muted);
+    border-radius: 3px;
+    padding: 5px 8px;
+    font-size: 12px;
+}
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">从零开始的小主机折腾记#2</h1>
+<div class="title-right">
+    <a href="https://neo.realityme.top" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+    <a href="https://github.com/10086Coda10086/10086Coda10086.github.io/issues/8" target="_blank" class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><h1>从零开始的小主机折腾记#2</h1>
+<h2>续上一章：Docker 相关事项补充</h2>
+<p>上一章中关于 Docker 的内容相对偏多，如果对 Docker 还不太熟悉，可以先用下面这个<strong>最简单的验证与补救方法</strong>。</p>
+<p>在终端中输入：</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">docker -v</pre></div>
+<ul>
+<li>如果 Docker 已正确安装，会直接输出版本号</li>
+<li>如果 Docker 未安装，系统通常会提示找不到该命令，并在输出中给出一行类似：</li>
+</ul>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo apt install <span class="pl-s"><span class="pl-pds">"</span>xxx<span class="pl-pds">"</span></span></pre></div>
+<p>此时只需要<strong>将提示中的整行命令复制并执行</strong>即可完成安装。</p>
+<p>这种方式虽然不是官方推荐的安装路径，但对于只是想快速用起来、验证环境是否可用的用户来说已经足够，后续也不影响正常使用 Docker。</p>
+<p>确认能够正常输出版本号后，就可以继续进行后面的 Docker 容器部署内容了。</p>
+<h2>（可选）在有多块硬盘的情况下，格式化硬盘并挂载</h2>
+<p>下面按<strong>实际可操作流程</strong>说明：在 <strong>Linux / Ubuntu Server</strong> 下，多块硬盘如何<strong>识别 → 格式化 → 挂载</strong>。不涉及 GUI，适合服务器环境。</p>
+<hr>
+<h3>一、识别所有硬盘与分区（非常重要）</h3>
+<p>先确认 <strong>哪块盘是哪块盘</strong>，避免误操作。</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">lsblk</pre></div>
+<p>常见输出示例：</p>
+<pre class="notranslate"><code class="notranslate">NAME   SIZE TYPE MOUNTPOINT
+sda    256G disk
+├─sda1 512M part /boot/efi
+├─sda2 1G   part /boot
+└─sda3 254G part /
+sdb    4T   disk
+sdc    8T   disk
+</code></pre>
+<p>说明：</p>
+<ul>
+<li><code class="notranslate">sda</code>：系统盘（<strong>不要动</strong>）</li>
+<li><code class="notranslate">sdb / sdc</code>：额外数据盘（通常是需要格式化和挂载的）</li>
+</ul>
+<p>如果想看得更清楚（型号、接口）：</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo lsblk -o NAME,SIZE,TYPE,MOUNTPOINT,MODEL</pre></div>
+<hr>
+<h3>二、给硬盘分区（新盘 / 空盘）</h3>
+<blockquote>
+<p><strong>如果整块盘打算只用一个分区，可直接全盘一个分区</strong></p>
+</blockquote>
+<p>以 <code class="notranslate">/dev/sdb</code> 为例（请自行替换）：</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo fdisk /dev/sdb</pre></div>
+<p>常用操作流程：</p>
+<ol>
+<li><code class="notranslate">g</code> → 创建 GPT 分区表（大于 2TB 必须）</li>
+<li><code class="notranslate">n</code> → 新建分区
+<ul>
+<li>分区号：回车</li>
+<li>起始扇区：回车</li>
+<li>结束扇区：回车（使用整块盘）</li>
+</ul>
+</li>
+<li><code class="notranslate">w</code> → 写入并退出</li>
+</ol>
+<p>完成后刷新分区表：</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo partprobe</pre></div>
+<p>确认分区生成（例如 <code class="notranslate">/dev/sdb1</code>）：</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">lsblk</pre></div>
+<hr>
+<h3>三、格式化分区（推荐 ext4）</h3>
+<p>以 <code class="notranslate">/dev/sdb1</code> 为例：</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo mkfs.ext4 /dev/sdb1</pre></div>
+<p>常见可选格式：</p>
+<ul>
+<li><code class="notranslate">ext4</code>：通用、稳定（<strong>强烈推荐</strong>）</li>
+<li><code class="notranslate">xfs</code>：适合大文件、NAS 场景</li>
+<li><code class="notranslate">btrfs</code>：高级玩法，不建议新手</li>
+</ul>
+<p><g-emoji class="g-emoji" alias="warning">⚠️</g-emoji> <strong>格式化会清空数据，确认设备名无误再执行</strong></p>
+<hr>
+<h3>四、创建挂载目录</h3>
+<p>建议统一放在 <code class="notranslate">/mnt</code> 或 <code class="notranslate">/data</code> 下，例如：</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo mkdir -p /data/disk1</pre></div>
+<hr>
+<h3>五、临时挂载（立即生效，重启失效）</h3>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo mount /dev/sdb1 /data/disk1</pre></div>
+<p>验证：</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">df -h</pre></div>
+<p>如果能看到 <code class="notranslate">/data/disk1</code>，说明挂载成功。</p>
+<hr>
+<h3>第六步：配置 <code class="notranslate">/etc/fstab</code>（永久挂载）</h3>
+<h4>1️⃣ 获取 <code class="notranslate">sdb1</code> 的 UUID（必须）</h4>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo blkid /dev/sdb1</pre></div>
+<p>你会看到类似输出：</p>
+<pre class="notranslate"><code class="notranslate">/dev/sdb1: UUID="1234abcd-5678-efgh-90ab-cdef12345678" TYPE="ext4"
+</code></pre>
+<p>👉 <strong>把这个 UUID 原样复制下来</strong>，下面要用。</p>
+<hr>
+<h4>2️⃣ 规划挂载点（推荐方案）</h4>
+<p>为了后续 Docker / 下载数据结构清晰，我建议你这样规划：</p>
+<ul>
+<li>整块数据盘挂载到：<br>
+<strong><code class="notranslate">/data</code></strong></li>
+<li>Docker 下载、缓存等数据放在：<br>
+<strong><code class="notranslate">/data/docker</code></strong></li>
+<li>普通大文件、影视、杂项：<br>
+<strong><code class="notranslate">/data/storage</code> / <code class="notranslate">/data/media</code>（以后再建）</strong></li>
+</ul>
+<blockquote>
+<p>你说的“文件夹”，在 Linux 里叫 <strong>目录（directory）</strong>，和 Windows 的文件夹是同一个概念，你可以完全按“文件夹”来理解。</p>
+</blockquote>
+<p>先创建挂载点：</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo mkdir -p /data</pre></div>
+<hr>
+<h4>3️⃣ 编辑 <code class="notranslate">/etc/fstab</code></h4>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo nano /etc/fstab</pre></div>
+<p>在文件<strong>最后一行</strong>加入：</p>
+<div class="highlight highlight-source-ini"><pre class="notranslate"><span class="pl-k">UUID</span>=1234abcd-5678-efgh-90ab-cdef12345678  /data  ext4  defaults,noatime  0  2</pre></div>
+<p><g-emoji class="g-emoji" alias="warning">⚠️</g-emoji> 注意：</p>
+<ul>
+<li>UUID 一定要换成你自己的</li>
+<li>不要多空格、不要换行错位</li>
+</ul>
+<h4>参数解释（给你吃个定心丸）：</h4>
+<ul>
+<li><code class="notranslate">defaults</code>：标准挂载参数</li>
+<li><code class="notranslate">noatime</code>：减少磁盘写入，对机械盘友好</li>
+<li><code class="notranslate">0</code>：不参与 dump</li>
+<li><code class="notranslate">2</code>：非系统盘 fsck 顺序</li>
+</ul>
+<hr>
+<h4>4️⃣ 验证 fstab（<strong>这一步不能跳过</strong>）</h4>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo mount -a</pre></div>
+<ul>
+<li><strong>没有任何输出 = 正常</strong></li>
+<li>有报错 → 立刻停下并按照输出解决问题，别重启</li>
+</ul>
+<p>确认是否挂载成功：</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">df -h</pre></div>
+<p>你应该能看到类似：</p>
+<pre class="notranslate"><code class="notranslate">/dev/sdb1   458G  ...  /data
+</code></pre>
+<p>到这里，<strong>硬盘已经安全、永久挂载完成</strong>。</p>
+<hr>
+<h3>第七步：在数据盘内创建“文件夹”（目录）</h3>
+<p>现在你要做的只是<strong>在 <code class="notranslate">/data</code> 里建目录</strong>，不涉及 Docker 本身。</p>
+<h4>1️⃣ 创建 Docker 数据目录</h4>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo mkdir -p /data/docker</pre></div>
+<p>你可以理解为：</p>
+<blockquote>
+<p>“在大容量盘里新建一个文件夹，专门给 Docker 放下载内容用”</p>
+</blockquote>
+<hr>
+<h4>2️⃣ 设置目录权限（非常关键）</h4>
+<p>为了以后 Docker、qB、普通用户都不折腾权限，先把所有权交给你当前用户：</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo chown -R <span class="pl-smi">$USER</span>:<span class="pl-smi">$USER</span> /data</pre></div>
+<p>验证：</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">ls -ld /data /data/docker</pre></div>
+<p>应显示为你的用户名。</p>
+<hr>
+<h3>到目前为止，你已经完成了什么？</h3>
+<p>✔ <code class="notranslate">sdb</code> 整盘作为一个大容量数据盘<br>
+✔ 永久挂载到 <code class="notranslate">/data</code><br>
+✔ 结构清晰、不会影响系统盘<br>
+✔ 为 Docker 留好了<strong>专用目录但未动 Docker 本身</strong><br>
+✔ 重启不丢、不炸、不进 emergency mode</p>
+<h2>（可选）进一步配置（机械）硬盘（——自动启停）</h2>
+<p>因为机械盘一直响会比较吵，我们得想个办法让它不那么吵。</p>
+<h3>最安全、最推荐的方法：hdparm 省电策略</h3>
+<h4>1️⃣ 临时测试（立刻生效，重启失效）</h4>
+<pre class="notranslate"><code class="notranslate">sudo hdparm -B 127 -S 120 /dev/sdb
+</code></pre>
+<p>含义：</p>
+<ul>
+<li><code class="notranslate">-B 127</code>：启用温和的 Advanced Power Management（不频繁抖头）</li>
+<li><code class="notranslate">-S 120</code>：<strong>10 分钟无访问后停转</strong></li>
+</ul>
+<blockquote>
+<p><code class="notranslate">-S</code> 的单位是特殊编码：<br>
+<code class="notranslate">120 × 5 秒 = 600 秒 = 10 分钟</code></p>
+</blockquote>
+<p>如果你发现：</p>
+<ul>
+<li>噪音明显下降</li>
+<li>没有频繁“转-停-转”</li>
+</ul>
+<p>说明这个方案适合你。</p>
+<hr>
+<h4>2️⃣ 写成永久规则（推荐）</h4>
+<p>安装 udev 规则支持：</p>
+<pre class="notranslate"><code class="notranslate">sudo apt install -y hdparm
+</code></pre>
+<p>编辑配置：</p>
+<pre class="notranslate"><code class="notranslate">sudo nano /etc/hdparm.conf
+</code></pre>
+<p>在末尾添加：</p>
+<pre class="notranslate"><code class="notranslate">/dev/sdb {
+    apm = 127
+    spindown_time = 120
+}
+</code></pre>
+<p>保存后重启，或手动应用：</p>
+<pre class="notranslate"><code class="notranslate">sudo systemctl restart udev
+</code></pre>
+<h3>Docker 日志设置</h3>
+<h4>1️⃣ Docker 默认日志行为</h4>
+<ul>
+<li><code class="notranslate">json-file</code></li>
+<li>每条容器输出都会写文件</li>
+<li>没有限制 = 无限小写入</li>
+</ul>
+<h4>2️⃣ 最小侵入的优化（不动容器）</h4>
+<p>创建 / 修改 Docker 配置：</p>
+<pre class="notranslate"><code class="notranslate">sudo nano /etc/docker/daemon.json
+</code></pre>
+<p>写入：</p>
+<pre class="notranslate"><code class="notranslate">{
+  "log-driver": "json-file",
+  "log-opts": {
+    "max-size": "10m",
+    "max-file": "1"
+  }
+}
+</code></pre>
+<p>然后：</p>
+<pre class="notranslate"><code class="notranslate">sudo systemctl restart docker
+</code></pre>
+<p>这会：</p>
+<ul>
+<li><strong>减少日志滚动频率</strong></li>
+<li>避免高频写盘</li>
+</ul>
+<h2>初步使用docker（qBittorrent）</h2>
+<p>那么目前所有准备工作都已完毕，我们可以开始正式使用docker了。</p>
+<p>让我们先来部署一个qBittorrent练练手。</p>
+<p><strong>目标</strong>：</p>
+<blockquote>
+<p>✔ 使用 Docker 部署 qBittorrent<br>
+✔ Docker 运行仍在 <code class="notranslate">sda</code><br>
+✔ <strong>下载数据存放在 <code class="notranslate">/data</code>（机械盘 sdb）</strong><br>
+✔ 尽量<strong>减少机械盘噪音</strong><br>
+✔ 方案稳、清晰、可回滚</p>
+</blockquote>
+<h3>一、整体结构（先建立正确认知）</h3>
+<p>你最终会得到这样的结构：</p>
+<pre class="notranslate"><code class="notranslate">/data
+├── qb
+│   ├── config        ← qB 配置（小量写入）
+│   ├── downloads     ← 已完成下载（机械盘）
+│   ├── incomplete   ← 未完成下载（可选：后面可迁移）
+</code></pre>
+<ul>
+<li>qB 程序：Docker 容器（在 sda）</li>
+<li><strong>下载结果</strong>：<code class="notranslate">/data/qb/downloads</code>（sdb）</li>
+<li>Web 管理：浏览器访问</li>
+</ul>
+<hr>
+<h3>二、创建目录（只做一次）</h3>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo mkdir -p /data/qb/{config,downloads,incomplete}
+sudo chown -R <span class="pl-smi">$USER</span>:<span class="pl-smi">$USER</span> /data/qb</pre></div>
+<blockquote>
+<p>你可以把它理解为：<br>
+“在大容量盘里新建一个 <code class="notranslate">qb</code> 文件夹，里面再分三个子文件夹”</p>
+</blockquote>
+<hr>
+<h3>三、选择镜像（稳定、主流）</h3>
+<p>这里我<strong>明确推荐</strong> LinuxServer 团队的镜像：</p>
+<pre class="notranslate"><code class="notranslate">lscr.io/linuxserver/qbittorrent
+</code></pre>
+<p>理由：</p>
+<ul>
+<li>更新稳定</li>
+<li>权限模型清晰（PUID / PGID）</li>
+<li>文档规范</li>
+</ul>
+<hr>
+<h3>四、部署方式（推荐 docker compose）</h3>
+<h4>1️⃣ 新建 compose 文件</h4>
+<div class="highlight highlight-source-shell"><pre class="notranslate">mkdir -p <span class="pl-k">~</span>/docker/qbittorrent
+<span class="pl-c1">cd</span> <span class="pl-k">~</span>/docker/qbittorrent
+nano docker-compose.yml</pre></div>
+<h4>2️⃣ 写入以下内容（<strong>可直接复制</strong>）</h4>
+<div class="highlight highlight-source-yaml"><pre class="notranslate"><span class="pl-ent">version</span>: <span class="pl-s"><span class="pl-pds">"</span>3.8<span class="pl-pds">"</span></span>
+<span class="pl-ent">services</span>:
+  <span class="pl-ent">qbittorrent</span>:
+    <span class="pl-ent">image</span>: <span class="pl-s">lscr.io/linuxserver/qbittorrent:latest</span>
+    <span class="pl-ent">container_name</span>: <span class="pl-s">qbittorrent</span>
+    <span class="pl-ent">environment</span>:
+      - <span class="pl-s">PUID=1000</span>
+      - <span class="pl-s">PGID=1000</span>
+      - <span class="pl-s">TZ=Asia/Shanghai</span>
+      - <span class="pl-s">WEBUI_PORT=8080</span>
+    <span class="pl-ent">volumes</span>:
+      - <span class="pl-s">/data/qb/config:/config</span>
+      - <span class="pl-s">/data/qb/downloads:/downloads</span>
+      - <span class="pl-s">/data/qb/incomplete:/incomplete</span>
+    <span class="pl-ent">ports</span>:
+      - <span class="pl-c1">8080:8080</span>
+      - <span class="pl-c1">6881:6881</span>
+      - <span class="pl-s">6881:6881/udp</span>
+    <span class="pl-ent">restart</span>: <span class="pl-s">unless-stopped</span></pre></div>
+<h4>3️⃣ 关键参数解释（重要）</h4>
+<ul>
+<li><code class="notranslate">PUID/PGID=1000</code>
+<ul>
+<li>对应你当前用户（<code class="notranslate">id $USER</code> 可验证）</li>
+</ul>
+</li>
+<li><code class="notranslate">/downloads</code>
+<ul>
+<li><strong>最终下载目录（机械盘）</strong></li>
+</ul>
+</li>
+<li><code class="notranslate">/incomplete</code>
+<ul>
+<li>未完成下载目录</li>
+</ul>
+</li>
+<li><code class="notranslate">restart: unless-stopped</code>
+<ul>
+<li>开机自启，但不死循环</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3>五、启动 qBittorrent</h3>
+<div class="highlight highlight-source-shell"><pre class="notranslate">docker compose up -d</pre></div>
+<p>查看状态：</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">docker ps</pre></div>
+<hr>
+<h3>六、访问 Web UI</h3>
+<p>浏览器访问：</p>
+<pre class="notranslate"><code class="notranslate">http://服务器IP:8080
+</code></pre>
+<h4>默认账号密码（第一次）</h4>
+<ul>
+<li>用户名：<code class="notranslate">admin</code></li>
+<li>密码：<br>
+查看容器日志获取：</li>
+</ul>
+<div class="highlight highlight-source-shell"><pre class="notranslate">docker logs qbittorrent <span class="pl-k">|</span> grep password</pre></div>
+<p>登录后<strong>第一件事建议改密码</strong>。</p>
+<hr>
+<h3>七、关键配置（直接关系到“吵不吵”）</h3>
+<p>进入 Web UI → <strong>设置</strong></p>
+<h4>1️⃣ 下载目录（确认）</h4>
+<ul>
+<li>
+<p>默认保存路径：</p>
+<pre class="notranslate"><code class="notranslate">/downloads
+</code></pre>
+</li>
+<li>
+<p>未完成 Torrent 保存路径：</p>
+<pre class="notranslate"><code class="notranslate">/incomplete
+</code></pre>
+</li>
+<li>
+<p>勾选：<strong>下载完成后移动文件</strong></p>
+</li>
+</ul>
+<hr>
+<h4>2️⃣ 降低磁盘噪音（非常重要）</h4>
+<h5>✅ 启用内存缓存</h5>
+<ul>
+<li>磁盘缓存：<code class="notranslate">512 MB</code>（或自动）</li>
+<li>勾选：<strong>使用异步 I/O</strong></li>
+<li>勾选：<strong>启用 OS 缓存</strong></li>
+</ul>
+<h5>❌ 不要勾选</h5>
+<ul>
+<li>“每次写入立即刷新到磁盘”</li>
+</ul>
+<hr>
+<h4>3️⃣ 文件预分配</h4>
+<ul>
+<li>文件预分配方式：<br>
+<strong>稀疏文件（Sparse）</strong></li>
+</ul>
+<p>👉 机械盘友好，避免长时间“狂响”</p>
+<hr>
+<h3>八、验证：机械盘是否还在“乱响”</h3>
+<h4>1️⃣ 观察 IO</h4>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo iotop -o</pre></div>
+<ul>
+<li>空闲时应基本无 IO</li>
+<li>下载时有 IO 是正常的</li>
+<li>没有 iotop 可以安装一下</li>
+</ul>
+<h4>2️⃣ 查看是否能休眠</h4>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo hdparm -C /dev/sdb</pre></div>
+<p>理想状态：</p>
+<ul>
+<li>空闲 → <code class="notranslate">standby</code></li>
+<li>下载 → <code class="notranslate">active</code></li>
+</ul>
+<hr>
+<h3>注意事项：</h3>
+<p>如果你像我一样遇到这样的报错：</p>
+<pre class="notranslate"><code class="notranslate">WARN[0000] /home/lluosu/docker/qbittorrent/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion
+
+unable to get image 'lscr.io/linuxserver/qbittorrent:latest': permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get "http://%2Fvar%2Frun%2Fdocker.sock/v1.51/images/lscr.io/linuxserver/qbittorrent:latest/json": dial unix /var/run/docker.sock: connect: permission denied
+</code></pre>
+<p>别担心，让我们分析一下</p>
+<h4>一、<code class="notranslate">version is obsolete</code> ——只是警告，不是错误</h4>
+<pre class="notranslate"><code class="notranslate">the attribute `version` is obsolete, it will be ignored
+</code></pre>
+<h5>这句话是什么意思？</h5>
+<ul>
+<li>
+<p>你现在用的是 <strong>Docker Compose V2（<code class="notranslate">docker compose</code>）</strong></p>
+</li>
+<li>
+<p>V2 已经<strong>不再需要</strong> <code class="notranslate">version:</code> 字段</p>
+</li>
+<li>
+<p>Docker 明确告诉你：</p>
+<blockquote>
+<p>我会忽略它，但你最好删掉</p>
+</blockquote>
+</li>
+</ul>
+<h4>处理方式（可选，但建议）</h4>
+<p>编辑你的 <code class="notranslate">docker-compose.yml</code>：</p>
+<pre class="notranslate"><code class="notranslate">nano /home/lluosu/docker/qbittorrent/docker-compose.yml
+</code></pre>
+<p>把这一行删掉即可：</p>
+<pre class="notranslate"><code class="notranslate">version: "3.8"
+</code></pre>
+<p><strong>删不删都不影响运行</strong>，只是让文件更“干净”。</p>
+<hr>
+<h4>二、真正的问题：Docker 权限不足（核心问题）</h4>
+<h5>错误原文</h5>
+<pre class="notranslate"><code class="notranslate">permission denied while trying to connect to the Docker daemon socket
+connect: permission denied
+</code></pre>
+<h5>这句话的准确含义是：</h5>
+<blockquote>
+<p><strong>当前用户 <code class="notranslate">lluosu</code> 没有权限访问 Docker 守护进程</strong></p>
+</blockquote>
+<p>也就是说：</p>
+<ul>
+<li>Docker <strong>已经安装</strong></li>
+<li>Docker <strong>服务正在运行</strong></li>
+<li>但你这个用户 <strong>不在 docker 用户组里（或权限未生效）</strong></li>
+</ul>
+<hr>
+<h4>三、最直接的验证方式（你可以先看一眼）</h4>
+<pre class="notranslate"><code class="notranslate">groups
+</code></pre>
+<p>如果输出里 <strong>没有 <code class="notranslate">docker</code></strong>，那就是原因。</p>
+<hr>
+<h4>四、修复方案（推荐做法）</h4>
+<h5>1️⃣ 把当前用户加入 docker 组</h5>
+<pre class="notranslate"><code class="notranslate">sudo usermod -aG docker $USER
+</code></pre>
+<p><g-emoji class="g-emoji" alias="warning">⚠️</g-emoji> 注意：</p>
+<ul>
+<li>这一步<strong>不会立刻生效</strong></li>
+<li>Linux 的用户组是在登录时加载的</li>
+</ul>
+<hr>
+<h5>2️⃣ 让权限立刻生效（二选一）</h5>
+<h6>✅ 方式 A（推荐，最干净）</h6>
+<p><strong>重新登录 SSH / 重新开一个终端</strong></p>
+<p>然后再试：</p>
+<pre class="notranslate"><code class="notranslate">cd ~/docker/qbittorrent
+docker ps
+</code></pre>
+<p>如果不报错，说明成功。</p>
+<hr>
+<h6><g-emoji class="g-emoji" alias="warning">⚠️</g-emoji> 方式 B（临时生效，不如 A 干净）</h6>
+<pre class="notranslate"><code class="notranslate">newgrp docker
+</code></pre>
+<p>这个会：</p>
+<ul>
+<li>临时切换当前 shell 到 docker 组</li>
+<li>关闭终端后失效</li>
+</ul>
+<hr>
+<h4>五、验证 Docker 是否可用（必须）</h4>
+<pre class="notranslate"><code class="notranslate">docker version
+docker ps
+</code></pre>
+<p>只要<strong>不再出现 permission denied</strong>，就说明问题解决。</p>
+<hr>
+<h4>六、重新启动 qB 容器</h4>
+<p>回到 qB 目录：</p>
+<pre class="notranslate"><code class="notranslate">cd /home/lluosu/docker/qbittorrent
+docker compose up -d
+</code></pre>
+<p>然后检查：</p>
+<pre class="notranslate"><code class="notranslate">docker ps
+</code></pre>
+<p>你应该能看到：</p>
+<pre class="notranslate"><code class="notranslate">qbittorrent   lscr.io/linuxserver/qbittorrent   Up ...
+</code></pre>
+<hr>
+<h4>七、如果你现在就想“先跑起来”（不推荐长期）</h4>
+<p>你<strong>也可以</strong>用 sudo 直接跑（不建议作为习惯）：</p>
+<pre class="notranslate"><code class="notranslate">sudo docker compose up -d
+</code></pre>
+<p>这只是为了验证环境，不是最终方案。</p>
+<hr>
+<h4>八、一句话总结</h4>
+<ul>
+<li>❌ 不是镜像问题</li>
+<li>❌ 不是 compose 写错</li>
+<li>❌ 不是硬盘 / 路径问题</li>
+</ul>
+<p>✔ <strong>只是 Linux 权限模型在起作用</strong><br>
+✔ 加入 docker 组即可<br>
+✔ 属于“第一次用 Docker 必踩坑”</p></div>
+<div style="font-size:small;margin-top:8px;float:right;"></div>
+
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+
+</div>
+    <div id="footer"><div id="footer1">Copyright © <span id="copyrightYear"></span> <a href="https://neo.realityme.top">Reality Me</a></div>
+<div id="footer2">
+    <span id="runday"></span><span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a></span>
+</div>
+
+<script>
+var now=new Date();
+document.getElementById("copyrightYear").innerHTML=now.getFullYear();
+
+if("11/01/2025"!=""){
+    var startSite=new Date("11/01/2025");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";
+}
+</script></div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z', 'copy': 'M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z', 'check': 'M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","10086Coda10086/10086Coda10086.github.io");
+    script.setAttribute("issue-term","title");
+    
+    if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
+    else if(localStorage.getItem("meek_theme")=="light") {script.setAttribute("theme","github-light");}
+    else{script.setAttribute("theme","preferred-color-scheme");}
+    
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const createClipboardHTML = (codeContent, additionalClasses = '') => `
+        <pre class="notranslate"><code class="notranslate">${codeContent}</code></pre>
+        <div class="clipboard-container position-absolute right-0 top-0 ${additionalClasses}">
+            <clipboard-copy class="ClipboardButton btn m-2 p-0" role="button" style="display: inherit;">
+                <svg height="16" width="16" class="octicon octicon-copy m-2"><path d="${IconList["copy"]}"></path></svg>
+                <svg height="16" width="16" class="octicon octicon-check color-fg-success m-2 d-none"><path d="${IconList["check"]}"></path></svg>
+            </clipboard-copy>
+            <div class="copy-feedback">Copied!</div>
+        </div>
+    `;
+
+    const handleCodeElements = (selector = '') => {
+        document.querySelectorAll(selector).forEach(codeElement => {
+            const codeContent = codeElement.innerHTML;
+            const newStructure = document.createElement('div');
+            newStructure.className = 'snippet-clipboard-content position-relative overflow-auto';
+            newStructure.innerHTML = createClipboardHTML(codeContent);
+
+            const parentElement = codeElement.parentElement;
+            if (selector.includes('highlight')) {
+                parentElement.insertBefore(newStructure, codeElement.nextSibling);
+                parentElement.removeChild(codeElement);
+            } else {
+                parentElement.parentElement.replaceChild(newStructure, parentElement);
+            }
+        });
+    };
+
+    handleCodeElements('pre.notranslate > code.notranslate');
+    handleCodeElements('div.highlight > pre.notranslate');
+
+    let currentFeedback = null;
+    document.querySelectorAll('clipboard-copy').forEach(copyButton => {
+        copyButton.addEventListener('click', () => {
+            const codeContent = copyButton.closest('.snippet-clipboard-content').innerText;
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = codeContent;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextArea);
+
+            const copyIcon = copyButton.querySelector('.octicon-copy');
+            const checkIcon = copyButton.querySelector('.octicon-check');
+            const copyFeedback = copyButton.nextElementSibling;
+
+            if (currentFeedback && currentFeedback !== copyFeedback) {currentFeedback.style.display = 'none';}
+            currentFeedback = copyFeedback;
+
+            copyIcon.classList.add('d-none');
+            checkIcon.classList.remove('d-none');
+            copyFeedback.style.display = 'block';
+            copyButton.style.borderColor = 'var(--color-success-fg)';
+
+            setTimeout(() => {
+                copyIcon.classList.remove('d-none');
+                checkIcon.classList.add('d-none');
+                copyFeedback.style.display = 'none';
+                copyButton.style.borderColor = '';
+            }, 2000);
+        });
+    });
+});
+
+</script>
+<script src='https://blog.meekdai.com/Gmeek/plugins/GmeekTOC.js'></script>
+
+</html>
