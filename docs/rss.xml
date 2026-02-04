@@ -1,5 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Reality Me</title><link>https://neo.realityme.top</link><description>我不在乎过去和未来 再怎么着我活在今天</description><copyright>Reality Me</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/103094747?v=4</url><title>avatar</title><link>https://neo.realityme.top</link></image><lastBuildDate>Wed, 04 Feb 2026 02:42:19 +0000</lastBuildDate><managingEditor>Reality Me</managingEditor><ttl>60</ttl><webMaster>Reality Me</webMaster><item><title>从零开始的小主机折腾记#4 ——Samba</title><link>https://neo.realityme.top/post/10.html</link><description>进一步配置成NAS
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Reality Me</title><link>https://neo.realityme.top</link><description>我不在乎过去和未来 再怎么着我活在今天</description><copyright>Reality Me</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/103094747?v=4</url><title>avatar</title><link>https://neo.realityme.top</link></image><lastBuildDate>Wed, 04 Feb 2026 09:55:03 +0000</lastBuildDate><managingEditor>Reality Me</managingEditor><ttl>60</ttl><webMaster>Reality Me</webMaster><item><title>从零开始的小主机折腾记#5 ——文件迁移（NTFS）</title><link>https://neo.realityme.top/post/11.html</link><description>**插盘 → 挂载 NTFS → 拷贝 → 安全卸载**
+
+## 一、物理插盘后先确认设备名（非常关键）
+
+插上 **NTFS 硬盘** 后，不要急着挂载，先确认它是哪个盘。</description><guid isPermaLink="true">https://neo.realityme.top/post/11.html</guid><pubDate>Wed, 04 Feb 2026 09:54:36 +0000</pubDate></item><item><title>从零开始的小主机折腾记#4 ——Samba</title><link>https://neo.realityme.top/post/10.html</link><description>进一步配置成NAS
 
 ## 一、Samba干什么
 
