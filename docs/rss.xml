@@ -1,5 +1,111 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Reality Me</title><link>https://neo.realityme.top</link><description>我不在乎过去和未来 再怎么着我活在今天</description><copyright>Reality Me</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/103094747?v=4</url><title>avatar</title><link>https://neo.realityme.top</link></image><lastBuildDate>Wed, 04 Feb 2026 09:55:03 +0000</lastBuildDate><managingEditor>Reality Me</managingEditor><ttl>60</ttl><webMaster>Reality Me</webMaster><item><title>从零开始的小主机折腾记#5 ——文件迁移（NTFS）</title><link>https://neo.realityme.top/post/11.html</link><description>**插盘 → 挂载 NTFS → 拷贝 → 安全卸载**
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Reality Me</title><link>https://neo.realityme.top</link><description>我不在乎过去和未来 再怎么着我活在今天</description><copyright>Reality Me</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/103094747?v=4</url><title>avatar</title><link>https://neo.realityme.top</link></image><lastBuildDate>Wed, 04 Feb 2026 09:55:39 +0000</lastBuildDate><managingEditor>Reality Me</managingEditor><ttl>60</ttl><webMaster>Reality Me</webMaster><item><title>从零开始的小主机折腾记#6  ——Docker进阶</title><link>https://neo.realityme.top/post/12.html</link><description>## 1. 安装面板**Portainer**
+
+**定位**：最常用的 Docker 图形化管理面板
+**适用场景**：新手 + 中高级用户都合适
+
+### 优点
+
+- 简洁、易上手
+- 能管理本机 Docker 以及远程 Docker
+- 支持 Stack / Compose
+- 内置应用模板（快速部署服务）
+- 社区活跃
+
+### 缺点
+
+- 默认无需复杂 RBAC（权限管理）时体验最好
+- 栈管理不如 Swarm/Kubernetes 强大
+
+### 安装极简示例（Docker）
+
+```
+docker run -d \
+  -p 9000:9000 \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v portainer_data:/data \
+  portainer/portainer-ce:latest
+```
+
+访问端口：
+
+```
+http://服务器IP:9000
+```
+
+---
+
+## 2. 安装Transmission
+
+### 1️⃣ 创建下载目录
+
+你已经把 `sdb` 挂载到 `/data` 下，我们为 Transmission 创建专用目录：
+
+```
+sudo mkdir -p /data/transmission/config
+sudo mkdir -p /data/transmission/downloads
+sudo chown -R lluosu:lluosu /data/transmission
+```
+
+- `config` 存放 Transmission 配置文件
+- `downloads` 存放下载的文件
+- 权限设置为你自己的用户，避免 Docker 访问权限问题
+
+------
+
+### 2️⃣ 编写 Docker Compose 文件
+
+在你的主目录下创建一个文件夹存放 docker-compose 文件，例如：
+
+```
+mkdir -p ~/docker/transmission
+cd ~/docker/transmission
+```
+
+创建 `docker-compose.yml`：
+
+```
+version: '3.9'
+services:
+  transmission:
+    image: linuxserver/transmission
+    container_name: transmission
+    environment:
+      - PUID=1000              # 你的 Linux 用户 ID
+      - PGID=1000              # 你的 Linux 用户组 ID
+      - TZ=Asia/Shanghai       # 时区
+    volumes:
+      - /data/transmission/config:/config
+      - /data/transmission/downloads:/downloads
+    ports:
+      - 9091:9091   # Web UI
+      - 51413:51413 # BitTorrent TCP
+      - 51413:51413/udp # BitTorrent UDP
+    restart: unless-stopped
+```
+
+&gt; 注意：
+&gt;
+&gt; - `PUID` 和 `PGID` 用 `id lluosu` 查看你的用户和组 ID
+&gt; - 端口可以按需要改，如果 9091 被占用，可以换成 9092:9091
+
+------
+
+### 3️⃣ 启动容器
+
+进入 `docker-compose.yml` 所在目录，执行：
+
+```
+docker compose up -d
+```
+
+检查容器状态：
+
+```
+docker ps
+```
+
+你应该看到 `transmission` 正在运行。</description><guid isPermaLink="true">https://neo.realityme.top/post/12.html</guid><pubDate>Wed, 04 Feb 2026 09:55:09 +0000</pubDate></item><item><title>从零开始的小主机折腾记#5 ——文件迁移（NTFS）</title><link>https://neo.realityme.top/post/11.html</link><description>**插盘 → 挂载 NTFS → 拷贝 → 安全卸载**
 
 ## 一、物理插盘后先确认设备名（非常关键）
 
