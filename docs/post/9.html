@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
+    <script src='https://blog.meekdai.com/Gmeek/plugins/GmeekVercount.js'></script>
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/103094747?v=4"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+<meta name="description" content="是时候把它改造成NAS了！
+
+## 一、NAS-Panel
+
+**NAS-Panel ≠ 传统 NAS 系统（如 TrueNAS）**
+ 它是一个：
+
+- 🧭 Web 管理面板
+- 📦 集成 Docker 管理
+- 📁 带文件管理功能
+- 💾 可管理挂载的磁盘（如 `/data`）
+
+**非常适合你这种：**
+
+> 小主机 + Ubuntu Server + Docker + 单块大容量机械盘
+
+------
+
+### 二、部署前检查（很重要，避免后面报错）
+
+#### 1️⃣ 确认 Docker 正常
+
+```
+docker version
+```
+
+能看到 Client / Server 信息即可。">
+<meta property="og:title" content="从零开始的小主机折腾记#3">
+<meta property="og:description" content="是时候把它改造成NAS了！
+
+## 一、NAS-Panel
+
+**NAS-Panel ≠ 传统 NAS 系统（如 TrueNAS）**
+ 它是一个：
+
+- 🧭 Web 管理面板
+- 📦 集成 Docker 管理
+- 📁 带文件管理功能
+- 💾 可管理挂载的磁盘（如 `/data`）
+
+**非常适合你这种：**
+
+> 小主机 + Ubuntu Server + Docker + 单块大容量机械盘
+
+------
+
+### 二、部署前检查（很重要，避免后面报错）
+
+#### 1️⃣ 确认 Docker 正常
+
+```
+docker version
+```
+
+能看到 Client / Server 信息即可。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://neo.realityme.top/post/9.html">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/103094747?v=4">
+<title>从零开始的小主机折腾记#3</title>
+<link href="//unpkg.com/@wooorm/starry-night@2.1.1/style/both.css" rel="stylesheet" />
+
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+.copy-feedback {
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 50px;
+    color: var(--color-fg-on-emphasis);
+    background-color: var(--color-fg-muted);
+    border-radius: 3px;
+    padding: 5px 8px;
+    font-size: 12px;
+}
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">从零开始的小主机折腾记#3</h1>
+<div class="title-right">
+    <a href="https://neo.realityme.top" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+    <a href="https://github.com/10086Coda10086/10086Coda10086.github.io/issues/9" target="_blank" class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><p>是时候把它改造成NAS了！</p>
+<h2>一、NAS-Panel</h2>
+<p><strong>NAS-Panel ≠ 传统 NAS 系统（如 TrueNAS）</strong><br>
+它是一个：</p>
+<ul>
+<li>🧭 Web 管理面板</li>
+<li>📦 集成 Docker 管理</li>
+<li>📁 带文件管理功能</li>
+<li>💾 可管理挂载的磁盘（如 <code class="notranslate">/data</code>）</li>
+</ul>
+<p><strong>非常适合你这种：</strong></p>
+<blockquote>
+<p>小主机 + Ubuntu Server + Docker + 单块大容量机械盘</p>
+</blockquote>
+<hr>
+<h3>二、部署前检查（很重要，避免后面报错）</h3>
+<h4>1️⃣ 确认 Docker 正常</h4>
+<pre class="notranslate"><code class="notranslate">docker version
+</code></pre>
+<p>能看到 Client / Server 信息即可。</p>
+<hr>
+<h4>2️⃣ 确认数据盘已挂载（sdb）</h4>
+<pre class="notranslate"><code class="notranslate">lsblk
+</code></pre>
+<p>你应该能看到类似：</p>
+<pre class="notranslate"><code class="notranslate">sdb
+└─sdb1  465G  /data
+</code></pre>
+<p>如果 <code class="notranslate">/data</code> 不存在或没挂载，<strong>先别继续</strong>。</p>
+<hr>
+<h3>三、创建 NAS-Panel 目录结构（规范做法）</h3>
+<p>我们把 <strong>配置</strong> 和 <strong>数据盘</strong> 分开：</p>
+<pre class="notranslate"><code class="notranslate">mkdir -p ~/docker/nas-panel
+cd ~/docker/nas-panel
+</code></pre>
+<hr>
+<h3>四、创建 docker-compose.yml（核心步骤）</h3>
+<p>在 <code class="notranslate">~/docker/nas-panel</code> 目录下：</p>
+<pre class="notranslate"><code class="notranslate">nano docker-compose.yml
+</code></pre>
+<p>粘贴下面内容（<g-emoji class="g-emoji" alias="warning">⚠️</g-emoji> 不要改缩进）：</p>
+<pre class="notranslate"><code class="notranslate">services:
+  sun-panel:
+    image: hslr/sun-panel:latest
+    container_name: sun-panel
+    restart: unless-stopped
+    ports:
+      - "3002:3002"
+    volumes:
+      - ./conf:/app/conf
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /data:/mnt/data
+
+</code></pre>
+<hr>
+<h3>五、启动 NAS-Panel</h3>
+<p>在当前目录执行：</p>
+<pre class="notranslate"><code class="notranslate">docker compose up -d
+</code></pre>
+<p>如果你看到：</p>
+<pre class="notranslate"><code class="notranslate">✔ Container nas-panel Started
+</code></pre>
+<p>说明成功。</p>
+<hr>
+<h3>六、访问 NAS-Panel Web 界面</h3>
+<p>在 <strong>另一台电脑（Windows）浏览器</strong> 打开：</p>
+<pre class="notranslate"><code class="notranslate">http://&lt;服务器IP&gt;:3002
+</code></pre>
+<p>例如：</p>
+<pre class="notranslate"><code class="notranslate">http://192.168.1.100:3002
+</code></pre>
+<h3>默认账号（首次登录）</h3>
+<blockquote>
+<p><g-emoji class="g-emoji" alias="warning">⚠️</g-emoji> 如果页面提示创建管理员，按提示来<br>
+不同版本略有差异</p>
+</blockquote>
+<p>通常是：</p>
+<ul>
+<li>用户名：<a href="mailto:admin@sun.cc">admin@sun.cc</a></li>
+<li>密码：12345678</li>
+</ul>
+<p><strong>登录后第一件事：改密码</strong></p>
+<hr>
+<h2>二、 File-browser</h2>
+<h3>一、使用目的</h3>
+<p>在 Ubuntu Server 上，为 <strong>独立数据盘（如 <code class="notranslate">/data</code>，sdb）</strong> 提供一个：</p>
+<ul>
+<li>浏览器访问的文件管理界面</li>
+<li>用于 NAS 场景下的文件上传 / 下载 / 管理</li>
+<li>与 Sun-Panel 搭配，作为文件管理入口</li>
+</ul>
+<hr>
+<h3>二、前置条件</h3>
+<ul>
+<li>Ubuntu Server 已安装 Docker / Docker Compose</li>
+<li>数据盘（sdb）已正确挂载到 <code class="notranslate">/data</code></li>
+<li>使用普通用户（非 root）管理 Docker</li>
+</ul>
+<hr>
+<h3>三、推荐目录结构</h3>
+<pre lang="text" class="notranslate"><code class="notranslate">/home/lluosu/docker/filebrowser/
+├─ docker-compose.yml
+└─ config/
+</code></pre>
+<p>说明：</p>
+<ul>
+<li><code class="notranslate">docker-compose.yml</code>：容器定义</li>
+<li><code class="notranslate">config/</code>：File Browser 配置持久化目录<br>
+<strong>必须存在且可写</strong></li>
+</ul>
+<hr>
+<h3>四、docker-compose.yml（稳定可用版本）</h3>
+<div class="highlight highlight-source-yaml"><pre class="notranslate"><span class="pl-ent">services</span>:
+  <span class="pl-ent">filebrowser</span>:
+    <span class="pl-ent">image</span>: <span class="pl-s">filebrowser/filebrowser:latest</span>
+    <span class="pl-ent">container_name</span>: <span class="pl-s">filebrowser</span>
+    <span class="pl-ent">restart</span>: <span class="pl-s">unless-stopped</span>
+    <span class="pl-ent">ports</span>:
+      - <span class="pl-s"><span class="pl-pds">"</span>8081:80<span class="pl-pds">"</span></span>
+    <span class="pl-ent">volumes</span>:
+      - <span class="pl-s">/data:/srv</span>
+      - <span class="pl-s">./config:/config</span>
+    <span class="pl-ent">environment</span>:
+      - <span class="pl-s">PUID=1000</span>
+      - <span class="pl-s">PGID=1000</span></pre></div>
+<h4>关键说明</h4>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>项</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="notranslate">/data:/srv</code></td>
+<td>将 sdb 数据盘映射为文件根目录</td>
+</tr>
+<tr>
+<td><code class="notranslate">./config:/config</code></td>
+<td>保存 settings.json 等配置</td>
+</tr>
+<tr>
+<td><code class="notranslate">PUID/PGID=1000</code></td>
+<td>使用当前用户权限，避免 root 写入</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<hr>
+<h3>五、安装与启动步骤</h3>
+<h4>1️⃣ 创建目录</h4>
+<div class="highlight highlight-source-shell"><pre class="notranslate">mkdir -p <span class="pl-k">~</span>/docker/filebrowser/config
+<span class="pl-c1">cd</span> <span class="pl-k">~</span>/docker/filebrowser</pre></div>
+<hr>
+<h4>2️⃣ 启动容器</h4>
+<div class="highlight highlight-source-shell"><pre class="notranslate">docker compose up -d</pre></div>
+<hr>
+<h4>3️⃣ 检查运行状态（必须）</h4>
+<div class="highlight highlight-source-shell"><pre class="notranslate">docker ps</pre></div>
+<p>应看到：</p>
+<pre lang="text" class="notranslate"><code class="notranslate">filebrowser   Up ...
+</code></pre>
+<p>如果状态为 <code class="notranslate">Restarting</code>，说明启动失败。</p>
+<hr>
+<h3>六、常见错误与排查</h3>
+<h4>❌ 问题现象</h4>
+<ul>
+<li>浏览器无法访问 <code class="notranslate">http://服务器IP:8081</code></li>
+<li><code class="notranslate">docker ps</code> 显示：</li>
+</ul>
+<pre lang="text" class="notranslate"><code class="notranslate">filebrowser   Restarting
+</code></pre>
+<ul>
+<li>日志报错：</li>
+</ul>
+<pre lang="text" class="notranslate"><code class="notranslate">cp: can't create '/config/settings.json': Permission denied
+</code></pre>
+<hr>
+<h4>❗ 根因</h4>
+<ul>
+<li><code class="notranslate">config/</code> 目录 <strong>属主或权限不正确</strong></li>
+<li>容器运行用户（PUID=1000）无写权限</li>
+<li>File Browser 无法生成 <code class="notranslate">settings.json</code>，直接退出</li>
+</ul>
+<hr>
+<h4>✅ 正确修复方式（推荐）</h4>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c1">cd</span> <span class="pl-k">~</span>/docker/filebrowser
+sudo chown -R lluosu:lluosu config</pre></div>
+<p>确认：</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">ls -ld config</pre></div>
+<p>应为：</p>
+<pre lang="text" class="notranslate"><code class="notranslate">drwxr-xr-x lluosu lluosu config
+</code></pre>
+<p>然后重启：</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">docker compose up -d</pre></div>
+<hr>
+<h3>七、访问方式</h3>
+<p>浏览器访问：</p>
+<pre lang="text" class="notranslate"><code class="notranslate">http://服务器IP:8081
+</code></pre>
+<p>默认登录信息：</p>
+<ul>
+<li>用户名：admin</li>
+<li>密码：admin</li>
+</ul>
+<p>登录后建议立即修改密码。</p>
+<hr>
+<h3>八、目录映射关系说明（防止混淆）</h3>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>宿主机</th>
+<th>容器内</th>
+<th>实际意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="notranslate">/data</code></td>
+<td><code class="notranslate">/srv</code></td>
+<td>sdb 机械盘真实数据</td>
+</tr>
+<tr>
+<td><code class="notranslate">~/docker/filebrowser/config</code></td>
+<td><code class="notranslate">/config</code></td>
+<td>File Browser 配置</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p>在 Web UI 中看到的所有文件，<strong>实际都位于 <code class="notranslate">/data</code></strong>。</p>
+<hr>
+<h3>九、部署完成后的建议</h3>
+<ul>
+<li>将 File Browser 入口添加到 <strong>Sun-Panel</strong></li>
+<li>下载类容器（qBittorrent）统一指向 <code class="notranslate">/data</code></li>
+<li>Docker 配置文件不要放在 <code class="notranslate">/data</code></li>
+<li>定期关注磁盘 I/O，避免机械盘频繁唤醒</li>
+</ul>
+<h2>面板配置</h2>
+<p>这个地方自由发挥即可</p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/80b69071-08a7-424f-8f08-79592930e263"><img width="1920" height="1080" alt="Image" src="https://github.com/user-attachments/assets/80b69071-08a7-424f-8f08-79592930e263" style="max-width: 100%; height: auto; max-height: 1080px;"></a></p>
+<p>像这样就是一个很初步的配置，后面我们会慢慢把它扩展起来</p></div>
+<div style="font-size:small;margin-top:8px;float:right;"></div>
+
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+
+</div>
+    <div id="footer"><div id="footer1">Copyright © <span id="copyrightYear"></span> <a href="https://neo.realityme.top">Reality Me</a></div>
+<div id="footer2">
+    <span id="runday"></span><span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a></span>
+</div>
+
+<script>
+var now=new Date();
+document.getElementById("copyrightYear").innerHTML=now.getFullYear();
+
+if("11/01/2025"!=""){
+    var startSite=new Date("11/01/2025");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";
+}
+</script></div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z', 'copy': 'M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z', 'check': 'M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","10086Coda10086/10086Coda10086.github.io");
+    script.setAttribute("issue-term","title");
+    
+    if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
+    else if(localStorage.getItem("meek_theme")=="light") {script.setAttribute("theme","github-light");}
+    else{script.setAttribute("theme","preferred-color-scheme");}
+    
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const createClipboardHTML = (codeContent, additionalClasses = '') => `
+        <pre class="notranslate"><code class="notranslate">${codeContent}</code></pre>
+        <div class="clipboard-container position-absolute right-0 top-0 ${additionalClasses}">
+            <clipboard-copy class="ClipboardButton btn m-2 p-0" role="button" style="display: inherit;">
+                <svg height="16" width="16" class="octicon octicon-copy m-2"><path d="${IconList["copy"]}"></path></svg>
+                <svg height="16" width="16" class="octicon octicon-check color-fg-success m-2 d-none"><path d="${IconList["check"]}"></path></svg>
+            </clipboard-copy>
+            <div class="copy-feedback">Copied!</div>
+        </div>
+    `;
+
+    const handleCodeElements = (selector = '') => {
+        document.querySelectorAll(selector).forEach(codeElement => {
+            const codeContent = codeElement.innerHTML;
+            const newStructure = document.createElement('div');
+            newStructure.className = 'snippet-clipboard-content position-relative overflow-auto';
+            newStructure.innerHTML = createClipboardHTML(codeContent);
+
+            const parentElement = codeElement.parentElement;
+            if (selector.includes('highlight')) {
+                parentElement.insertBefore(newStructure, codeElement.nextSibling);
+                parentElement.removeChild(codeElement);
+            } else {
+                parentElement.parentElement.replaceChild(newStructure, parentElement);
+            }
+        });
+    };
+
+    handleCodeElements('pre.notranslate > code.notranslate');
+    handleCodeElements('div.highlight > pre.notranslate');
+
+    let currentFeedback = null;
+    document.querySelectorAll('clipboard-copy').forEach(copyButton => {
+        copyButton.addEventListener('click', () => {
+            const codeContent = copyButton.closest('.snippet-clipboard-content').innerText;
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = codeContent;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextArea);
+
+            const copyIcon = copyButton.querySelector('.octicon-copy');
+            const checkIcon = copyButton.querySelector('.octicon-check');
+            const copyFeedback = copyButton.nextElementSibling;
+
+            if (currentFeedback && currentFeedback !== copyFeedback) {currentFeedback.style.display = 'none';}
+            currentFeedback = copyFeedback;
+
+            copyIcon.classList.add('d-none');
+            checkIcon.classList.remove('d-none');
+            copyFeedback.style.display = 'block';
+            copyButton.style.borderColor = 'var(--color-success-fg)';
+
+            setTimeout(() => {
+                copyIcon.classList.remove('d-none');
+                checkIcon.classList.add('d-none');
+                copyFeedback.style.display = 'none';
+                copyButton.style.borderColor = '';
+            }, 2000);
+        });
+    });
+});
+
+</script>
+<script src='https://blog.meekdai.com/Gmeek/plugins/GmeekTOC.js'></script>
+
+</html>

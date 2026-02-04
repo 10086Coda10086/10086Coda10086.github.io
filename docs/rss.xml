@@ -1,5 +1,31 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Reality Me</title><link>https://neo.realityme.top</link><description>我不在乎过去和未来 再怎么着我活在今天</description><copyright>Reality Me</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/103094747?v=4</url><title>avatar</title><link>https://neo.realityme.top</link></image><lastBuildDate>Tue, 03 Feb 2026 13:20:14 +0000</lastBuildDate><managingEditor>Reality Me</managingEditor><ttl>60</ttl><webMaster>Reality Me</webMaster><item><title>从零开始的小主机折腾记#2</title><link>https://neo.realityme.top/post/8.html</link><description># 从零开始的小主机折腾记#2
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Reality Me</title><link>https://neo.realityme.top</link><description>我不在乎过去和未来 再怎么着我活在今天</description><copyright>Reality Me</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/103094747?v=4</url><title>avatar</title><link>https://neo.realityme.top</link></image><lastBuildDate>Wed, 04 Feb 2026 02:13:05 +0000</lastBuildDate><managingEditor>Reality Me</managingEditor><ttl>60</ttl><webMaster>Reality Me</webMaster><item><title>从零开始的小主机折腾记#3</title><link>https://neo.realityme.top/post/9.html</link><description>是时候把它改造成NAS了！
+
+## 一、NAS-Panel
+
+**NAS-Panel ≠ 传统 NAS 系统（如 TrueNAS）**
+ 它是一个：
+
+- 🧭 Web 管理面板
+- 📦 集成 Docker 管理
+- 📁 带文件管理功能
+- 💾 可管理挂载的磁盘（如 `/data`）
+
+**非常适合你这种：**
+
+&gt; 小主机 + Ubuntu Server + Docker + 单块大容量机械盘
+
+------
+
+### 二、部署前检查（很重要，避免后面报错）
+
+#### 1️⃣ 确认 Docker 正常
+
+```
+docker version
+```
+
+能看到 Client / Server 信息即可。</description><guid isPermaLink="true">https://neo.realityme.top/post/9.html</guid><pubDate>Wed, 04 Feb 2026 02:12:36 +0000</pubDate></item><item><title>从零开始的小主机折腾记#2</title><link>https://neo.realityme.top/post/8.html</link><description># 从零开始的小主机折腾记#2
 
 ## 续上一章：Docker 相关事项补充
 
