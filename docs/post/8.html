@@ -25,7 +25,7 @@
 <meta property="og:url" content="https://neo.realityme.top/post/8.html">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/103094747?v=4">
 <title>从零开始的小主机折腾记#2</title>
-
+<link href="//unpkg.com/@wooorm/starry-night@2.1.1/style/both.css" rel="stylesheet" />
 
 
 </head>
@@ -95,14 +95,12 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <h2>续上一章：Docker 相关事项补充</h2>
 <p>上一章中关于 Docker 的内容相对偏多，如果对 Docker 还不太熟悉，可以先用下面这个<strong>最简单的验证与补救方法</strong>。</p>
 <p>在终端中输入：</p>
-<pre lang="bash" class="notranslate"><code class="notranslate">docker -v
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">docker -v</pre></div>
 <ul>
 <li>如果 Docker 已正确安装，会直接输出版本号</li>
 <li>如果 Docker 未安装，系统通常会提示找不到该命令，并在输出中给出一行类似：</li>
 </ul>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo apt install "xxx"
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo apt install <span class="pl-s"><span class="pl-pds">"</span>xxx<span class="pl-pds">"</span></span></pre></div>
 <p>此时只需要<strong>将提示中的整行命令复制并执行</strong>即可完成安装。</p>
 <p>这种方式虽然不是官方推荐的安装路径，但对于只是想快速用起来、验证环境是否可用的用户来说已经足够，后续也不影响正常使用 Docker。</p>
 <p>确认能够正常输出版本号后，就可以继续进行后面的 Docker 容器部署内容了。</p>
@@ -111,8 +109,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <hr>
 <h3>一、识别所有硬盘与分区（非常重要）</h3>
 <p>先确认 <strong>哪块盘是哪块盘</strong>，避免误操作。</p>
-<pre lang="bash" class="notranslate"><code class="notranslate">lsblk
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">lsblk</pre></div>
 <p>常见输出示例：</p>
 <pre class="notranslate"><code class="notranslate">NAME   SIZE TYPE MOUNTPOINT
 sda    256G disk
@@ -128,16 +125,14 @@ sdc    8T   disk
 <li><code class="notranslate">sdb / sdc</code>：额外数据盘（通常是需要格式化和挂载的）</li>
 </ul>
 <p>如果想看得更清楚（型号、接口）：</p>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo lsblk -o NAME,SIZE,TYPE,MOUNTPOINT,MODEL
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo lsblk -o NAME,SIZE,TYPE,MOUNTPOINT,MODEL</pre></div>
 <hr>
 <h3>二、给硬盘分区（新盘 / 空盘）</h3>
 <blockquote>
 <p><strong>如果整块盘打算只用一个分区，可直接全盘一个分区</strong></p>
 </blockquote>
 <p>以 <code class="notranslate">/dev/sdb</code> 为例（请自行替换）：</p>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo fdisk /dev/sdb
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo fdisk /dev/sdb</pre></div>
 <p>常用操作流程：</p>
 <ol>
 <li><code class="notranslate">g</code> → 创建 GPT 分区表（大于 2TB 必须）</li>
@@ -151,16 +146,13 @@ sdc    8T   disk
 <li><code class="notranslate">w</code> → 写入并退出</li>
 </ol>
 <p>完成后刷新分区表：</p>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo partprobe
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo partprobe</pre></div>
 <p>确认分区生成（例如 <code class="notranslate">/dev/sdb1</code>）：</p>
-<pre lang="bash" class="notranslate"><code class="notranslate">lsblk
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">lsblk</pre></div>
 <hr>
 <h3>三、格式化分区（推荐 ext4）</h3>
 <p>以 <code class="notranslate">/dev/sdb1</code> 为例：</p>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo mkfs.ext4 /dev/sdb1
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo mkfs.ext4 /dev/sdb1</pre></div>
 <p>常见可选格式：</p>
 <ul>
 <li><code class="notranslate">ext4</code>：通用、稳定（<strong>强烈推荐</strong>）</li>
@@ -171,21 +163,17 @@ sdc    8T   disk
 <hr>
 <h3>四、创建挂载目录</h3>
 <p>建议统一放在 <code class="notranslate">/mnt</code> 或 <code class="notranslate">/data</code> 下，例如：</p>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo mkdir -p /data/disk1
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo mkdir -p /data/disk1</pre></div>
 <hr>
 <h3>五、临时挂载（立即生效，重启失效）</h3>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo mount /dev/sdb1 /data/disk1
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo mount /dev/sdb1 /data/disk1</pre></div>
 <p>验证：</p>
-<pre lang="bash" class="notranslate"><code class="notranslate">df -h
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">df -h</pre></div>
 <p>如果能看到 <code class="notranslate">/data/disk1</code>，说明挂载成功。</p>
 <hr>
 <h3>第六步：配置 <code class="notranslate">/etc/fstab</code>（永久挂载）</h3>
 <h4>1️⃣ 获取 <code class="notranslate">sdb1</code> 的 UUID（必须）</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo blkid /dev/sdb1
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo blkid /dev/sdb1</pre></div>
 <p>你会看到类似输出：</p>
 <pre class="notranslate"><code class="notranslate">/dev/sdb1: UUID="1234abcd-5678-efgh-90ab-cdef12345678" TYPE="ext4"
 </code></pre>
@@ -205,15 +193,12 @@ sdc    8T   disk
 <p>你说的“文件夹”，在 Linux 里叫 <strong>目录（directory）</strong>，和 Windows 的文件夹是同一个概念，你可以完全按“文件夹”来理解。</p>
 </blockquote>
 <p>先创建挂载点：</p>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo mkdir -p /data
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo mkdir -p /data</pre></div>
 <hr>
 <h4>3️⃣ 编辑 <code class="notranslate">/etc/fstab</code></h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo nano /etc/fstab
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo nano /etc/fstab</pre></div>
 <p>在文件<strong>最后一行</strong>加入：</p>
-<pre lang="ini" class="notranslate"><code class="notranslate">UUID=1234abcd-5678-efgh-90ab-cdef12345678  /data  ext4  defaults,noatime  0  2
-</code></pre>
+<div class="highlight highlight-source-ini"><pre class="notranslate"><span class="pl-k">UUID</span>=1234abcd-5678-efgh-90ab-cdef12345678  /data  ext4  defaults,noatime  0  2</pre></div>
 <p><g-emoji class="g-emoji" alias="warning">⚠️</g-emoji> 注意：</p>
 <ul>
 <li>UUID 一定要换成你自己的</li>
@@ -228,15 +213,13 @@ sdc    8T   disk
 </ul>
 <hr>
 <h4>4️⃣ 验证 fstab（<strong>这一步不能跳过</strong>）</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo mount -a
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo mount -a</pre></div>
 <ul>
 <li><strong>没有任何输出 = 正常</strong></li>
 <li>有报错 → 立刻停下并按照输出解决问题，别重启</li>
 </ul>
 <p>确认是否挂载成功：</p>
-<pre lang="bash" class="notranslate"><code class="notranslate">df -h
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">df -h</pre></div>
 <p>你应该能看到类似：</p>
 <pre class="notranslate"><code class="notranslate">/dev/sdb1   458G  ...  /data
 </code></pre>
@@ -245,8 +228,7 @@ sdc    8T   disk
 <h3>第七步：在数据盘内创建“文件夹”（目录）</h3>
 <p>现在你要做的只是<strong>在 <code class="notranslate">/data</code> 里建目录</strong>，不涉及 Docker 本身。</p>
 <h4>1️⃣ 创建 Docker 数据目录</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo mkdir -p /data/docker
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo mkdir -p /data/docker</pre></div>
 <p>你可以理解为：</p>
 <blockquote>
 <p>“在大容量盘里新建一个文件夹，专门给 Docker 放下载内容用”</p>
@@ -254,11 +236,9 @@ sdc    8T   disk
 <hr>
 <h4>2️⃣ 设置目录权限（非常关键）</h4>
 <p>为了以后 Docker、qB、普通用户都不折腾权限，先把所有权交给你当前用户：</p>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo chown -R $USER:$USER /data
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo chown -R <span class="pl-smi">$USER</span>:<span class="pl-smi">$USER</span> /data</pre></div>
 <p>验证：</p>
-<pre lang="bash" class="notranslate"><code class="notranslate">ls -ld /data /data/docker
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">ls -ld /data /data/docker</pre></div>
 <p>应显示为你的用户名。</p>
 <hr>
 <h3>到目前为止，你已经完成了什么？</h3>
@@ -359,9 +339,8 @@ sdc    8T   disk
 </ul>
 <hr>
 <h3>二、创建目录（只做一次）</h3>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo mkdir -p /data/qb/{config,downloads,incomplete}
-sudo chown -R $USER:$USER /data/qb
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo mkdir -p /data/qb/{config,downloads,incomplete}
+sudo chown -R <span class="pl-smi">$USER</span>:<span class="pl-smi">$USER</span> /data/qb</pre></div>
 <blockquote>
 <p>你可以把它理解为：<br>
 “在大容量盘里新建一个 <code class="notranslate">qb</code> 文件夹，里面再分三个子文件夹”</p>
@@ -380,31 +359,29 @@ sudo chown -R $USER:$USER /data/qb
 <hr>
 <h3>四、部署方式（推荐 docker compose）</h3>
 <h4>1️⃣ 新建 compose 文件</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">mkdir -p ~/docker/qbittorrent
-cd ~/docker/qbittorrent
-nano docker-compose.yml
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">mkdir -p <span class="pl-k">~</span>/docker/qbittorrent
+<span class="pl-c1">cd</span> <span class="pl-k">~</span>/docker/qbittorrent
+nano docker-compose.yml</pre></div>
 <h4>2️⃣ 写入以下内容（<strong>可直接复制</strong>）</h4>
-<pre lang="yaml" class="notranslate"><code class="notranslate">version: "3.8"
-services:
-  qbittorrent:
-    image: lscr.io/linuxserver/qbittorrent:latest
-    container_name: qbittorrent
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Asia/Shanghai
-      - WEBUI_PORT=8080
-    volumes:
-      - /data/qb/config:/config
-      - /data/qb/downloads:/downloads
-      - /data/qb/incomplete:/incomplete
-    ports:
-      - 8080:8080
-      - 6881:6881
-      - 6881:6881/udp
-    restart: unless-stopped
-</code></pre>
+<div class="highlight highlight-source-yaml"><pre class="notranslate"><span class="pl-ent">version</span>: <span class="pl-s"><span class="pl-pds">"</span>3.8<span class="pl-pds">"</span></span>
+<span class="pl-ent">services</span>:
+  <span class="pl-ent">qbittorrent</span>:
+    <span class="pl-ent">image</span>: <span class="pl-s">lscr.io/linuxserver/qbittorrent:latest</span>
+    <span class="pl-ent">container_name</span>: <span class="pl-s">qbittorrent</span>
+    <span class="pl-ent">environment</span>:
+      - <span class="pl-s">PUID=1000</span>
+      - <span class="pl-s">PGID=1000</span>
+      - <span class="pl-s">TZ=Asia/Shanghai</span>
+      - <span class="pl-s">WEBUI_PORT=8080</span>
+    <span class="pl-ent">volumes</span>:
+      - <span class="pl-s">/data/qb/config:/config</span>
+      - <span class="pl-s">/data/qb/downloads:/downloads</span>
+      - <span class="pl-s">/data/qb/incomplete:/incomplete</span>
+    <span class="pl-ent">ports</span>:
+      - <span class="pl-c1">8080:8080</span>
+      - <span class="pl-c1">6881:6881</span>
+      - <span class="pl-s">6881:6881/udp</span>
+    <span class="pl-ent">restart</span>: <span class="pl-s">unless-stopped</span></pre></div>
 <h4>3️⃣ 关键参数解释（重要）</h4>
 <ul>
 <li><code class="notranslate">PUID/PGID=1000</code>
@@ -430,11 +407,9 @@ services:
 </ul>
 <hr>
 <h3>五、启动 qBittorrent</h3>
-<pre lang="bash" class="notranslate"><code class="notranslate">docker compose up -d
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">docker compose up -d</pre></div>
 <p>查看状态：</p>
-<pre lang="bash" class="notranslate"><code class="notranslate">docker ps
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">docker ps</pre></div>
 <hr>
 <h3>六、访问 Web UI</h3>
 <p>浏览器访问：</p>
@@ -446,8 +421,7 @@ services:
 <li>密码：<br>
 查看容器日志获取：</li>
 </ul>
-<pre lang="bash" class="notranslate"><code class="notranslate">docker logs qbittorrent | grep password
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">docker logs qbittorrent <span class="pl-k">|</span> grep password</pre></div>
 <p>登录后<strong>第一件事建议改密码</strong>。</p>
 <hr>
 <h3>七、关键配置（直接关系到“吵不吵”）</h3>
@@ -490,16 +464,14 @@ services:
 <hr>
 <h3>八、验证：机械盘是否还在“乱响”</h3>
 <h4>1️⃣ 观察 IO</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo iotop -o
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo iotop -o</pre></div>
 <ul>
 <li>空闲时应基本无 IO</li>
 <li>下载时有 IO 是正常的</li>
 <li>没有 iotop 可以安装一下</li>
 </ul>
 <h4>2️⃣ 查看是否能休眠</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo hdparm -C /dev/sdb
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo hdparm -C /dev/sdb</pre></div>
 <p>理想状态：</p>
 <ul>
 <li>空闲 → <code class="notranslate">standby</code></li>
