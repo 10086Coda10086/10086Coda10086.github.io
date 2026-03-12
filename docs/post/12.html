@@ -229,7 +229,7 @@ docker ps
 <meta property="og:url" content="https://neo.realityme.top/post/12.html">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/103094747?v=4">
 <title>从零开始的小主机折腾记#6  ——Docker进阶</title>
-<link href="//unpkg.com/@wooorm/starry-night@2.1.1/style/both.css" rel="stylesheet" />
+
 
 
 </head>
@@ -417,26 +417,28 @@ services:
 <li>服务器有可用网络</li>
 <li>建议准备一个宿主机目录用于 Home Assistant 数据（例如 <code class="notranslate">/data/homeassistant</code>）</li>
 </ul>
-<div class="highlight highlight-source-shell"><pre class="notranslate">sudo mkdir -p /data/homeassistant
-sudo chown 1000:1000 /data/homeassistant   <span class="pl-c"><span class="pl-c">#</span> Docker 官方容器推荐 PUID=1000</span></pre></div>
+<pre lang="bash" class="notranslate"><code class="notranslate">sudo mkdir -p /data/homeassistant
+sudo chown 1000:1000 /data/homeassistant   # Docker 官方容器推荐 PUID=1000
+</code></pre>
 <blockquote>
 <p>如果你之前已经做了类似的 Docker 容器映射，可以共用 <code class="notranslate">/data</code> 目录。</p>
 </blockquote>
 <hr>
 <h3>2️⃣ 创建 Docker Compose 文件</h3>
 <p>在宿主机任意目录（比如 <code class="notranslate">/home/lluosu/docker/homeassistant</code>）创建 <code class="notranslate">docker-compose.yml</code>：</p>
-<div class="highlight highlight-source-yaml"><pre class="notranslate"><span class="pl-ent">version</span>: <span class="pl-s"><span class="pl-pds">"</span>3.8<span class="pl-pds">"</span></span>
+<pre lang="yaml" class="notranslate"><code class="notranslate">version: "3.8"
 
-<span class="pl-ent">services</span>:
-  <span class="pl-ent">homeassistant</span>:
-    <span class="pl-ent">container_name</span>: <span class="pl-s">homeassistant</span>
-    <span class="pl-ent">image</span>: <span class="pl-s">ghcr.io/home-assistant/home-assistant:stable</span>
-    <span class="pl-ent">volumes</span>:
-      - <span class="pl-s">/data/homeassistant:/config</span>
-    <span class="pl-ent">environment</span>:
-      - <span class="pl-s">TZ=Asia/Shanghai</span>
-    <span class="pl-ent">restart</span>: <span class="pl-s">unless-stopped</span>
-    <span class="pl-ent">network_mode</span>: <span class="pl-s">host</span></pre></div>
+services:
+  homeassistant:
+    container_name: homeassistant
+    image: ghcr.io/home-assistant/home-assistant:stable
+    volumes:
+      - /data/homeassistant:/config
+    environment:
+      - TZ=Asia/Shanghai
+    restart: unless-stopped
+    network_mode: host
+</code></pre>
 <p><strong>说明</strong>：</p>
 <ul>
 <li><code class="notranslate">volumes</code>：宿主机 <code class="notranslate">/data/homeassistant</code> 映射到容器 <code class="notranslate">/config</code>，存储 HA 配置文件</li>
@@ -446,13 +448,15 @@ sudo chown 1000:1000 /data/homeassistant   <span class="pl-c"><span class="pl-c"
 <hr>
 <h3>3️⃣ 启动 Home Assistant</h3>
 <p>在 <code class="notranslate">docker-compose.yml</code> 所在目录运行：</p>
-<div class="highlight highlight-source-shell"><pre class="notranslate">docker compose up -d</pre></div>
+<pre lang="bash" class="notranslate"><code class="notranslate">docker compose up -d
+</code></pre>
 <ul>
 <li><code class="notranslate">-d</code> 表示后台运行</li>
 <li>运行完成后，容器会自动拉取镜像并启动</li>
 </ul>
 <p>查看容器状态：</p>
-<div class="highlight highlight-source-shell"><pre class="notranslate">docker ps</pre></div>
+<pre lang="bash" class="notranslate"><code class="notranslate">docker ps
+</code></pre>
 <hr>
 <h3>4️⃣ 访问 Home Assistant</h3>
 <p>打开浏览器访问：</p>
@@ -481,8 +485,9 @@ sudo chown 1000:1000 /data/homeassistant   <span class="pl-c"><span class="pl-c"
 </li>
 <li><strong>更新 Home Assistant</strong></li>
 </ol>
-<div class="highlight highlight-source-shell"><pre class="notranslate">docker compose pull
-docker compose up -d</pre></div>
+<pre lang="bash" class="notranslate"><code class="notranslate">docker compose pull
+docker compose up -d
+</code></pre>
 <hr></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
