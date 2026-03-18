@@ -69,7 +69,7 @@ docker version
 <meta property="og:url" content="https://neo.realityme.top/post/9.html">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/103094747?v=4">
 <title>从零开始的小主机折腾记#3</title>
-
+<link href="//unpkg.com/@wooorm/starry-night@2.1.1/style/both.css" rel="stylesheet" />
 
 
 </head>
@@ -247,20 +247,19 @@ cd ~/docker/nas-panel
 </ul>
 <hr>
 <h3>四、docker-compose.yml（稳定可用版本）</h3>
-<pre lang="yaml" class="notranslate"><code class="notranslate">services:
-  filebrowser:
-    image: filebrowser/filebrowser:latest
-    container_name: filebrowser
-    restart: unless-stopped
-    ports:
-      - "8081:80"
-    volumes:
-      - /data:/srv
-      - ./config:/config
-    environment:
-      - PUID=1000
-      - PGID=1000
-</code></pre>
+<div class="highlight highlight-source-yaml"><pre class="notranslate"><span class="pl-ent">services</span>:
+  <span class="pl-ent">filebrowser</span>:
+    <span class="pl-ent">image</span>: <span class="pl-s">filebrowser/filebrowser:latest</span>
+    <span class="pl-ent">container_name</span>: <span class="pl-s">filebrowser</span>
+    <span class="pl-ent">restart</span>: <span class="pl-s">unless-stopped</span>
+    <span class="pl-ent">ports</span>:
+      - <span class="pl-s"><span class="pl-pds">"</span>8081:80<span class="pl-pds">"</span></span>
+    <span class="pl-ent">volumes</span>:
+      - <span class="pl-s">/data:/srv</span>
+      - <span class="pl-s">./config:/config</span>
+    <span class="pl-ent">environment</span>:
+      - <span class="pl-s">PUID=1000</span>
+      - <span class="pl-s">PGID=1000</span></pre></div>
 <h4>关键说明</h4>
 <markdown-accessiblity-table><table role="table">
 <thead>
@@ -287,17 +286,14 @@ cd ~/docker/nas-panel
 <hr>
 <h3>五、安装与启动步骤</h3>
 <h4>1️⃣ 创建目录</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">mkdir -p ~/docker/filebrowser/config
-cd ~/docker/filebrowser
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">mkdir -p <span class="pl-k">~</span>/docker/filebrowser/config
+<span class="pl-c1">cd</span> <span class="pl-k">~</span>/docker/filebrowser</pre></div>
 <hr>
 <h4>2️⃣ 启动容器</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">docker compose up -d
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">docker compose up -d</pre></div>
 <hr>
 <h4>3️⃣ 检查运行状态（必须）</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">docker ps
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">docker ps</pre></div>
 <p>应看到：</p>
 <pre lang="text" class="notranslate"><code class="notranslate">filebrowser   Up ...
 </code></pre>
@@ -325,18 +321,15 @@ cd ~/docker/filebrowser
 </ul>
 <hr>
 <h4>✅ 正确修复方式（推荐）</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">cd ~/docker/filebrowser
-sudo chown -R lluosu:lluosu config
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c1">cd</span> <span class="pl-k">~</span>/docker/filebrowser
+sudo chown -R lluosu:lluosu config</pre></div>
 <p>确认：</p>
-<pre lang="bash" class="notranslate"><code class="notranslate">ls -ld config
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">ls -ld config</pre></div>
 <p>应为：</p>
 <pre lang="text" class="notranslate"><code class="notranslate">drwxr-xr-x lluosu lluosu config
 </code></pre>
 <p>然后重启：</p>
-<pre lang="bash" class="notranslate"><code class="notranslate">docker compose up -d
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">docker compose up -d</pre></div>
 <hr>
 <h3>七、访问方式</h3>
 <p>浏览器访问：</p>
