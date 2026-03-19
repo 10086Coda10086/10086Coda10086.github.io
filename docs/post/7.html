@@ -33,7 +33,7 @@
 <meta property="og:url" content="https://neo.realityme.top/post/7.html">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/103094747?v=4">
 <title>从零开始的小主机折腾机#1</title>
-<link href="//unpkg.com/@wooorm/starry-night@2.1.1/style/both.css" rel="stylesheet" />
+
 
 
 </head>
@@ -115,7 +115,8 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <h4>1.1.1 SSH 配置教程</h4>
 <p>首先，在你<strong>日后用于管理服务器的电脑</strong>上打开终端（如果找不到，可以直接在搜索栏中搜索“终端”或“PowerShell”）。</p>
 <p>执行以下命令生成 SSH 密钥：</p>
-<div class="highlight highlight-source-shell"><pre class="notranslate">ssh-keygen -t ed25519 -C <span class="pl-s"><span class="pl-pds">"</span>your_email@example.com<span class="pl-pds">"</span></span></pre></div>
+<pre lang="bash" class="notranslate"><code class="notranslate">ssh-keygen -t ed25519 -C "your_email@example.com"
+</code></pre>
 <blockquote>
 <p>请将 <code class="notranslate">your_email@example.com</code> 替换为你自己的邮箱。虽然该字段并不影响功能，但用于标识密钥，建议填写。</p>
 </blockquote>
@@ -126,7 +127,8 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 └─ id_ed25519.pub    （公钥，用于服务器或 GitHub）
 </code></pre>
 <p>接下来复制公钥内容（供后续使用）：</p>
-<div class="highlight highlight-source-powershell"><pre class="notranslate">type <span class="pl-smi">$<span class="pl-c1">env:</span>USERPROFILE</span>\.ssh\id_ed25519.pub</pre></div>
+<pre lang="powershell" class="notranslate"><code class="notranslate">type $env:USERPROFILE\.ssh\id_ed25519.pub
+</code></pre>
 <p>请<strong>完整复制输出的整行内容</strong>。</p>
 <hr>
 <h5>将 SSH Key 添加到 GitHub</h5>
@@ -168,16 +170,19 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <pre class="notranslate"><code class="notranslate">https://mirrors.tuna.tsinghua.edu.cn/ubuntu/
 </code></pre>
 <p>如果在安装阶段未进行配置，也可以在系统安装完成后手动修改 <code class="notranslate">/etc/apt/sources.list</code> 来完成切换。切换完成后，执行以下命令更新软件索引：</p>
-<div class="highlight highlight-source-shell"><pre class="notranslate">sudo apt update</pre></div>
+<pre lang="bash" class="notranslate"><code class="notranslate">sudo apt update
+</code></pre>
 <p>更换为国内镜像源后，<code class="notranslate">apt</code> 在下载软件包和更新系统时的速度与稳定性都会有明显改善，尤其是在首次安装大量依赖时效果尤为明显。</p>
 <h2>2. 初步配置系统</h2>
 <h3>2.1 更新系统与基础工具</h3>
 <p>在开始进一步配置之前，建议先对系统进行一次完整更新，并安装一些常用的基础工具。</p>
-<div class="highlight highlight-source-shell"><pre class="notranslate">sudo apt update <span class="pl-k">&amp;&amp;</span> sudo apt upgrade -y
-sudo apt install -y curl wget vim htop net-tools</pre></div>
+<pre lang="bash" class="notranslate"><code class="notranslate">sudo apt update &amp;&amp; sudo apt upgrade -y
+sudo apt install -y curl wget vim htop net-tools
+</code></pre>
 <p>这两行是 <strong>Debian / Ubuntu 系列</strong>里非常常见的初始化命令，作用可以分开精确说明。</p>
 <p>第一行</p>
-<div class="highlight highlight-source-shell"><pre class="notranslate">sudo apt update <span class="pl-k">&amp;&amp;</span> sudo apt upgrade -y</pre></div>
+<pre lang="bash" class="notranslate"><code class="notranslate">sudo apt update &amp;&amp; sudo apt upgrade -y
+</code></pre>
 <p><code class="notranslate">sudo</code></p>
 <p>以 <strong>root 权限</strong>执行。普通用户默认不能改系统软件。</p>
 <p><code class="notranslate">apt update</code></p>
@@ -221,7 +226,8 @@ sudo apt install -y curl wget vim htop net-tools</pre></div>
 <p><strong>刷新软件源 → 把系统中能安全升级的软件全部升级到最新版本</strong></p>
 </blockquote>
 <p>第二行</p>
-<div class="highlight highlight-source-shell"><pre class="notranslate">sudo apt install -y curl wget vim htop net-tools</pre></div>
+<pre lang="bash" class="notranslate"><code class="notranslate">sudo apt install -y curl wget vim htop net-tools
+</code></pre>
 <p>含义</p>
 <ul>
 <li>使用 <code class="notranslate">apt</code> 安装一组<strong>常用工具</strong></li>
@@ -240,14 +246,16 @@ sudo apt install -y curl wget vim htop net-tools</pre></div>
 </li>
 </ul>
 <p>示例：</p>
-<div class="highlight highlight-source-shell"><pre class="notranslate">curl https://example.com</pre></div>
+<pre lang="bash" class="notranslate"><code class="notranslate">curl https://example.com
+</code></pre>
 <p><code class="notranslate">wget</code></p>
 <ul>
 <li>命令行 <strong>文件下载工具</strong></li>
 <li>更偏向“稳定下载”</li>
 </ul>
 <p>示例：</p>
-<div class="highlight highlight-source-shell"><pre class="notranslate">wget https://example.com/file.zip</pre></div>
+<pre lang="bash" class="notranslate"><code class="notranslate">wget https://example.com/file.zip
+</code></pre>
 <p>📌 <code class="notranslate">curl</code> 更灵活，<code class="notranslate">wget</code> 更专注下载<br>
 很多服务器教程会<strong>两个都装</strong></p>
 <p><code class="notranslate">vim</code></p>
@@ -261,7 +269,8 @@ sudo apt install -y curl wget vim htop net-tools</pre></div>
 </li>
 </ul>
 <p>示例：</p>
-<div class="highlight highlight-source-shell"><pre class="notranslate">vim /etc/ssh/sshd_config</pre></div>
+<pre lang="bash" class="notranslate"><code class="notranslate">vim /etc/ssh/sshd_config
+</code></pre>
 <p><code class="notranslate">htop</code></p>
 <ul>
 <li>交互式 <strong>进程/资源监控</strong></li>
@@ -274,7 +283,8 @@ sudo apt install -y curl wget vim htop net-tools</pre></div>
 </li>
 </ul>
 <p>示例：</p>
-<div class="highlight highlight-source-shell"><pre class="notranslate">htop</pre></div>
+<pre lang="bash" class="notranslate"><code class="notranslate">htop
+</code></pre>
 <p><code class="notranslate">net-tools</code></p>
 <ul>
 <li>提供老一代网络命令：
@@ -298,9 +308,11 @@ sudo apt install -y curl wget vim htop net-tools</pre></div>
 </blockquote>
 <hr>
 <p>接下来可以通过安装一款简单的工具来验证软件源和系统是否工作正常。这里以 <strong>neofetch</strong> 为例，该工具用于在终端中展示系统的基本信息。</p>
-<div class="highlight highlight-source-shell"><pre class="notranslate">sudo apt install neofetch</pre></div>
+<pre lang="bash" class="notranslate"><code class="notranslate">sudo apt install neofetch
+</code></pre>
 <p>按提示输入 <code class="notranslate">y</code> 确认安装。安装完成后，直接执行：</p>
-<div class="highlight highlight-source-shell"><pre class="notranslate">neofetch</pre></div>
+<pre lang="bash" class="notranslate"><code class="notranslate">neofetch
+</code></pre>
 <p>即可看到系统信息的汇总展示界面，例如下图所示：</p>
 <p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/8fa03b28-1b6e-4b91-8eae-9cd9f0c2d820"><img width="1920" height="1048" alt="Image" src="https://github.com/user-attachments/assets/8fa03b28-1b6e-4b91-8eae-9cd9f0c2d820" style="max-width: 100%; height: auto; max-height: 1048px;"></a></p>
 <p>如果能够正常显示，说明当前软件源配置与基础环境均工作正常，可以继续后续的系统配置与服务部署。</p>
@@ -309,9 +321,10 @@ sudo apt install -y curl wget vim htop net-tools</pre></div>
 <p>由于后续会大量使用 <strong>Docker</strong>，包括拉取镜像、访问 GitHub 等资源，如果没有稳定的网络环境，实际体验会非常糟糕。因此，这一步几乎是必需的前置条件。</p>
 <p>这里直接使用 [<a href="https://github.com/nelvko">nelvko</a>](<a href="https://github.com/nelvko">https://github.com/nelvko</a>) 大佬提供的脚本，整体安装过程相对省心。</p>
 <p>在终端中执行以下命令即可开始安装：</p>
-<div class="highlight highlight-source-shell"><pre class="notranslate">git clone --branch master --depth 1 https://gh-proxy.org/https://github.com/nelvko/clash-for-linux-install.git \
-  <span class="pl-k">&amp;&amp;</span> <span class="pl-c1">cd</span> clash-for-linux-install \
-  <span class="pl-k">&amp;&amp;</span> bash install.sh</pre></div>
+<pre lang="bash" class="notranslate"><code class="notranslate">git clone --branch master --depth 1 https://gh-proxy.org/https://github.com/nelvko/clash-for-linux-install.git \
+  &amp;&amp; cd clash-for-linux-install \
+  &amp;&amp; bash install.sh
+</code></pre>
 <p>安装过程中按照脚本提示操作即可，基本不需要额外干预。</p>
 <p>如果你还没有可用的订阅链接，可以参考我之前写的一篇文章：<br>
 👉 [<a href="https://blog.realityme.top/2025/08/02/%E4%BD%8E%E4%BB%B7%E6%9C%BA%E5%9C%BA%E6%8E%A8%E8%8D%90/" rel="nofollow">低价机场推荐</a>](<a href="https://blog.realityme.top/2025/08/02/%E4%BD%8E%E4%BB%B7%E6%9C%BA%E5%9C%BA%E6%8E%A8%E8%8D%90/" rel="nofollow">https://blog.realityme.top/2025/08/02/低价机场推荐/</a>)</p>
@@ -364,8 +377,9 @@ $ clashoff
 </blockquote>
 <hr>
 <h5>二、准备系统依赖</h5>
-<div class="highlight highlight-source-shell"><pre class="notranslate">sudo apt update
-sudo apt install -y ca-certificates curl gnupg lsb-release</pre></div>
+<pre lang="bash" class="notranslate"><code class="notranslate">sudo apt update
+sudo apt install -y ca-certificates curl gnupg lsb-release
+</code></pre>
 <h6>逐项解释</h6>
 <h6>1️⃣ <code class="notranslate">apt update</code></h6>
 <ul>
@@ -418,7 +432,8 @@ sudo apt install -y ca-certificates curl gnupg lsb-release</pre></div>
 <hr>
 <h5>三、添加 Docker 官方 GPG Key（安全核心）</h5>
 <h6>1️⃣ 创建 keyrings 目录</h6>
-<div class="highlight highlight-source-shell"><pre class="notranslate">sudo install -m 0755 -d /etc/apt/keyrings</pre></div>
+<pre lang="bash" class="notranslate"><code class="notranslate">sudo install -m 0755 -d /etc/apt/keyrings
+</code></pre>
 <p>解释</p>
 <ul>
 <li><code class="notranslate">/etc/apt/keyrings</code><br>
@@ -437,8 +452,9 @@ sudo apt install -y ca-certificates curl gnupg lsb-release</pre></div>
 </ul>
 <hr>
 <h6>2️⃣ 下载并转换 Docker 公钥</h6>
-<div class="highlight highlight-source-shell"><pre class="notranslate">curl -fsSL https://download.docker.com/linux/ubuntu/gpg <span class="pl-k">|</span> \
-sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg</pre></div>
+<pre lang="bash" class="notranslate"><code class="notranslate">curl -fsSL https://download.docker.com/linux/ubuntu/gpg | \
+sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+</code></pre>
 <p>拆解理解</p>
 <p><code class="notranslate">curl -fsSL</code></p>
 <ul>
@@ -459,7 +475,8 @@ sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg</pre></div>
 </ul>
 <hr>
 <h6>3️⃣ 设置读取权限</h6>
-<div class="highlight highlight-source-shell"><pre class="notranslate">sudo chmod a+r /etc/apt/keyrings/docker.gpg</pre></div>
+<pre lang="bash" class="notranslate"><code class="notranslate">sudo chmod a+r /etc/apt/keyrings/docker.gpg
+</code></pre>
 <p>解释</p>
 <ul>
 <li>apt 是普通用户进程</li>
@@ -471,11 +488,12 @@ sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg</pre></div>
 </ul>
 <hr>
 <h5>四、添加 Docker 官方软件源</h5>
-<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c1">echo</span> \
-<span class="pl-s"><span class="pl-pds">"</span>deb [arch=<span class="pl-s"><span class="pl-pds">$(</span>dpkg --print-architecture<span class="pl-pds">)</span></span> signed-by=/etc/apt/keyrings/docker.gpg] <span class="pl-cce">\</span></span>
-<span class="pl-s">https://download.docker.com/linux/ubuntu <span class="pl-cce">\</span></span>
-<span class="pl-s"><span class="pl-s"><span class="pl-pds">$(</span>lsb_release -cs<span class="pl-pds">)</span></span> stable<span class="pl-pds">"</span></span> <span class="pl-k">|</span> \
-sudo tee /etc/apt/sources.list.d/docker.list <span class="pl-k">&gt;</span> /dev/null</pre></div>
+<pre lang="bash" class="notranslate"><code class="notranslate">echo \
+"deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] \
+https://download.docker.com/linux/ubuntu \
+$(lsb_release -cs) stable" | \
+sudo tee /etc/apt/sources.list.d/docker.list &gt; /dev/null
+</code></pre>
 <hr>
 <h6>逐段解释</h6>
 <p>1️⃣ <code class="notranslate">dpkg --print-architecture</code></p>
@@ -516,7 +534,8 @@ sudo tee /etc/apt/sources.list.d/docker.list <span class="pl-k">&gt;</span> /dev
 </ul>
 <hr>
 <h5>五、刷新索引</h5>
-<div class="highlight highlight-source-shell"><pre class="notranslate">sudo apt update</pre></div>
+<pre lang="bash" class="notranslate"><code class="notranslate">sudo apt update
+</code></pre>
 <p>此时 apt 会：</p>
 <ul>
 <li>访问 Docker 官方服务器</li>
@@ -529,12 +548,13 @@ sudo tee /etc/apt/sources.list.d/docker.list <span class="pl-k">&gt;</span> /dev
 </blockquote>
 <hr>
 <h5>六、安装 Docker 与 Compose</h5>
-<div class="highlight highlight-source-shell"><pre class="notranslate">sudo apt install -y \
+<pre lang="bash" class="notranslate"><code class="notranslate">sudo apt install -y \
 docker-ce \
 docker-ce-cli \
 containerd.io \
 docker-buildx-plugin \
-docker-compose-plugin</pre></div>
+docker-compose-plugin
+</code></pre>
 <hr>
 <h6>每个包是干嘛的</h6>
 <p>🧱 <code class="notranslate">docker-ce</code></p>
@@ -580,12 +600,15 @@ docker-compose-plugin</pre></div>
 <li>集成进 docker 命令</li>
 <li>使用方式是：</li>
 </ul>
-<div class="highlight highlight-source-shell"><pre class="notranslate">docker compose ...</pre></div>
+<pre lang="bash" class="notranslate"><code class="notranslate">docker compose ...
+</code></pre>
 <p>❌ 不再是：</p>
-<div class="highlight highlight-source-shell"><pre class="notranslate">docker-compose</pre></div>
+<pre lang="bash" class="notranslate"><code class="notranslate">docker-compose
+</code></pre>
 <hr>
 <h5>七、验证安装是否成功</h5>
-<div class="highlight highlight-source-shell"><pre class="notranslate">docker version</pre></div>
+<pre lang="bash" class="notranslate"><code class="notranslate">docker version
+</code></pre>
 <p>你应该看到：</p>
 <ul>
 <li>Client</li>
@@ -594,7 +617,8 @@ docker-compose-plugin</pre></div>
 <li>Engine version</li>
 </ul>
 <hr>
-<div class="highlight highlight-source-shell"><pre class="notranslate">docker compose version</pre></div>
+<pre lang="bash" class="notranslate"><code class="notranslate">docker compose version
+</code></pre>
 <p>确认：</p>
 <ul>
 <li>是 v2.x</li>
@@ -602,7 +626,8 @@ docker-compose-plugin</pre></div>
 </ul>
 <hr>
 <h5>八、测试 Docker 是否能跑容器</h5>
-<div class="highlight highlight-source-shell"><pre class="notranslate">sudo docker run --rm hello-world</pre></div>
+<pre lang="bash" class="notranslate"><code class="notranslate">sudo docker run --rm hello-world
+</code></pre>
 <h6>发生了什么？</h6>
 <ol>
 <li>本地没镜像 → 自动拉取</li>
@@ -621,10 +646,12 @@ docker-compose-plugin</pre></div>
 <li>Docker 守护进程运行在 root</li>
 <li>socket 在：</li>
 </ul>
-<div class="highlight highlight-source-shell"><pre class="notranslate">/var/run/docker.sock</pre></div>
+<pre lang="bash" class="notranslate"><code class="notranslate">/var/run/docker.sock
+</code></pre>
 <hr>
 <h5>十、免 sudo 使用 Docker（关键）</h5>
-<div class="highlight highlight-source-shell"><pre class="notranslate">sudo usermod -aG docker <span class="pl-smi">$USER</span></pre></div>
+<pre lang="bash" class="notranslate"><code class="notranslate">sudo usermod -aG docker $USER
+</code></pre>
 <h6>解释</h6>
 <ul>
 <li>把当前用户加入 <code class="notranslate">docker</code> 用户组</li>
@@ -634,7 +661,8 @@ docker-compose-plugin</pre></div>
 <p><g-emoji class="g-emoji" alias="warning">⚠️</g-emoji> <strong>必须注销 / 重新登录</strong><br>
 否则组权限不会生效</p>
 <p>验证：</p>
-<div class="highlight highlight-source-shell"><pre class="notranslate">groups</pre></div>
+<pre lang="bash" class="notranslate"><code class="notranslate">groups
+</code></pre>
 <hr>
 <h5>十一、Compose 工作原理（简述）</h5>
 <ul>
@@ -656,32 +684,37 @@ docker-compose-plugin</pre></div>
 <h5>总结：</h5>
 <hr>
 <h6>一、准备工作</h6>
-<div class="highlight highlight-source-shell"><pre class="notranslate">sudo apt update
-sudo apt install -y ca-certificates curl gnupg lsb-release</pre></div>
+<pre lang="bash" class="notranslate"><code class="notranslate">sudo apt update
+sudo apt install -y ca-certificates curl gnupg lsb-release
+</code></pre>
 <hr>
 <h6>二、添加 Docker 官方仓库</h6>
 <ol>
 <li>导入 GPG key</li>
 </ol>
-<div class="highlight highlight-source-shell"><pre class="notranslate">sudo install -m 0755 -d /etc/apt/keyrings
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg <span class="pl-k">|</span> \
+<pre lang="bash" class="notranslate"><code class="notranslate">sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | \
 sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-sudo chmod a+r /etc/apt/keyrings/docker.gpg</pre></div>
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
+</code></pre>
 <ol start="2">
 <li>添加源</li>
 </ol>
-<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c1">echo</span> \
-<span class="pl-s"><span class="pl-pds">"</span>deb [arch=<span class="pl-s"><span class="pl-pds">$(</span>dpkg --print-architecture<span class="pl-pds">)</span></span> signed-by=/etc/apt/keyrings/docker.gpg] <span class="pl-cce">\</span></span>
-<span class="pl-s">https://download.docker.com/linux/ubuntu <span class="pl-cce">\</span></span>
-<span class="pl-s"><span class="pl-s"><span class="pl-pds">$(</span>lsb_release -cs<span class="pl-pds">)</span></span> stable<span class="pl-pds">"</span></span> <span class="pl-k">|</span> \
-sudo tee /etc/apt/sources.list.d/docker.list <span class="pl-k">&gt;</span> /dev/null</pre></div>
+<pre lang="bash" class="notranslate"><code class="notranslate">echo \
+"deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] \
+https://download.docker.com/linux/ubuntu \
+$(lsb_release -cs) stable" | \
+sudo tee /etc/apt/sources.list.d/docker.list &gt; /dev/null
+</code></pre>
 <ol start="3">
 <li>更新索引</li>
 </ol>
-<div class="highlight highlight-source-shell"><pre class="notranslate">sudo apt update</pre></div>
+<pre lang="bash" class="notranslate"><code class="notranslate">sudo apt update
+</code></pre>
 <hr>
 <h6>三、安装 Docker Engine 与 Compose</h6>
-<div class="highlight highlight-source-shell"><pre class="notranslate">sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin</pre></div>
+<pre lang="bash" class="notranslate"><code class="notranslate">sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+</code></pre>
 <blockquote>
 <p>注意：</p>
 <ul>
@@ -691,28 +724,36 @@ sudo tee /etc/apt/sources.list.d/docker.list <span class="pl-k">&gt;</span> /dev
 </blockquote>
 <hr>
 <h6>四、验证安装</h6>
-<div class="highlight highlight-source-shell"><pre class="notranslate">docker version
-docker compose version</pre></div>
+<pre lang="bash" class="notranslate"><code class="notranslate">docker version
+docker compose version
+</code></pre>
 <p>测试容器：</p>
-<div class="highlight highlight-source-shell"><pre class="notranslate">sudo docker run --rm hello-world</pre></div>
+<pre lang="bash" class="notranslate"><code class="notranslate">sudo docker run --rm hello-world
+</code></pre>
 <hr>
 <h6>五、免 sudo 使用 Docker（强烈建议）</h6>
-<div class="highlight highlight-source-shell"><pre class="notranslate">sudo usermod -aG docker <span class="pl-smi">$USER</span></pre></div>
+<pre lang="bash" class="notranslate"><code class="notranslate">sudo usermod -aG docker $USER
+</code></pre>
 <p>然后<strong>注销并重新登录</strong>，再测试：</p>
-<div class="highlight highlight-source-shell"><pre class="notranslate">docker ps</pre></div>
+<pre lang="bash" class="notranslate"><code class="notranslate">docker ps
+</code></pre>
 <hr>
 <h6>六、Docker Compose 使用示例</h6>
-<div class="highlight highlight-source-shell"><pre class="notranslate">mkdir <span class="pl-k">~</span>/compose-test <span class="pl-k">&amp;&amp;</span> <span class="pl-c1">cd</span> <span class="pl-k">~</span>/compose-test</pre></div>
+<pre lang="bash" class="notranslate"><code class="notranslate">mkdir ~/compose-test &amp;&amp; cd ~/compose-test
+</code></pre>
 <p><code class="notranslate">docker-compose.yml</code>：</p>
-<div class="highlight highlight-source-yaml"><pre class="notranslate"><span class="pl-ent">services</span>:
-  <span class="pl-ent">nginx</span>:
-    <span class="pl-ent">image</span>: <span class="pl-s">nginx:alpine</span>
-    <span class="pl-ent">ports</span>:
-      - <span class="pl-s"><span class="pl-pds">"</span>8080:80<span class="pl-pds">"</span></span></pre></div>
+<pre lang="yaml" class="notranslate"><code class="notranslate">services:
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "8080:80"
+</code></pre>
 <p>启动：</p>
-<div class="highlight highlight-source-shell"><pre class="notranslate">docker compose up -d</pre></div>
+<pre lang="bash" class="notranslate"><code class="notranslate">docker compose up -d
+</code></pre>
 <p>停止：</p>
-<div class="highlight highlight-source-shell"><pre class="notranslate">docker compose down</pre></div>
+<pre lang="bash" class="notranslate"><code class="notranslate">docker compose down
+</code></pre>
 <hr>
 <h6>七、常见问题排查</h6>
 <ul>
