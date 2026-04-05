@@ -1,0 +1,2219 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
+    <script src='https://blog.meekdai.com/Gmeek/plugins/GmeekVercount.js'></script>
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/103094747?v=4"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+<meta name="description" content="[![Shadowrocket](https://socialify.git.ci/LOWERTOP/Shadowrocket/image?custom_description=%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C%0AUser+Manual&description=1&font=Rokkitt&logo=https%3A%2F%2Fraw.githubusercontent.com%2FLOWERTOP%2FShadowrocket-First%2Frefs%2Fheads%2Fmain%2Fimg%2FShadowrocket.png&name=1&pattern=Plus&theme=Light)](https://github.com/LOWERTOP/Shadowrocket '仓库地址')
+
+本使用手册以 **[Shadowrocket 官方群组](https://t.me/ShadowrocketApp)** 使用的关键词列表文件为基础进行完善更新，包含软件绝大多数功能的介绍和部分常见问题的解答，以期能够帮助用户更好的理解和使用 Shadowrocket 软件。">
+<meta property="og:title" content="shadowrocket使用手册（搬运）">
+<meta property="og:description" content="[![Shadowrocket](https://socialify.git.ci/LOWERTOP/Shadowrocket/image?custom_description=%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C%0AUser+Manual&description=1&font=Rokkitt&logo=https%3A%2F%2Fraw.githubusercontent.com%2FLOWERTOP%2FShadowrocket-First%2Frefs%2Fheads%2Fmain%2Fimg%2FShadowrocket.png&name=1&pattern=Plus&theme=Light)](https://github.com/LOWERTOP/Shadowrocket '仓库地址')
+
+本使用手册以 **[Shadowrocket 官方群组](https://t.me/ShadowrocketApp)** 使用的关键词列表文件为基础进行完善更新，包含软件绝大多数功能的介绍和部分常见问题的解答，以期能够帮助用户更好的理解和使用 Shadowrocket 软件。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://neo.realityme.top/post/14.html">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/103094747?v=4">
+<title>shadowrocket使用手册（搬运）</title>
+<link href="//unpkg.com/@wooorm/starry-night@2.1.1/style/both.css" rel="stylesheet" />
+
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+.copy-feedback {
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 50px;
+    color: var(--color-fg-on-emphasis);
+    background-color: var(--color-fg-muted);
+    border-radius: 3px;
+    padding: 5px 8px;
+    font-size: 12px;
+}
+</style>
+<style>.markdown-alert{padding:0.5rem 1rem;margin-bottom:1rem;border-left:.25em solid var(--borderColor-default,var(--color-border-default));}.markdown-alert .markdown-alert-title {display:flex;font-weight:var(--base-text-weight-medium,500);align-items:center;line-height:1;}.markdown-alert>:first-child {margin-top:0;}.markdown-alert>:last-child {margin-bottom:0;}</style><style>.markdown-alert.markdown-alert-note {border-left-color:var(--borderColor-accent-emphasis, var(--color-accent-emphasis));background-color:var(--color-accent-subtle);}.markdown-alert.markdown-alert-note .markdown-alert-title {color: var(--fgColor-accent,var(--color-accent-fg));}</style><style>.markdown-alert.markdown-alert-tip {border-left-color:var(--borderColor-success-emphasis, var(--color-success-emphasis));background-color:var(--color-success-subtle);}.markdown-alert.markdown-alert-tip .markdown-alert-title {color: var(--fgColor-success,var(--color-success-fg));}</style><style>.markdown-alert.markdown-alert-caution {border-left-color:var(--borderColor-danger-emphasis, var(--color-danger-emphasis));background-color:var(--color-danger-subtle);}.markdown-alert.markdown-alert-caution .markdown-alert-title {color: var(--fgColor-danger,var(--color-danger-fg));}</style>
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">shadowrocket使用手册（搬运）</h1>
+<div class="title-right">
+    <a href="https://neo.realityme.top" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+    <a href="https://github.com/10086Coda10086/10086Coda10086.github.io/issues/14" target="_blank" class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><p><a href="https://github.com/LOWERTOP/Shadowrocket" title="仓库地址"><img src="https://camo.githubusercontent.com/83a9c0ca066a834456983f939d238d2b3c28da57135760013f634aecc496c602/68747470733a2f2f736f6369616c6966792e6769742e63692f4c4f574552544f502f536861646f77726f636b65742f696d6167653f637573746f6d5f6465736372697074696f6e3d254534254244254246254537253934254138254536253839253842254535253836253843253041557365722b4d616e75616c266465736372697074696f6e3d3126666f6e743d526f6b6b697474266c6f676f3d68747470732533412532462532467261772e67697468756275736572636f6e74656e742e636f6d2532464c4f574552544f50253246536861646f77726f636b65742d46697273742532467265667325324668656164732532466d61696e253246696d67253246536861646f77726f636b65742e706e67266e616d653d31267061747465726e3d506c7573267468656d653d4c69676874" alt="Shadowrocket" data-canonical-src="https://socialify.git.ci/LOWERTOP/Shadowrocket/image?custom_description=%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C%0AUser+Manual&amp;description=1&amp;font=Rokkitt&amp;logo=https%3A%2F%2Fraw.githubusercontent.com%2FLOWERTOP%2FShadowrocket-First%2Frefs%2Fheads%2Fmain%2Fimg%2FShadowrocket.png&amp;name=1&amp;pattern=Plus&amp;theme=Light" style="max-width: 100%;"></a></p>
+<p>本使用手册以 <strong><a href="https://t.me/ShadowrocketApp" rel="nofollow">Shadowrocket 官方群组</a></strong> 使用的关键词列表文件为基础进行完善更新，包含软件绝大多数功能的介绍和部分常见问题的解答，以期能够帮助用户更好的理解和使用 Shadowrocket 软件。本仓以普通用户的身份对原作者及所有为相关项目做出贡献的人表示由衷的感谢！其他使用需求可尝试查看 <strong><a href="https://github.com/LOWERTOP/Shadowrocket-First">配色与配置仓库</a></strong></p>
+<div class="markdown-alert markdown-alert-tip"><p class="markdown-alert-title"><svg class="octicon octicon-light-bulb mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p><p><strong><a href="https://lowertop.github.io/Shadowrocket/lazy_group.conf" title="含策略组版本" rel="nofollow">懒人配置</a></strong> <br></p>
+<div class="highlight highlight-source-ruby"><pre class="notranslate"><span class="pl-en">https</span><span class="pl-pds">:/</span>/<span class="pl-en">lowertop</span><span class="pl-kos">.</span><span class="pl-en">github</span><span class="pl-kos">.</span><span class="pl-en">io</span>/<span class="pl-v">Shadowrocket</span>/<span class="pl-en">lazy_group</span><span class="pl-kos">.</span><span class="pl-en">conf</span></pre></div>
+<p>懒人配置是专为 Shadowrocket 打造的开箱即用的配置文件，首发于 <a href="https://t.me/ShadowrocketApp" rel="nofollow">官方群组</a>。该配置文件优化了各项设置并内置了常用的规则/规则集以及常用的代理分组/策略组，同时包含详细的参数说明，可在纯文本模式下详细查阅，适合几乎任何阶段的用户使用</p>
+<p>本仓与官方群组发布的版本同步更新，<a href="https://github.com/Johnshall/Shadowrocket-ADBlock-Rules-Forever">Johnshall</a> 的版本也与本仓保持同步。对新手用户而言更推荐 <a href="https://t.me/ShadowrocketApp" rel="nofollow">访问官方群组</a> 使用离线版本</p>
+</div>
+<hr>
+<h1><a href="https://lowertop.github.io/Shadowrocket/" title="发布页面" rel="nofollow">Shadowrocket 使用手册</a></h1>
+<p><a href="https://apps.apple.com/us/app/shadowrocket/id932747118" title="AppStore" rel="nofollow"><img src="https://camo.githubusercontent.com/0f526eddf0d1ba0a756af53f8b5f0826ea90d6b113c96c52e41c8bf0b4aa2549/68747470733a2f2f736861646f776c61756e63682e636f6d2f7374617469632f61707073746f72652e737667" alt="AppStore" data-canonical-src="https://shadowlaunch.com/static/appstore.svg" style="max-width: 100%;"></a></p>
+<div class="markdown-alert markdown-alert-note"><p class="markdown-alert-title"><svg class="octicon octicon-info mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p><p><strong><a href="https://apps.apple.com/us/app/shadowrocket/id932747118" rel="nofollow">Shadowrocket</a></strong>（常被用户称为 <strong>小火箭</strong>）是一款由 <strong><a href="https://shadowlaunch.com/" rel="nofollow">Shadow Launch Technology Limited</a></strong> 专为 iOS 设备开发的网络代理工具，同时也支持 Apple TV 等设备，软件自 <strong><a href="https://t.me/ShadowrocketNews/1047" rel="nofollow">2.2.70 (2712)</a></strong> 版本起已正式支持 macOS</p>
+</div>
+<blockquote>
+<p>官方群组：<a href="https://t.me/ShadowrocketApp" rel="nofollow">Shadowrocket App</a><br><br>
+官方频道：<a href="https://t.me/ShadowrocketNews" rel="nofollow">Shadowrocket News</a><br><br>
+反馈邮箱：<a href="mailto:buginapp@gmail.com">buginapp@gmail.com</a></p>
+</blockquote>
+<h2><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">使用目录</a></h2>
+<blockquote>
+<p>点击 <strong>目录标题</strong> 可以快速定位到相关正文<br><br>
+点击正文的 <strong>蓝色标题</strong> 可以快速回到目录</p>
+</blockquote>
+<blockquote>
+<ul>
+<li><a href="#%E8%BD%AF%E4%BB%B6%E9%A6%96%E9%A1%B5">首页</a>
+<ul>
+<li><a href="#%E5%BF%AB%E9%80%9F%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95">快速使用方法</a></li>
+<li><a href="#%E6%B7%BB%E5%8A%A0%E8%8A%82%E7%82%B9">添加节点</a></li>
+<li><a href="#%E5%8D%8F%E8%AE%AE%E7%B1%BB%E5%9E%8B">协议类型</a></li>
+<li><a href="#%E6%9B%B4%E6%96%B0%E8%AE%A2%E9%98%85%E8%8A%82%E7%82%B9">更新订阅节点</a></li>
+<li><a href="#%E8%8A%82%E7%82%B9%E6%8E%92%E5%BA%8F">节点排序</a></li>
+<li><a href="#%E8%8A%82%E7%82%B9%E5%88%86%E4%BA%AB%E4%B8%8E%E6%95%B4%E7%90%86">节点分享与整理</a></li>
+<li><a href="#%E8%AE%A2%E9%98%85%E8%8A%82%E7%82%B9%E7%AD%9B%E9%80%89">订阅节点筛选</a></li>
+<li><a href="#%E4%BB%A3%E7%90%86%E9%80%9A%E8%BF%87%E4%BB%A3%E7%90%86%E9%93%BE">代理通过/代理链</a></li>
+<li><a href="#%E5%85%A8%E5%B1%80%E8%B7%AF%E7%94%B1">全局路由</a></li>
+<li><a href="#%E8%BF%9E%E9%80%9A%E6%80%A7%E6%B5%8B%E8%AF%95">连通性测试</a></li>
+<li><a href="#%E4%BF%AE%E6%94%B9%E6%B5%8B%E8%AF%95%E5%9C%B0%E5%9D%80">修改测试地址</a></li>
+<li><a href="#%E5%9C%BA%E6%99%AF">场景</a></li>
+<li><a href="#%E7%AE%80%E5%8D%95%E6%A8%A1%E5%BC%8F">简单模式</a></li>
+<li><a href="#%E5%90%AF%E7%94%A8%E5%9B%9E%E9%80%80">启用回退</a></li>
+</ul>
+</li>
+<li><a href="#%E9%85%8D%E7%BD%AE%E9%A1%B5%E9%9D%A2">配置</a>
+<ul>
+<li><a href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6">配置文件</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E9%85%8D%E7%BD%AE">使用配置</a></li>
+<li><a href="#%E7%BC%96%E8%BE%91%E9%85%8D%E7%BD%AE">编辑配置</a></li>
+<li><a href="#%E7%BC%96%E8%BE%91%E7%BA%AF%E6%96%87%E6%9C%AC">编辑纯文本</a></li>
+<li><a href="#%E7%BC%96%E8%AF%91%E9%85%8D%E7%BD%AE">编译配置</a></li>
+<li><a href="#%E9%A2%84%E8%A7%88%E9%85%8D%E7%BD%AE">预览配置</a></li>
+<li><a href="#%E6%9B%B4%E6%96%B0%E9%85%8D%E7%BD%AE">更新配置</a></li>
+<li><a href="#%E9%87%8D%E6%96%B0%E5%91%BD%E5%90%8D">重新命名</a></li>
+<li><a href="#%E5%AF%BC%E5%87%BA%E9%85%8D%E7%BD%AE">导出配置</a></li>
+<li><a href="#%E6%89%A9%E5%B1%95%E9%85%8D%E7%BD%AE">扩展配置</a></li>
+<li><a href="#%E9%80%9A%E7%94%A8%E5%8F%82%E6%95%B0">通用参数</a></li>
+<li><a href="#%E9%9A%90%E5%BC%8F%E5%8F%82%E6%95%B0">隐式参数</a>💡</li>
+<li><a href="#%E6%B7%BB%E5%8A%A0%E8%A7%84%E5%88%99">添加规则</a></li>
+<li><a href="#%E8%A7%84%E5%88%99%E4%BC%98%E5%85%88%E7%BA%A7">规则优先级</a></li>
+<li><a href="#%E8%A7%84%E5%88%99%E7%B1%BB%E5%9E%8B">规则类型</a></li>
+<li><a href="#%E8%A7%84%E5%88%99%E7%AD%96%E7%95%A5">规则策略</a></li>
+<li><a href="#%E7%AD%96%E7%95%A5%E6%89%A9%E5%B1%95%E5%8F%82%E6%95%B0">策略扩展参数</a></li>
+<li><a href="#app%E5%88%86%E6%B5%81">APP分流</a></li>
+<li><a href="#%E6%9B%B4%E6%96%B0%E8%A7%84%E5%88%99%E9%9B%86">更新规则集</a></li>
+<li><a href="#%E9%A2%84%E8%A7%88%E8%A7%84%E5%88%99%E9%9B%86">预览规则集</a></li>
+<li><a href="#%E4%BF%AE%E6%94%B9dns">修改DNS</a></li>
+<li><a href="#dns-over-proxy">DNS-over-PROXY</a></li>
+<li><a href="#no-resolve%E7%9A%84%E4%BD%9C%E7%94%A8">no-resolve的作用</a></li>
+<li><a href="#%E4%BB%A3%E7%90%86%E5%88%86%E7%BB%84">代理分组</a></li>
+<li><a href="#%E4%BB%A3%E7%90%86%E5%88%86%E7%BB%84%E7%B1%BB%E5%9E%8B">代理分组类型</a></li>
+<li><a href="#%E9%9A%90%E8%97%8F%E4%BB%A3%E7%90%86%E5%88%86%E7%BB%84">隐藏代理分组</a></li>
+<li><a href="#%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1">负载均衡</a></li>
+<li><a href="#%E8%A7%84%E5%88%99%E9%9B%86url">规则集URL</a></li>
+<li><a href="#%E8%84%9A%E6%9C%ACurl">脚本URL</a></li>
+<li><a href="#%E5%A4%8D%E5%88%B6%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6">复制配置文件</a></li>
+<li><a href="#%E6%9B%BF%E6%8D%A2%E7%AD%96%E7%95%A5">替换策略</a></li>
+<li><a href="#%E6%B5%8B%E8%AF%95%E8%A7%84%E5%88%99">测试规则</a></li>
+<li><a href="#hosts">Hosts</a></li>
+<li><a href="#url%E9%87%8D%E5%86%99">URL重写</a></li>
+<li><a href="#%E5%A4%B4%E9%83%A8%E9%87%8D%E5%86%99">头部重写</a></li>
+<li><a href="#%E6%AD%A3%E6%96%87%E9%87%8D%E5%86%99">正文重写</a></li>
+<li><a href="#%E6%9C%AC%E5%9C%B0%E6%98%A0%E5%B0%84">本地映射</a></li>
+<li><a href="#https%E8%A7%A3%E5%AF%86">HTTPS解密</a></li>
+<li><a href="#%E8%84%9A%E6%9C%AC">脚本</a></li>
+<li><a href="#%E6%A8%A1%E5%9D%97">模块</a></li>
+<li><a href="#%E7%BC%96%E8%BE%91%E5%8F%82%E6%95%B0">编辑参数</a></li>
+<li><a href="#%E8%AF%81%E4%B9%A6%E6%A8%A1%E5%9D%97">证书模块</a></li>
+<li><a href="#%E8%BA%AB%E4%BB%BD%E8%AF%81%E4%B9%A6%E5%AF%86%E7%A0%81">身份证书密码</a></li>
+<li><a href="#%E7%BC%96%E5%86%99%E6%9C%AC%E5%9C%B0%E8%8A%82%E7%82%B9">编写本地节点</a></li>
+</ul>
+</li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E9%A1%B5%E9%9D%A2">数据</a>
+<ul>
+<li><a href="#%E4%BB%A3%E7%90%86%E6%97%A5%E5%BF%97">代理日志</a></li>
+<li><a href="#dns%E6%97%A5%E5%BF%97">DNS日志</a></li>
+<li><a href="#icloud%E8%87%AA%E5%8A%A8%E5%90%8C%E6%AD%A5">iCloud自动同步</a></li>
+<li><a href="#%E8%8A%82%E7%82%B9%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86">节点数据管理</a></li>
+<li><a href="#%E6%B5%81%E9%87%8F%E7%BB%9F%E8%AE%A1%E4%BF%A1%E6%81%AF">流量统计信息</a></li>
+</ul>
+</li>
+<li><a href="#%E8%AE%BE%E7%BD%AE%E9%A1%B5%E9%9D%A2">设置</a>
+<ul>
+<li><a href="#%E5%BB%B6%E8%BF%9F%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95">延迟测试方法</a></li>
+<li><a href="#%E5%B0%8F%E7%BB%84%E4%BB%B6">小组件</a></li>
+<li><a href="#%E9%A2%9C%E8%89%B2">颜色</a></li>
+<li><a href="#%E6%8C%89%E9%9C%80%E6%B1%82%E8%BF%9E%E6%8E%A5">按需求连接</a></li>
+<li><a href="#%E9%9A%A7%E9%81%93">隧道</a></li>
+<li><a href="#%E5%85%BC%E5%AE%B9%E6%A8%A1%E5%BC%8F">兼容模式</a></li>
+<li><a href="#%E5%89%8D%E7%BD%AE%E4%BB%A3%E7%90%86">前置代理</a></li>
+<li><a href="#%E4%BB%A3%E7%90%86%E5%85%B1%E4%BA%AB">代理共享</a></li>
+<li><a href="#%E4%BB%A3%E7%90%86%E7%B1%BB%E5%9E%8B">代理类型</a></li>
+<li><a href="#%E5%BC%80%E5%90%AFudp%E8%BD%AC%E5%8F%91">开启UDP转发</a></li>
+<li><a href="#%E7%A6%81%E7%94%A8stun">禁用STUN</a></li>
+<li><a href="#%E6%9D%83%E9%99%90">权限</a></li>
+<li><a href="#%E9%9A%90%E8%97%8Fvpn%E5%9B%BE%E6%A0%87">隐藏VPN图标</a></li>
+<li><a href="#geoip%E6%95%B0%E6%8D%AE%E5%BA%93">GEOIP数据库</a></li>
+<li><a href="#%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0">自动更新</a></li>
+<li><a href="#%E6%B8%A9%E5%92%8C%E7%AD%96%E7%95%A5%E6%9C%BA%E5%88%B6">温和策略机制</a></li>
+</ul>
+</li>
+<li><a href="#%E5%85%B6%E4%BB%96%E9%97%AE%E9%A2%98">其他</a>
+<ul>
+<li><a href="#%E8%87%AA%E5%8A%A8%E5%88%87%E6%8D%A2%E8%8A%82%E7%82%B9">自动切换节点</a></li>
+<li><a href="#%E8%AE%A2%E9%98%85%E5%BC%82%E5%B8%B8">订阅异常</a></li>
+<li><a href="#%E8%8A%82%E7%82%B9%E6%97%97%E5%B8%9C">节点旗帜</a></li>
+<li><a href="#%E8%8A%82%E7%82%B9%E6%84%9F%E5%8F%B9%E5%8F%B7">节点感叹号</a></li>
+<li><a href="#%E5%BE%AE%E4%BF%A1%E8%BD%AC%E5%9C%88">微信转圈</a></li>
+<li><a href="#%E6%A8%A1%E5%9D%97%E6%B6%88%E5%A4%B1">模块消失</a></li>
+<li><a href="#%E6%A8%A1%E5%9D%97%E5%A4%B1%E6%95%88">模块失效</a></li>
+<li><a href="#vpn%E8%87%AA%E5%8A%A8%E6%96%AD%E5%BC%80">VPN自动断开</a></li>
+<li><a href="#%E6%A3%80%E6%B5%8B%E4%BB%A3%E7%90%86">检测代理</a></li>
+<li><a href="#%E7%BC%96%E8%AF%91%E5%8E%9F%E5%9B%A0">编译原因</a></li>
+<li><a href="#url-schemes">URL-Schemes</a></li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<hr>
+<h2><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">软件首页</a></h2>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">快速使用方法</a></h3>
+<blockquote>
+<ul>
+<li>
+<p><a href="#%E8%BD%AF%E4%BB%B6%E9%A6%96%E9%A1%B5">首页</a> &gt; <a href="#%E6%B7%BB%E5%8A%A0%E8%8A%82%E7%82%B9">添加节点</a></p>
+</li>
+<li>
+<p><a href="#%E8%AE%BE%E7%BD%AE%E9%A1%B5%E9%9D%A2">设置</a> &gt; <a href="#%E5%BB%B6%E8%BF%9F%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95">延迟测试方法</a> &gt; <strong>CONNECT</strong></p>
+</li>
+<li>
+<p><a href="#%E8%BD%AF%E4%BB%B6%E9%A6%96%E9%A1%B5">首页</a> &gt; <a href="#%E8%BF%9E%E9%80%9A%E6%80%A7%E6%B5%8B%E8%AF%95">连通性测试</a> &gt; 选可用节点连接</p>
+</li>
+<li>
+<p>首次启动会提示 <strong>安装VPN配置文件</strong>，请点击 <strong>好</strong> 和 <strong>允许</strong> 才能正常使用</p>
+</li>
+</ul>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">添加节点</a></h3>
+<blockquote>
+<p>Shadowrocket 兼容多种服务器订阅格式，以及支持多种 <a href="#%E5%8D%8F%E8%AE%AE%E7%B1%BB%E5%9E%8B">代理协议类型</a> 包括 <a href="#%E6%B7%BB%E5%8A%A0wireguard%E8%8A%82%E7%82%B9">WireGuard 节点</a></p>
+<ul>
+<li>
+<p>首页 &gt; 左上角 &gt; 扫码添加</p>
+<p><em>此操作须开启摄像头权限</em></p>
+</li>
+<li>
+<p>复制节点链接，如 <code class="notranslate">trojan://*</code>、<code class="notranslate">vmess://*</code>、<code class="notranslate">vless://*</code> 等，打开 Shadowrocket 时会自动识别导入</p>
+<p><em>此操作须开启剪贴板读取权限</em></p>
+</li>
+<li>
+<p>首页 &gt; 右上角 <code class="notranslate">➕</code> &gt; 类型 <code class="notranslate">Subscribe</code> &gt; URL 栏输入服务器订阅链接 &gt; 保存</p>
+<p><em>订阅链接后面加上 <code class="notranslate">#1</code>、<code class="notranslate">#2</code>、<code class="notranslate">#3</code> 等，可以重复添加同一个订阅</em></p>
+<p><em>长按服务器订阅可选 <strong>隐藏</strong> 功能，启用后该订阅将默认不显示任何节点，该功能等同于在订阅编辑内的 <strong>最大值</strong> 填写数字 <code class="notranslate">0</code></em></p>
+</li>
+<li>
+<p>首页 &gt; 右上角 <code class="notranslate">➕</code>，选择对应节点类型，填写节点配置信息并保存</p>
+</li>
+<li>
+<p>Shadowrocket 为了兼容部分其他类型的配置文件，也支持在配置文件中 <a href="#%E7%BC%96%E5%86%99%E6%9C%AC%E5%9C%B0%E8%8A%82%E7%82%B9">编写本地节点</a> 信息，但不要当作 <a href="#%E6%B7%BB%E5%8A%A0%E8%8A%82%E7%82%B9">添加节点</a> 的优先选择</p>
+</li>
+</ul>
+<p><em>若添加或更新订阅时出现异常，请参见 <a href="#%E8%AE%A2%E9%98%85%E5%BC%82%E5%B8%B8">订阅异常</a></em></p>
+<blockquote>
+<p><strong>添加WireGuard节点</strong></p>
+<ul>
+<li>
+<p>首页 &gt; 右上角 <code class="notranslate">➕</code> &gt; 类型选择 <code class="notranslate">WireGuard</code>，填写配置信息</p>
+</li>
+<li>
+<p>复制如下格式的 <code class="notranslate">WireGuard</code> 配置信息，打开 Shadowrocket 时会自动弹出 <strong>添加对话框</strong>，点击添加</p>
+<div class="highlight highlight-source-ruby"><pre class="notranslate"><span class="pl-kos">[</span><span class="pl-v">Interface</span><span class="pl-kos">]</span>
+<span class="pl-v">PrivateKey</span> <span class="pl-c1">=</span> <span class="pl-en">xxxxxx</span>
+<span class="pl-v">Address</span> <span class="pl-c1">=</span> <span class="pl-c1">172.16</span><span class="pl-kos">.</span><span class="pl-c1">0.2</span>/<span class="pl-c1">32</span>
+<span class="pl-c1">DNS</span> <span class="pl-c1">=</span> <span class="pl-c1">1.1</span><span class="pl-kos">.</span><span class="pl-c1">1.1</span>
+<span class="pl-c1">MTU</span> <span class="pl-c1">=</span> <span class="pl-c1">1420</span>
+<span class="pl-kos">[</span><span class="pl-v">Peer</span><span class="pl-kos">]</span>
+<span class="pl-v">PublicKey</span> <span class="pl-c1">=</span> <span class="pl-en">xxxxxx</span>
+<span class="pl-v">AllowedIPs</span> <span class="pl-c1">=</span> <span class="pl-c1">0.0</span><span class="pl-kos">.</span><span class="pl-c1">0.0</span>/<span class="pl-c1">0</span>
+<span class="pl-v">AllowedIPs</span> <span class="pl-c1">=</span> ::<span class="pl-v"></span>/<span class="pl-c1">0</span>
+<span class="pl-v">Endpoint</span> <span class="pl-c1">=</span> <span class="pl-en">engage</span><span class="pl-kos">.</span><span class="pl-en">cloudflareclient</span><span class="pl-kos">.</span><span class="pl-en">com</span><span class="pl-pds">:2408</span>
+<span class="pl-v">Reserved</span> <span class="pl-c1">=</span> <span class="pl-c1">12</span><span class="pl-kos">,</span><span class="pl-c1">34</span><span class="pl-kos">,</span><span class="pl-c1">56</span></pre></div>
+<p>如果没有自动弹出对话框，可能是因为设置中的 <strong>允许检测剪贴板</strong> 被关闭了，您可以重新打开，或者点击首页 <strong>连通性测试</strong> 下方的 <strong>粘贴</strong> 按钮，手动添加配置信息</p>
+</li>
+</ul>
+</blockquote>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">协议类型</a></h3>
+<blockquote>
+<p>现阶段已支持的协议类型</p>
+<blockquote>
+<p><strong>Subscribe（订阅）、Shadowsocks、ShadowsocksR、Vmess、VLESS、Relay、Socks5、Socks5 Over TLS、HTTP、HTTPS、HTTP2、Trojan、Hysteria、Hysteria2、AnyTLS、TUIC、Juicity、SSH、WireGuard、Snell v1-3、Mieru、Brook、Lua</strong></p>
+</blockquote>
+<p>当前版本支持的协议可在 <strong>首页 &gt; 右上角 <code class="notranslate">➕</code> &gt; 类型</strong> 中查看</p>
+<p>各协议节点的纯文本格式参见 <a href="#%E7%BC%96%E5%86%99%E6%9C%AC%E5%9C%B0%E8%8A%82%E7%82%B9">编写本地节点</a></p>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">更新订阅节点</a></h3>
+<blockquote>
+<ul>
+<li>
+<p>订阅右滑 &gt; 更新</p>
+</li>
+<li>
+<p>点击首页的更新订阅按钮🔄</p>
+</li>
+<li>
+<p>设置 &gt; 订阅 &gt; 打开时更新（刷掉后台，重新打开应用程序时会自动更新订阅）</p>
+</li>
+<li>
+<p>设置 &gt; 订阅 &gt; 自动后台更新（需在系统 <strong>设置 &gt; 通用 &gt; 后台App刷新</strong> 中开启对 Shadowrocket 的允许，更新周期可设1-24小时）</p>
+</li>
+<li>
+<p>Shadowrocket 提供了 <strong>更新订阅</strong> 的快捷指令，可以实现自动化操作</p>
+</li>
+<li>
+<p>长按屏幕的应用图标 &gt; 更新订阅</p>
+</li>
+<li>
+<p>软件提供 <a href="#%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0">自动更新</a> 服务</p>
+</li>
+</ul>
+<p>若添加或更新订阅时出现异常，请参见 <a href="#%E8%AE%A2%E9%98%85%E5%BC%82%E5%B8%B8">订阅异常</a></p>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">节点排序</a></h3>
+<blockquote>
+<ul>
+<li>设置 &gt; 订阅 &gt; 根据 <code class="notranslate">Ping</code> 排序</li>
+</ul>
+<p>该操作支持节点按照延迟测试后得到的延迟数值进行由低到高的自动排序</p>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">节点分享与整理</a></h3>
+<blockquote>
+<p><strong>节点分享</strong></p>
+<blockquote>
+<ul>
+<li>
+<p>长按节点 &gt; 拷贝，可以把节点链接分享给其他设备</p>
+</li>
+<li>
+<p>左滑节点 &gt; 二维码，其他设备可以通过扫码添加节点（二维码页面点击右上角的 <strong>分享</strong> 按钮，可以选择其他形式传送二维码）</p>
+<p><em>节点二维码缺乏统一标准。当使用其他代理工具扫码添加某些节点时，可能会丢失部分节点信息，导致不能连接。如果遇到此问题，请仔细检查同一个节点的各项配置信息是否一致</em></p>
+</li>
+<li>
+<p>点击节点后面的 <code class="notranslate">ⓘ</code> 图标，滑动至页面底部，有多种分享节点的菜单</p>
+</li>
+<li>
+<p>展开节点列表，点击连通性测试下方的编辑按钮 <code class="notranslate">•••</code>，勾选需要分享的节点，点击左上角的 <strong>复制</strong>，可以把多个节点链接同时分享给其他设备</p>
+</li>
+</ul>
+</blockquote>
+<p><strong>节点整理</strong></p>
+<blockquote>
+<ul>
+<li>
+<p><strong>调整顺序</strong>：点击编辑按钮 <code class="notranslate">•••</code>，或者长按首页右上角的 <code class="notranslate">➕</code>，即可进入编辑模式，按住订阅或节点后面的 <code class="notranslate">≡</code> 图标可以调整订阅或节点之间的上下顺序（本地节点默认置顶位置）</p>
+</li>
+<li>
+<p><strong>节点分类</strong>：非订阅形式添加的节点，默认会归类为 <strong>本地节点</strong>。如果需要重新对本地节点进行分类，可以使用 <strong>折叠</strong> 功能。点击编辑按钮 <code class="notranslate">•••</code>，勾选节点，点击左上角的 <strong>折叠</strong>，为新分类的节点组命名（<strong>折叠</strong> 功能可以选择本地节点或者订阅节点）</p>
+</li>
+<li>
+<p><strong>删除节点</strong>：点击编辑按钮 <code class="notranslate">•••</code>，点击左上角的 <strong>删除</strong>，可以选择删除全部节点或者删除连通性测试结果中的超时节点</p>
+</li>
+<li>
+<p><strong>滑动菜单</strong>：向右滑动订阅，可以选择 <strong>测试</strong> 当前订阅节点的连通性，或者 <strong>更新</strong> 当前订阅节点。向右滑动节点，点击 <strong>测试</strong> 可以获取单个节点的连通性测试结果，点击 <strong>复制</strong>，可以在当前节点列表中新增一个同样配置信息的节点</p>
+</li>
+</ul>
+</blockquote>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">订阅节点筛选</a></h3>
+<blockquote>
+<p>Shadowrocket 支持通过脚本或正则表达式对订阅节点进行筛选，从而实现更灵活的节点过滤与管理</p>
+<ul>
+<li>首页 &gt; 订阅后面的 <code class="notranslate">ⓘ</code> 图标 &gt; 过滤</li>
+</ul>
+<p><strong>节点筛选</strong></p>
+<blockquote>
+<ul>
+<li>保留节点名称含有关键词 A 和 B 的节点：
+<div class="highlight highlight-source-ruby"><pre class="notranslate"><span class="pl-sr">/(?=.*(A))^(?=.*(B))^.*$/</span></pre></div>
+</li>
+<li>保留节点名称含有关键词 A 或 B 的节点：
+<div class="highlight highlight-source-ruby"><pre class="notranslate"><span class="pl-c1">A</span>|<span class="pl-c1">B</span></pre></div>
+</li>
+<li>排除节点名称含有关键词 A 或 B 的节点：
+<div class="highlight highlight-source-ruby"><pre class="notranslate"><span class="pl-sr">/^((?!(A|B)).)*$/</span></pre></div>
+</li>
+<li>保留节点名称含有关键词 A 并排除含有关键词 B 的节点：
+<div class="highlight highlight-source-ruby"><pre class="notranslate"><span class="pl-sr">/(?=.*(A))^((?!(B)).)*$/</span></pre></div>
+</li>
+</ul>
+<p><em>分组、代理分组中的正则写法与上述【过滤】中使用的命令相同，但需删除前后 <code class="notranslate">/</code> 符号</em></p>
+</blockquote>
+<p><strong>批量整理</strong></p>
+<blockquote>
+<p>节点订阅筛选功能支持使用脚本代码批量整理和修改相应订阅中节点的功能选项及节点名称</p>
+<ul>
+<li>
+<p>批量给节点中的关键词 a 替换成 b：</p>
+<div class="highlight highlight-source-ruby"><pre class="notranslate">$server<span class="pl-kos">.</span><span class="pl-en">title</span><span class="pl-c1">=</span>$server<span class="pl-kos">.</span><span class="pl-en">title</span><span class="pl-kos">.</span><span class="pl-en">replace</span><span class="pl-kos">(</span><span class="pl-sr">/关键词a/g</span><span class="pl-kos">,</span><span class="pl-s">'关键词b'</span><span class="pl-kos">)</span></pre></div>
+</li>
+<li>
+<p>批量给节点名称增加 abc 开头的关键词：</p>
+<div class="highlight highlight-source-ruby"><pre class="notranslate">$server<span class="pl-kos">.</span><span class="pl-en">title</span><span class="pl-c1">=</span><span class="pl-s">'abc'</span>+$server<span class="pl-kos">.</span><span class="pl-en">title</span></pre></div>
+</li>
+<li>
+<p>批量给节点名称增加 abc 结尾的关键词：</p>
+<div class="highlight highlight-source-ruby"><pre class="notranslate">$server<span class="pl-kos">.</span><span class="pl-en">title</span><span class="pl-c1">=</span>$server<span class="pl-kos">.</span><span class="pl-en">title</span>+<span class="pl-s">'abc'</span></pre></div>
+</li>
+<li>
+<p>批量开启全部节点的片段：</p>
+<div class="highlight highlight-source-ruby"><pre class="notranslate">$server<span class="pl-kos">.</span><span class="pl-en">reserved</span><span class="pl-c1">=</span><span class="pl-s">"1,40-60,30-50"</span></pre></div>
+</li>
+<li>
+<p>批量开启全部节点的多路复用：</p>
+<div class="highlight highlight-source-ruby"><pre class="notranslate">$server<span class="pl-kos">.</span><span class="pl-en">mux</span><span class="pl-c1">=</span><span class="pl-c1">1</span></pre></div>
+</li>
+<li>
+<p>批量设置全部订阅节点的 代理链/链式代理/代理通过，以下两种方式以生效者为准</p>
+<div class="highlight highlight-source-ruby"><pre class="notranslate">$server<span class="pl-kos">.</span><span class="pl-en">chain</span><span class="pl-c1">=</span><span class="pl-s">"订阅名称/节点名称"</span></pre></div>
+<div class="highlight highlight-source-ruby"><pre class="notranslate">$server<span class="pl-kos">[</span><span class="pl-s">'dialer-proxy'</span><span class="pl-kos">]</span><span class="pl-c1">=</span><span class="pl-s">"UUID值"</span></pre></div>
+<p><em>其中 <strong>UUID 值</strong> 可在中转节点或订阅的 JSON 文本中复制，第一种命令的 <strong>订阅名称/节点名称</strong> 也可以使用 UUID 值</em></p>
+</li>
+<li>
+<p>当节点名称不包含地区标识，且节点地址有可以分辨地区的关键词时，可以使用以下脚本为节点名称批量添加地区关键词或旗帜标识</p>
+<div class="highlight highlight-source-ruby"><pre class="notranslate"><span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-sr">/节点地址关键词/i</span><span class="pl-kos">.</span><span class="pl-en">test</span><span class="pl-kos">(</span>$server<span class="pl-kos">.</span><span class="pl-en">host</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos"></span> <span class="pl-kos">{</span>
+  $server<span class="pl-kos">.</span><span class="pl-en">title</span> <span class="pl-c1">=</span> <span class="pl-s">'需要添加的关键词或旗帜'</span>+ $server<span class="pl-kos">.</span><span class="pl-en">title</span>
+  <span class="pl-en">return</span> <span class="pl-c1">true</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span></pre></div>
+</li>
+</ul>
+</blockquote>
+<p><strong>其他命令</strong></p>
+<blockquote>
+<p>该功能也支持更复杂的脚本指令，可以参阅 <a href="https://github.com/LOWERTOP/Shadowrocket-First#%E7%AD%9B%E9%80%89%E8%AE%A2%E9%98%85%E8%84%9A%E6%9C%AC">此处示例</a></p>
+</blockquote>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">代理通过/代理链</a></h3>
+<blockquote>
+<p>当前代理通过另一个代理进行连接，支持多级链式代理，但并非所有协议都支持通过代理链作为落地节点使用。使用代理链方法：</p>
+<ul>
+<li>使用节点 A 连接，点击节点 A 后面的 <code class="notranslate">ⓘ</code> 图标，<strong>代理通过</strong> 选择节点 B，流量走向：<code class="notranslate">Client &gt; B &gt; A &gt; Web server</code></li>
+<li>支持使用分组/代理分组作为中转代理</li>
+<li>支持批量修改订阅节点的代理链，可实现同时部署多个节点的链式代理。具体命令可查看 <a href="#%E8%AE%A2%E9%98%85%E8%8A%82%E7%82%B9%E7%AD%9B%E9%80%89">订阅节点筛选 &gt; 批量整理</a> 中的相关指令</li>
+<li>取消代理通过/代理链：点击开启该功能节点后面的 <code class="notranslate">ⓘ</code> 图标，<strong>代理通过</strong> 选择右上角的 <strong>取消</strong> 后保存</li>
+</ul>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">全局路由</a></h3>
+<blockquote>
+<ul>
+<li><strong>配置</strong>：流量根据设定规则进行分配，有些通过节点连接，有些则不通过</li>
+<li><strong>代理</strong>：全部流量都通过同一个节点连接</li>
+<li><strong>直连</strong>：全部流量都不通过节点连接</li>
+<li><strong>场景</strong>：根据不同的网络连接类型（Wi-Fi、蜂窝数据）自动切换到预先设置的路由模式，并选择对应的配置文件和节点连接</li>
+</ul>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">连通性测试</a></h3>
+<blockquote>
+<p>点击首页的 <strong>连通性测试</strong>，节点列表将会显示以毫秒（ms）为单位的延迟数字，这是数据包的传输时间，不同的 <strong>延迟测试方法</strong> 对应不同的计算结果。长按首页的 <strong>连通性测试</strong>，可以临时调整测试方法，仅对本次测试生效</p>
+<p>设置 &gt; 延迟测试方法</p>
+<ul>
+<li><strong>TCP</strong>：建立 <code class="notranslate">TCP</code> 连接的往返时间</li>
+<li><strong>ICMP</strong>：发送 <code class="notranslate">ICMP</code> 回显请求报文和接收 <code class="notranslate">ICMP</code> 回显应答报文的往返时间</li>
+<li><strong>CONNECT</strong>：向测试 URL 发送一个 <code class="notranslate">HTTP HEAD</code> 请求，测量从发送请求到接收响应头部信息的往返时间</li>
+</ul>
+<p>请优先选择 <code class="notranslate">CONNECT</code>，因为它更能准确反映节点的连通性。延迟大小与网络上传下载速度没有直接关系，测速请使用其他方法，如：<a href="https://www.speedtest.net" rel="nofollow">https://www.speedtest.net</a></p>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">修改测试地址</a></h3>
+<blockquote>
+<p><strong>用于首页和分组节点的延迟测试</strong></p>
+<blockquote>
+<ul>
+<li>设置 &gt; 延迟测试方法 &gt; URL 测试设置</li>
+<li>首页 &gt; 连通性测试后面的圆形图标 &gt; URL 测试设置</li>
+</ul>
+</blockquote>
+<p><strong>用于代理分组内节点的延迟测试</strong></p>
+<blockquote>
+<ul>
+<li>点击配置文件的 <code class="notranslate">ⓘ</code> 图标 &gt; 代理分组 &gt; 编辑或添加包含自动测试类型的分组 &gt; 最下方 URL 栏</li>
+</ul>
+</blockquote>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">场景</a></h3>
+<blockquote>
+<p>场景是根据不同的网络连接类型（Wi-Fi、蜂窝数据）自动切换到预先设置的路由模式，并选择对应的配置文件和节点连接</p>
+<blockquote>
+<ul>
+<li>首页 &gt; 全局路由 &gt; 设置的 <strong>场景</strong> &gt; 添加场景</li>
+<li>为指定的网络连接类型设置对应的路由模式（<strong>配置、直连、代理</strong>），类型（<strong>节点、分组</strong>）、配置文件 及 备注</li>
+<li>网络连接类型分别为：Wi-Fi、蜂窝数据、默认。选择Wi-Fi类型时，SSID需填写Wi-Fi名称</li>
+<li>首页 &gt; 全局路由 &gt; 选择 <strong>场景</strong></li>
+</ul>
+</blockquote>
+<p>软件支持添加蜂窝数据场景，支持以 <strong>网络接口</strong> 作为匹配条件</p>
+<blockquote>
+<ul>
+<li>默认（留空）代表接口 <code class="notranslate">pdp_ip0</code></li>
+<li>当设备启用了多个蜂窝数据网络时，可在 Shadowrocket 的 设置 &gt; 诊断 &gt; 网络 中查看对应的接口信息</li>
+<li>输入格式：<code class="notranslate">pdp_ip1</code>、<code class="notranslate">pdp_ip2</code>、<code class="notranslate">pdp_ip3</code> 等</li>
+</ul>
+</blockquote>
+<p>首次添加场景，可能会弹出申请权限的对话框，具体原因请看 <a href="#%E6%9D%83%E9%99%90">权限</a>。当没有允许定位权限时，场景列表的 ✅ 标记不会随着网络类型的切换而自动切换，但这不影响场景功能的正常生效</p>
+<p>设置 &gt; 隧道/按需求连接 中的 <strong>包含所有网络</strong> 相关选项可能会对场景模式的生效造成影响</p>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">简单模式</a></h3>
+<blockquote>
+<p>简单模式是一种以相对简单的方式实现自动测试并选择延迟低的节点进行连接的设置模式。简单模式未来或不再维护，其功能已被 <strong><a href="#%E4%BB%A3%E7%90%86%E5%88%86%E7%BB%84">代理分组</a></strong> 所包含，建议使用 <a href="#%E4%BB%A3%E7%90%86%E5%88%86%E7%BB%84">代理分组</a> 替代简单模式</p>
+<ul>
+<li>首页 &gt; 全局路由 &gt; 分组 &gt; 简单模式</li>
+</ul>
+<blockquote>
+<p><strong>节点的范围是什么？</strong></p>
+<blockquote>
+<p>当开启简单模式，此时下方会出现分组选项，如果没有继续添加分组的操作，节点范围就是首页全部节点，如果添加分组，范围就变成分组里的节点</p>
+</blockquote>
+<p><strong>自动测试的周期是多久？延迟低的判断依据是什么？</strong></p>
+<blockquote>
+<p><strong>设置 &gt; 延迟测试方法 &gt; URL测试设置</strong>，这里规定了测试的间隔时间，默认 600s，即表示每 10 分钟自动进行一次节点延迟测试。相邻两次测试结果中最小延迟值的对比，根据公差机制决定是否切换节点，公差越大，触发节点切换的频次越低，默认 0ms，即表示只要后面测试结果的最低延迟节点比前面测试结果的最低延迟节点延迟小就会自动切换</p>
+</blockquote>
+<p><strong>切换的节点给什么规则使用？</strong></p>
+<blockquote>
+<p>Shadowrocket 内置策略 <code class="notranslate">proxy</code>，简单模式时自动切换的节点使用于所有指向 <code class="notranslate">proxy</code> 策略的规则</p>
+</blockquote>
+<p><strong>简单模式是自动切换延迟低节点，代理分组的 url-test 类型也是自动切换延迟低节点，两者有何不同？</strong></p>
+<blockquote>
+<p>代理分组创建后，需要在规则中修改策略指向，而简单模式已经关联 <code class="notranslate">proxy</code> 策略，节省了修改规则的步骤<br><br>
+<strong>全局路由</strong> 选择 <strong>代理</strong> 时将导致所有 <strong>代理分组</strong> 失效，而简单模式依然能够实现自动切换节点</p>
+</blockquote>
+<p><strong>添加分组时的测速开关是什么作用？</strong></p>
+<blockquote>
+<p>开启测速，这个分组才允许自动切换节点。不开启测速，这个分组只能手动选择节点</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">启用回退</a></h3>
+<blockquote>
+<p>首页 &gt; 全局路由 &gt; 启用回退</p>
+<p><strong>启用回退</strong> 的功能是当节点连接失败时自动切换其他可用节点</p>
+<ul>
+<li>连接失败3次才会触发回退机制</li>
+<li>节点只满足可用性，不要求是最低延迟节点</li>
+<li>随机切换，不按照节点顺序选择</li>
+<li>策略为 <code class="notranslate">proxy</code>，节点切换范围就是首页全部节点，如果开启简单模式并选择分组，则范围缩小至分组内节点</li>
+<li>策略为 <strong>非 select 类型</strong> 的 <a href="#%E4%BB%A3%E7%90%86%E5%88%86%E7%BB%84%E7%B1%BB%E5%9E%8B">分组/代理分组类型</a>，节点切换范围就是分组或代理分组内节点</li>
+<li>具体切换到哪个节点，请查看 <a href="#%E4%BB%A3%E7%90%86%E6%97%A5%E5%BF%97">代理日志</a></li>
+</ul>
+</blockquote>
+<hr>
+<h2><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">配置页面</a></h2>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">配置文件</a></h3>
+<div class="markdown-alert markdown-alert-note"><p class="markdown-alert-title"><svg class="octicon octicon-info mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p><p>Shadowrocket 的配置文件是用于快速设置和调整软件的核心功能的重要文件，通常以 <code class="notranslate">*.conf</code> 格式保存。配置文件还可以在多设备间同步以及分享配置文件给其他用户，以快速部署相同设置、简化用户手动配置的流程。用户可以在配置文件里设置 <a href="#%E9%80%9A%E7%94%A8%E5%8F%82%E6%95%B0">通用参数</a>、<a href="#%E6%B7%BB%E5%8A%A0%E8%A7%84%E5%88%99">添加规则</a>、<a href="#hosts">Hosts</a>、<a href="#url%E9%87%8D%E5%86%99">URL重写</a>、<a href="#https%E8%A7%A3%E5%AF%86">HTTPS解密</a>、<a href="#%E8%84%9A%E6%9C%AC">脚本</a>等内容。<a href="#%E6%A8%A1%E5%9D%97">模块</a> 的写法与配置文件相同<br><br>
+同时，Shadowrocket 支持在配置文件中 <a href="#%E7%BC%96%E5%86%99%E6%9C%AC%E5%9C%B0%E8%8A%82%E7%82%B9">编写本地节点</a>，但该操作方式仅是为了兼容部分其他类型的配置文件，不能当作 Shadowrocket <a href="#%E6%B7%BB%E5%8A%A0%E8%8A%82%E7%82%B9">添加节点</a> 的优先选择<br></p>
+</div>
+<blockquote>
+<p>Shadowrocket 内置了一个默认配置文件 <code class="notranslate">default.conf</code>，其中包含了国内外主要网站或服务的分流规则，一般可以满足大多数用户的基本需求。此配置文件的内容跟随应用更新而做不定期的调整。如果在使用过程中错误修改或误删配置文件，可以点击 <strong>配置 &gt; 恢复默认配置</strong>。</p>
+<p>添加配置文件方法：</p>
+<blockquote>
+<ul>
+<li>
+<p>从 URL 下载配置</p>
+<ul>
+<li>配置 &gt; 右上角 <code class="notranslate">➕</code> &gt; 粘贴配置链接 &gt; 下载 &gt; 点击对应的配置文件 &gt; <a href="#%E4%BD%BF%E7%94%A8%E9%85%8D%E7%BD%AE">使用配置</a> / <a href="#%E7%BC%96%E8%AF%91%E9%85%8D%E7%BD%AE">编译配置</a></li>
+<li>Shadowrocket 兼容使用 <strong>Clash YAML 格式</strong> 的配置文件。使用含节点信息的标准 Clash 链接可以同时导入配置文件和节点信息</li>
+</ul>
+</li>
+<li>
+<p>从本地存储或云盘导入</p>
+<ul>
+<li>配置 &gt; 从云导入，点击对应存储路径的配置文件</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>点击配置文件，显示操作菜单（以下选项可能因不同的软件版本而有所不同）：</p>
+<blockquote>
+<ul>
+<li><a href="#%E4%BD%BF%E7%94%A8%E9%85%8D%E7%BD%AE">使用配置</a></li>
+<li><a href="#%E7%BC%96%E8%BE%91%E9%85%8D%E7%BD%AE">编辑配置</a></li>
+<li><a href="#%E7%BC%96%E8%BE%91%E7%BA%AF%E6%96%87%E6%9C%AC">编辑纯文本</a></li>
+<li><a href="#%E7%BC%96%E8%AF%91%E9%85%8D%E7%BD%AE">编译配置</a></li>
+<li><a href="#%E9%A2%84%E8%A7%88%E9%85%8D%E7%BD%AE">预览配置</a></li>
+<li><a href="#%E6%9B%B4%E6%96%B0%E9%85%8D%E7%BD%AE">更新配置</a></li>
+<li><a href="#%E6%89%A9%E5%B1%95%E9%85%8D%E7%BD%AE">扩展配置</a></li>
+<li><a href="#%E9%87%8D%E6%96%B0%E5%91%BD%E5%90%8D">重新命名</a></li>
+<li><a href="#%E5%AF%BC%E5%87%BA%E9%85%8D%E7%BD%AE">导出配置</a></li>
+</ul>
+</blockquote>
+<p>点击配置文件的 <code class="notranslate">ⓘ</code> 图标或点击 <strong><a href="#%E7%BC%96%E8%BE%91%E9%85%8D%E7%BD%AE">编辑配置</a></strong>，进入编辑菜单（以下选项可能因不同的软件版本而有所不同）：</p>
+<blockquote>
+<ul>
+<li><a href="#%E9%80%9A%E7%94%A8%E5%8F%82%E6%95%B0">通用</a></li>
+<li><a href="#%E6%B7%BB%E5%8A%A0%E8%A7%84%E5%88%99">规则</a></li>
+<li><a href="#hosts">Hosts</a></li>
+<li><a href="#url%E9%87%8D%E5%86%99">URL重写</a></li>
+<li><a href="#%E5%A4%B4%E9%83%A8%E9%87%8D%E5%86%99">头部重写</a></li>
+<li><a href="#%E6%AD%A3%E6%96%87%E9%87%8D%E5%86%99">正文重写</a></li>
+<li><a href="#%E6%9C%AC%E5%9C%B0%E6%98%A0%E5%B0%84">本地映射</a></li>
+<li><a href="#https%E8%A7%A3%E5%AF%86">HTTPS解密</a></li>
+<li><a href="#%E8%84%9A%E6%9C%AC">脚本</a></li>
+<li><a href="#%E4%BB%A3%E7%90%86%E5%88%86%E7%BB%84">代理分组</a></li>
+<li><a href="#%E8%A7%84%E5%88%99%E9%9B%86url">规则集URL</a></li>
+<li><a href="#%E8%84%9A%E6%9C%ACurl">脚本URL</a></li>
+<li><a href="#%E5%A4%8D%E5%88%B6%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6">复制</a></li>
+<li><a href="#%E6%9B%BF%E6%8D%A2%E7%AD%96%E7%95%A5">替换策略</a></li>
+<li><a href="#%E6%B5%8B%E8%AF%95%E8%A7%84%E5%88%99">测试规则</a></li>
+</ul>
+</blockquote>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">使用配置</a></h3>
+<blockquote>
+<p>点击 <strong>使用配置</strong> 可以编译并启用该配置文件。该功能会对该配置使用的远程 <a href="#%E8%A7%84%E5%88%99%E9%9B%86url">规则集</a>、<a href="#%E8%84%9A%E6%9C%ACurl">脚本</a> 等远程资源进行更新</p>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">编辑配置</a></h3>
+<blockquote>
+<p>使用 UI 交互界面对配置文件的可设置项进行调整。<a href="#%E9%80%9A%E7%94%A8%E5%8F%82%E6%95%B0">部分设置或命令</a> 不提供 UI 编辑界面，如有需要可在 <a href="#%E7%BC%96%E8%BE%91%E7%BA%AF%E6%96%87%E6%9C%AC">纯文本编辑</a> 中使用</p>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">编辑纯文本</a></h3>
+<blockquote>
+<p>使用纯文本模式对配置文件的可设置项进行调整。<a href="#%E9%80%9A%E7%94%A8%E5%8F%82%E6%95%B0">部分设置或命令</a> 不提供 UI 编辑界面，仅在纯文本模式下可以设置</p>
+<p>配置文件的纯文本编写方法可以参考：</p>
+<blockquote>
+<ul>
+<li><a href="https://raw.githubusercontent.com/LOWERTOP/Shadowrocket/main/lazy.conf" rel="nofollow">懒人配置</a><br></li>
+<li><a href="https://raw.githubusercontent.com/LOWERTOP/Shadowrocket/main/lazy_group.conf" rel="nofollow">懒人配置（含策略组）</a></li>
+</ul>
+</blockquote>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">编译配置</a></h3>
+<blockquote>
+<p>点击 <strong>编译配置</strong> 可以对该配置文件进行重新编译。可以理解为软件将该配置文件重新编辑并转译为符合当前版本规范和逻辑的底层格式。该功能会更新该配置文件所用到的 <a href="#%E8%A7%84%E5%88%99%E9%9B%86url">规则集</a>、<a href="#%E8%84%9A%E6%9C%ACurl">脚本</a> 等远程资源。仅当软件版本大于等于特定版本时才具有该选项</p>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">预览配置</a></h3>
+<blockquote>
+<p>查看配置文件的纯文本格式。该选项仅当配置文件是以远程配置文件的形式添加进来的才会出现</p>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">更新配置</a></h3>
+<blockquote>
+<p>使用当前配置文件的远程版本对当前文件进行覆盖更新。该选项仅当配置文件是以远程配置文件的形式添加进来时才会出现，该功能一般适用于在远端维护的配置文件或远程配置需要恢复时使用。除更新配置设置外该功能还会同时更新该配置所用的 <a href="#%E8%A7%84%E5%88%99%E9%9B%86url">规则集</a>、<a href="#%E8%84%9A%E6%9C%ACurl">脚本</a> 等远程资源，若仅需要更新规则集等远程资源，请使用 <a href="#%E4%BD%BF%E7%94%A8%E9%85%8D%E7%BD%AE">使用配置</a> / <a href="#%E7%BC%96%E8%AF%91%E9%85%8D%E7%BD%AE">编译配置</a> 功能。软件同时提供自动更新功能，相关说明及其他技巧请点击查看 <a href="#%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0">自动更新</a> 词条</p>
+</blockquote>
+<div class="markdown-alert markdown-alert-caution"><p class="markdown-alert-title"><svg class="octicon octicon-stop mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M4.47.22A.749.749 0 0 1 5 0h6c.199 0 .389.079.53.22l4.25 4.25c.141.14.22.331.22.53v6a.749.749 0 0 1-.22.53l-4.25 4.25A.749.749 0 0 1 11 16H5a.749.749 0 0 1-.53-.22L.22 11.53A.749.749 0 0 1 0 11V5c0-.199.079-.389.22-.53Zm.84 1.28L1.5 5.31v5.38l3.81 3.81h5.38l3.81-3.81V5.31L10.69 1.5ZM8 4a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4Zm0 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Caution</p><p><strong>更新配置会覆盖在本地对配置文件所做的修改，对于在本地修改过的远程配置而言需要谨慎使用此功能</strong></p>
+</div>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">重新命名</a></h3>
+<blockquote>
+<p>重命名当前配置文件</p>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">导出配置</a></h3>
+<blockquote>
+<p>将当前配置文件以文件的形式导出</p>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">扩展配置</a></h3>
+<blockquote>
+<ul>
+<li>
+<p>从配置 a 扩展出配置 b，此时默认关系是 b 包含 a，也可以理解为 b 继承了 a 的内容</p>
+</li>
+<li>
+<p>配置 b 优先级高于配置 a，该功能是对配置建立包含关系，以满足同时使用多个配置的需求</p>
+</li>
+<li>
+<p>点击配置文件的 <code class="notranslate">ⓘ</code> 图标 &gt; 通用 &gt; 包含配置，可以修改或解除包含关系</p>
+</li>
+</ul>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">通用参数</a></h3>
+<blockquote>
+<p>通用参数是 Shadowrocket 的中最重要的功能参数，位于 <a href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6">配置文件</a> <a href="#%E7%BC%96%E8%BE%91%E7%BA%AF%E6%96%87%E6%9C%AC">纯文本编辑</a> 模式中的 <code class="notranslate">[General]</code> 字段，该字段选项包含具有 UI 界面的设置项和不包含 UI 界面的 <a href="#%E9%9A%90%E5%BC%8F%E5%8F%82%E6%95%B0">隐式参数</a></p>
+<blockquote>
+<ul>
+<li><strong>UI 编辑</strong>：点击配置文件的 <code class="notranslate">ⓘ</code> 图标 &gt; 通用</li>
+<li><strong>文本编辑</strong>：点击配置文件 &gt; 编辑纯文本 &gt; <code class="notranslate">[General]</code></li>
+</ul>
+<p>配置行的纯文本设置语法格式为 <code class="notranslate">key = value</code></p>
+<div class="highlight highlight-source-ruby"><pre class="notranslate"><span class="pl-kos">[</span><span class="pl-v">General</span><span class="pl-kos">]</span>
+<span class="pl-s1">key</span> <span class="pl-c1">=</span> <span class="pl-en">value</span></pre></div>
+</blockquote>
+<p><strong>旁路系统 <code class="notranslate">bypass-system</code></strong></p>
+<blockquote>
+<p>如果禁用此选项，可能会导致一些系统问题，如推送通知延迟</p>
+</blockquote>
+<p><strong>跳过代理 <code class="notranslate">skip-proxy</code></strong></p>
+<blockquote>
+<p>跳过代理接口，使用 TUN 接口接管。此选项强制列表中的域名或 IP 的连接范围交由 Shadowrocket <strong>TUN 接口</strong> 来处理，而不是 Shadowrocket 代理接口。此选项用于提高部分应用程序对于代理环境的兼容性。若开启 <a href="#%E4%BB%A3%E7%90%86%E7%B1%BB%E5%9E%8B">TUN 模式</a> 时，将强制使用 TUN 接管所有连接，此处地址列表可以忽略。需要注意，该选项并非将设定的地址使用直连进行连接，仅表示使用 TUN 接口处理</p>
+</blockquote>
+<p><strong>TUN旁路路由 <code class="notranslate">tun-excluded-routes</code></strong></p>
+<blockquote>
+<p>Shadowrocket <strong>TUN 接口</strong> 只能处理 <strong>TCP 协议</strong>。使用此选项可以绕过指定的 IP 范围，让其他协议通过</p>
+</blockquote>
+<p><strong>DNS覆写 <code class="notranslate">dns-server</code></strong></p>
+<blockquote>
+<p>使用普通 DNS 或加密 DNS（如 <code class="notranslate">doh</code>、<code class="notranslate">doq</code>、<code class="notranslate">dot</code> 等）覆盖默认的系统 DNS。DNS 覆写仅针对直连类域名进行解析，代理类域名将经由代理服务器进行解析。DNS 覆写支持同时添加多个地址，Shadowrocket 采用并行查询的方式进行解析请求，最先返回的结果将被采用。有些 <code class="notranslate">dns over https</code> 支持 <code class="notranslate">http3</code>，所以将会尝试查询，如果支持就切换到 <code class="notranslate">http3</code>，可在 <strong>doh链接</strong> 后面加上 <code class="notranslate">#no-h3</code> 关闭。<code class="notranslate">doh</code> 强制通过 <code class="notranslate">h3</code> 查询的写法是将 <code class="notranslate">https</code> 改成 <code class="notranslate">h3</code>，如<code class="notranslate">h3://dns.alidns.com/dns-query</code>。其他示例或写法参见：<a href="#%E4%BF%AE%E6%94%B9dns">修改DNS</a>、<a href="#dns-over-proxy">DNS-over-PROXY</a></p>
+</blockquote>
+<p><strong>备用DNS <code class="notranslate">fallback-dns-server</code></strong></p>
+<blockquote>
+<p>当覆写 DNS 查询失败或查询时间超过2秒，Shadowrocket 会自动回退备用 DNS。如需指定多个 DNS，可用逗号分隔。<code class="notranslate">system</code> 表示回退到系统 DNS，清空备用 DNS 等于将其设置为 <code class="notranslate">system</code></p>
+</blockquote>
+<p><strong>启用IPv6支持 <code class="notranslate">ipv6</code></strong></p>
+<blockquote>
+<p><code class="notranslate">false</code> 表示不启用，<code class="notranslate">true</code> 表示启用。即使不启用此选项，当本地网络环境支持 IPv6，并且节点域名支持 IPv6 解析，Shadowrocket 也会使用节点的 IPv6 地址进行访问。解决方法是关闭节点域名的 IPv6 解析，或者在配置文件的 <code class="notranslate">[Host]</code> 项目下为节点域名指定 IP 地址</p>
+</blockquote>
+<p><strong>首选IPv6 <code class="notranslate">prefer-ipv6</code></strong></p>
+<blockquote>
+<p>优先向 IPv6 的 DNS 服务器查询 <code class="notranslate">AAAA</code> 记录，优先使用 <code class="notranslate">AAAA</code> 记录。<code class="notranslate">false</code> 表示不启用</p>
+</blockquote>
+<p><strong>私有IP应答 <code class="notranslate">private-ip-answer</code></strong></p>
+<blockquote>
+<p>如果不启用该选项，域名解析返回私有 IP，Shadowrocket 会认为该域名被劫持而强制使用代理</p>
+</blockquote>
+<p><strong>TUN包含路由 <code class="notranslate">tun-included-routes</code></strong></p>
+<blockquote>
+<p>默认情况下，Shadowrocket 接口会声明自己为默认路由，但由于 Wi-Fi 接口的路由较小，有些流量可能不会通过 Shadowrocket 接口。使用此选项可以添加一个较小的路由表</p>
+</blockquote>
+<p><strong>总是真实IP <code class="notranslate">always-real-ip</code></strong></p>
+<blockquote>
+<p>这个选项要求 Shadowrocket 在 <code class="notranslate">TUN</code> 处理 DNS 请求时返回一个真实的 IP 地址而不是假的IP地址</p>
+</blockquote>
+<p><strong>DNS劫持 <code class="notranslate">hijack-dns</code></strong></p>
+<blockquote>
+<p>有些设备或软件总是使用硬编码的 DNS 服务器，例如 Netflix 通过 Google DNS（<code class="notranslate">8.8.8.8</code> 或 <code class="notranslate">8.8.4.4</code>）发送请求，您可以使用此选项来劫持查询</p>
+</blockquote>
+<p><strong>包含配置 <code class="notranslate">include</code></strong></p>
+<blockquote>
+<p>表示当前配置包含另一个配置的内容，当前配置的优先级高于被包含配置。该选项是对配置建立包含关系，以满足同时使用多个配置的需求</p>
+</blockquote>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">隐式参数</a></h3>
+<div class="markdown-alert markdown-alert-caution"><p class="markdown-alert-title"><svg class="octicon octicon-stop mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M4.47.22A.749.749 0 0 1 5 0h6c.199 0 .389.079.53.22l4.25 4.25c.141.14.22.331.22.53v6a.749.749 0 0 1-.22.53l-4.25 4.25A.749.749 0 0 1 11 16H5a.749.749 0 0 1-.53-.22L.22 11.53A.749.749 0 0 1 0 11V5c0-.199.079-.389.22-.53Zm.84 1.28L1.5 5.31v5.38l3.81 3.81h5.38l3.81-3.81V5.31L10.69 1.5ZM8 4a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4Zm0 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Caution</p><p><strong>隐式参数是指相关选项仅支持在配置文件 <a href="#%E7%BC%96%E8%BE%91%E7%BA%AF%E6%96%87%E6%9C%AC">纯文本编辑</a> 模式中的 <code class="notranslate">[General]</code> 字段进行纯文本设置，不提供 UI 操作选项，属于 <a href="#%E9%80%9A%E7%94%A8%E5%8F%82%E6%95%B0">通用参数</a> 的隐藏属性，建议谨慎设置。</strong></p>
+<p>隐式参数属于 <a href="#%E9%80%9A%E7%94%A8%E5%8F%82%E6%95%B0">通用参数</a>，设置语法格式为 <code class="notranslate">key = value</code></p>
+</div>
+<blockquote>
+<p><strong><code class="notranslate">dns-direct-system</code></strong></p>
+<blockquote>
+<p>直连的域名类规则使用系统 DNS 进行查询。设置为 <code class="notranslate">true</code> 表示启用，设置为 <code class="notranslate">false</code> 表示不启用</p>
+</blockquote>
+<p><strong><code class="notranslate">icmp-auto-reply</code></strong></p>
+<blockquote>
+<p>ping 数据包自动回复。设置为 <code class="notranslate">true</code> 表示启用，设置为 <code class="notranslate">false</code> 表示不启用</p>
+</blockquote>
+<p><strong><code class="notranslate">always-reject-url-rewrite</code></strong></p>
+<blockquote>
+<p>不开启时，「重写的REJECT策略」默认只有在配置模式下生效。开启后，可以令该策略在其他全局路由模式下都生效。设置为 <code class="notranslate">true</code> 表示启用，设置为 <code class="notranslate">false</code> 表示不启用</p>
+</blockquote>
+<p><strong><code class="notranslate">dns-direct-fallback-proxy</code></strong></p>
+<blockquote>
+<p>直连域名解析失败后使用代理。设置为 <code class="notranslate">true</code> 表示启用，设置为 <code class="notranslate">false</code> 表示不启用</p>
+</blockquote>
+<p><strong><code class="notranslate">udp-policy-not-supported-behaviour</code></strong></p>
+<blockquote>
+<p>当 UDP 流量匹配到规则里不支持 UDP 转发的节点策略时重新选择回退行为，可选行为包括 <code class="notranslate">DIRECT</code>、<code class="notranslate">REJECT</code>。<code class="notranslate">DIRECT</code> 表示直连转发 UDP 流量，<code class="notranslate">REJECT</code> 表示拒绝转发 UDP 流量</p>
+</blockquote>
+<p><strong><code class="notranslate">stun-response-ip</code></strong></p>
+<blockquote>
+<p>此选项包含两个命令：<code class="notranslate">stun-response-ip</code> 和 <code class="notranslate">stun-response-ipv6</code>。该选项允许返回一个虚假的IP地址，如 <code class="notranslate">stun-response-ip=1.1.1.1</code>、<code class="notranslate">stun-response-ipv6=::1</code>，目的是防止真实IP地址泄漏，提高 WebRTC 的隐私和安全性。使用此命令将忽略软件设置选项内的 <a href="#%E7%A6%81%E7%94%A8stun">禁用STUN</a> 的启用状态</p>
+</blockquote>
+<p><strong><code class="notranslate">compatibility-mode</code></strong></p>
+<blockquote>
+<p>网络兼容模式</p>
+<p><code class="notranslate">compatibility-mode = 0</code> &gt; 自动/禁用<br><br>
+<code class="notranslate">compatibility-mode = 1</code> &gt; Proxy with Loopback Address<br><br>
+<code class="notranslate">compatibility-mode = 2</code> &gt; Proxy Only<br><br>
+<code class="notranslate">compatibility-mode = 3</code> &gt; TUN Only<br><br>
+<code class="notranslate">compatibility-mode = 4</code> &gt; Proxy without Loopback Address<br><br>
+<code class="notranslate">compatibility-mode = 5</code> &gt; No Default Route</p>
+<p>本设置的优先级高于软件设置内的相关选项。当参数的值设定为 <code class="notranslate">3</code> 时的效果等同于启用 <a href="#%E4%BB%A3%E7%90%86%E7%B1%BB%E5%9E%8B">Tun模式</a>：<a href="#%E8%AE%BE%E7%BD%AE%E9%A1%B5%E9%9D%A2">设置</a> &gt; 代理 &gt; <a href="#%E4%BB%A3%E7%90%86%E7%B1%BB%E5%9E%8B">代理类型</a> &gt; None。当参数的值设定为 <code class="notranslate">5</code> 时的效果等同于启用 <a href="#%E5%85%BC%E5%AE%B9%E6%A8%A1%E5%BC%8F">兼容模式</a>：<a href="#%E8%AE%BE%E7%BD%AE%E9%A1%B5%E9%9D%A2">设置</a> &gt; 代理 &gt; <a href="#%E5%85%BC%E5%AE%B9%E6%A8%A1%E5%BC%8F">兼容模式</a></p>
+</blockquote>
+<p><strong><code class="notranslate">always-ip-address</code></strong></p>
+<blockquote>
+<p>强制所有域名使用本地 DNS 解析。设置为 <code class="notranslate">true</code> 表示启用，设置为 <code class="notranslate">false</code> 表示不启用</p>
+</blockquote>
+<p><strong><code class="notranslate">proxy-dns-server</code></strong></p>
+<blockquote>
+<p>通过该参数来使用特定 DNS 解析所有节点域名。若未设置此参数，节点域名默认使用 <a href="#%E4%BF%AE%E6%94%B9dns">dns-server</a> 进行解析，对于 <a href="#dns-over-proxy">DNS-over-PROXY</a> 则使用系统 DNS 解析</p>
+</blockquote>
+<p><strong><code class="notranslate">close-if-proxy-chain-missing</code></strong></p>
+<blockquote>
+<p>代理链丢失关闭连接。当设置为 <code class="notranslate">true</code> 时，若 <a href="#%E4%BB%A3%E7%90%86%E9%80%9A%E8%BF%87%E4%BB%A3%E7%90%86%E9%93%BE">代理链</a> 中的中转节点丢失则 <code class="notranslate">Reject</code> 代理连接；当设置为 <code class="notranslate">false</code> 时等同于不设置该命令，即若 <a href="#%E4%BB%A3%E7%90%86%E9%80%9A%E8%BF%87%E4%BB%A3%E7%90%86%E9%93%BE">代理链</a> 中的中转节点丢失则跳过中转节点直接连接落地节点使用</p>
+</blockquote>
+<p><strong><code class="notranslate">ipv6-only-if-no-ipv4-dns</code></strong></p>
+<blockquote>
+<p>当设置为 <code class="notranslate">true</code> 时，如果设备在网络环境中仅获取到 IPv6 的 DNS 而未获取到 IPv4 的 DNS，此时软件将认为网络环境是 <code class="notranslate">IPv6 Only</code> 网络。设置为 <code class="notranslate">false</code> 表示不启用</p>
+</blockquote>
+<p><strong><code class="notranslate">block-quic</code></strong></p>
+<blockquote>
+<p>QUIC协议屏蔽策略。支持使用 <code class="notranslate">all-proxy</code>、<code class="notranslate">all</code>、<code class="notranslate">always-allow</code> 对 QUIC 传输层协议进行设置。其中 <code class="notranslate">all-proxy</code> 表示只对 <strong>走代理的连接</strong> 阻断 QUIC，直连连接（DIRECT）不会被干预；<code class="notranslate">all</code> 表示对所有连接（包括直连与代理）都屏蔽 QUIC，这会完全禁止系统中一切 UDP/443 流量；<code class="notranslate">always-allow</code> 表示始终允许 QUIC，不做任何屏蔽，等同于 <strong>关闭 QUIC 屏蔽</strong></p>
+</blockquote>
+<p><strong><code class="notranslate">use-local-host-item-for-proxy</code></strong></p>
+<blockquote>
+<p>本地 HOST 映射对代理生效。在默认情况下，对于代理类的 DNS 解析始终在远端服务器上执行。当设置为 <code class="notranslate">true</code> 时，若存在本地 DNS 映射，Shadowrocket 将在代理连接中使用映射后的地址，而不是原始的主机名。设置为 <code class="notranslate">false</code> 表示不启用</p>
+</blockquote>
+<p><strong><code class="notranslate">allow-dns-svcb</code></strong></p>
+<blockquote>
+<p>允许 DNS SVCB 查询。系统可能会执行 SVCB 记录 DNS 查询，而不是标准的 A 记录查询。这会导致无法返回虚拟 IP 地址。因此，默认情况下禁止执行 SVCB 记录查询，以强制系统执行 A 记录查询。设置为 <code class="notranslate">true</code> 表示启用，设置为 <code class="notranslate">false</code> 表示不启用</p>
+</blockquote>
+<p><em>Shadowrocket 或还有其他支持的隐式参数，此处可能未能完全列出，若有相关需求请联系 <a href="mailto:buginapp@gmail.com">buginapp@gmail.com</a></em></p>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">添加规则</a></h3>
+<blockquote>
+<p>在 Shadowrocket 中，"规则"是指用来决定哪些网络请求应该走代理、哪些请求应该直接连接互联网的规则集合。规则通常是基于用户的需求来配置 <a href="#%E8%A7%84%E5%88%99%E7%AD%96%E7%95%A5">规则策略</a>，目的是实现对流量的精细控制。软件对规则集的识别不受文件后缀的影响，是以规则集的内容为识别标准</p>
+<ul>
+<li>
+<p>点击配置文件的 <code class="notranslate">ⓘ</code> 图标 &gt; 规则 &gt; 右上角 <code class="notranslate">➕</code>，根据需求选择 <a href="#%E8%A7%84%E5%88%99%E7%B1%BB%E5%9E%8B">规则类型</a> 和 <a href="#%E8%A7%84%E5%88%99%E7%AD%96%E7%95%A5">规则策略</a>，填写规则内容</p>
+</li>
+<li>
+<p>数据 &gt; 代理 &gt; 启用日志记录，产生网络活动后回到该页面，从最近的日志中查看网络活动记录，点击任一记录查看详情，点击右上角 <code class="notranslate">•••</code> 选择类型添加规则</p>
+</li>
+<li>
+<p>规则匹配需要着重注意 <a href="#%E8%A7%84%E5%88%99%E4%BC%98%E5%85%88%E7%BA%A7">规则的优先级</a> 顺序</p>
+</li>
+</ul>
+<p><strong>规则管理</strong></p>
+<blockquote>
+<ul>
+<li>
+<p>配置 &gt; 配置文件 &gt; 编辑配置 &gt; 规则 &gt; 规则区域右上角 <code class="notranslate">···</code></p>
+<p>可选择并批量删除规则</p>
+</li>
+</ul>
+</blockquote>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">规则优先级</a></h3>
+<blockquote>
+<p>规则的匹配是从上到下逐条匹配的，一旦匹配到某条规则，Shadowrocket 就会停止继续匹配，因此规则的顺序非常重要，优先级高的规则应该放在前面</p>
+<ul>
+<li>模块中的规则优先于配置文件</li>
+<li>上面的规则优先于下面的规则</li>
+<li>域名类的规则优先于IP类规则</li>
+</ul>
+<blockquote>
+<p>此外，规则的优先级在自动编译配置时同时遵循 <strong>显式优先、推断其次、最终兜底</strong> 的原则。其中可被直接、精确匹配的显式规则（如 <code class="notranslate">DOMAIN</code>、<code class="notranslate">DOMAIN-SUFFIX</code>、<code class="notranslate">URL-REGEX</code> 等）具有最高优先级。而基于地域或数据库判断的推断类规则（如 <code class="notranslate">GeoIP</code>）会在自动编译过程中被放置在显式规则之后。<code class="notranslate">FINAL</code> 规则作为兜底项，始终位于整个规则集的最末尾</p>
+</blockquote>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">规则类型</a></h3>
+<blockquote>
+<p><strong>DOMAIN-SUFFIX</strong>：匹配请求域名的后缀</p>
+<blockquote>
+<p>如 <code class="notranslate">DOMAIN-SUFFIX,example.com,DIRECT</code> 可以匹配到 <code class="notranslate">a.example.com</code>、<code class="notranslate">a.b.example.com</code></p>
+</blockquote>
+<p><strong>DOMAIN-KEYWORD</strong>：匹配请求域名的关键词</p>
+<blockquote>
+<p>如 <code class="notranslate">DOMAIN-KEYWORD,exa,DIRECT</code> 可以匹配到 <code class="notranslate">a.example.com</code>、<code class="notranslate">a.b.example.com</code></p>
+</blockquote>
+<p><strong>DOMAIN-WILDCARD</strong>：匹配请求域名，支持使用通配符 <code class="notranslate">*</code>、<code class="notranslate">?</code></p>
+<blockquote>
+<p>如 <code class="notranslate">DOMAIN-WILDCARD,a*c.example*.com,DIRECT</code> 可以匹配到 <code class="notranslate">abc.example123.com、aqwec.example456.com</code></p>
+</blockquote>
+<p><strong>DOMAIN</strong>：匹配请求的完整域名。当为<code class="notranslate">DOMAIN</code>、<code class="notranslate">DOMAIN-SUFFIX</code>、<code class="notranslate">DOMAIN-KEYWORD</code> 等相似类型分别设置相同的值时，只有其中一种类型会生效</p>
+<blockquote>
+<p>如 <code class="notranslate">DOMAIN,www.example.com,DIRECT</code> 只能匹配到 <code class="notranslate">www.example.com</code></p>
+</blockquote>
+<p><strong>USER-AGENT</strong>：匹配用户代理字符串，支持使用通配符 <code class="notranslate">*</code></p>
+<blockquote>
+<p>如 <code class="notranslate">USER-AGENT,MicroMessenger*,DIRECT</code> 可以匹配到 <code class="notranslate">MicroMessenger Client</code></p>
+</blockquote>
+<p><strong>URL-REGEX</strong>：匹配 URL 正则式</p>
+<blockquote>
+<p>如 <code class="notranslate">URL-REGEX,^https?://.+/item.+,REJECT</code> 可以匹配到 <code class="notranslate">https://www.example.com/item/abc/123</code></p>
+</blockquote>
+<p><strong>IP-CIDR</strong>：匹配 IPv4 或 IPv6 地址</p>
+<blockquote>
+<p>如 <code class="notranslate">IP-CIDR,192.168.1.0/24,DIRECT</code> 可以匹配到 IP 段 <code class="notranslate">192.168.1.1～192.168.1.254</code>。当域名请求遇到IP类规则时，Shadowrocket 会向本地 DNS 服务器发送查询请求，以判断主机 IP 是否匹配规则。若 IP 类规则加 <code class="notranslate">no-resolve</code>（如：<code class="notranslate">IP-CIDR,172.16.0.0/12,DIRECT,no-resolve</code>），则域名请求将会跳过此规则，不会触发本地DNS查询</p>
+</blockquote>
+<p><strong>IP-ASN</strong>：匹配 IP 地址隶属的 ASN 编号</p>
+<blockquote>
+<p>如 <code class="notranslate">IP-ASN,56040,DIRECT</code> 可以匹配到属于 China Mobile Communications Corporation 网络的 IP 地址</p>
+</blockquote>
+<p><strong>RULE-SET</strong>：匹配规则集内容。规则集的组成部分需包含规则类型</p>
+<p><strong>DOMAIN-SET</strong>：匹配域名集内容。域名集的组成部分不包含规则类型</p>
+<p><strong>SCRIPT</strong>：匹配脚本名称</p>
+<p><strong>DST-PORT</strong>：匹配目标主机名的端口号</p>
+<blockquote>
+<p>如 <code class="notranslate">DST-PORT,443,DIRECT</code> 可以匹配到 443 目标端口</p>
+</blockquote>
+<p><strong>GEOIP</strong>：匹配 IP 数据库</p>
+<blockquote>
+<p>如 <code class="notranslate">GEOIP,CN,DIRECT</code> 可以匹配到归属地为CN的IP地址</p>
+</blockquote>
+<p><strong>FINAL</strong>：兜底策略</p>
+<blockquote>
+<p>如 <code class="notranslate">FINAL,PROXY</code> 表示当其他所有规则都匹配不到时才使用 <code class="notranslate">FINAL</code> 规则的策略</p>
+</blockquote>
+<p><strong>AND</strong>：逻辑规则，与规则</p>
+<blockquote>
+<p>如 <code class="notranslate">AND,((DOMAIN,www.example.com),(DST-PORT,123)),DIRECT</code> 可以匹配到 <code class="notranslate">www.example.com:123</code></p>
+</blockquote>
+<p><strong>NOT</strong>：逻辑规则，非规则</p>
+<blockquote>
+<p>如 <code class="notranslate">NOT,((DST-PORT,123)),DIRECT</code> 可以匹配到除了 <code class="notranslate">123</code> 端口的其他所有请求</p>
+</blockquote>
+<p><strong>OR</strong>：逻辑规则，或规则</p>
+<blockquote>
+<p>如 <code class="notranslate">OR,((DST-PORT,123),(DST-PORT,456)),DIRECT</code> 可以匹配到 <code class="notranslate">123</code> 或 <code class="notranslate">456</code> 端口的所有请求</p>
+</blockquote>
+<p><strong>PROTOCOL</strong>：匹配传输协议类型</p>
+<blockquote>
+<p><code class="notranslate">PROTOCOL</code> 类型不支持单独使用，只能作为子规则类型嵌套于逻辑规则当中。如 <code class="notranslate">AND,((PROTOCOL,UDP),(DST-PORT,443)),REJECT-NO-DROP</code></p>
+</blockquote>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">规则策略</a></h3>
+<blockquote>
+<p><strong>PROXY</strong>：代理。通过代理服务器转发流量</p>
+<p><strong>DIRECT</strong>：直连。连接不经过任何代理服务器</p>
+<p><strong>REJECT</strong>：拒绝。返回 HTTP 状态码 404，没有内容</p>
+<p><strong>REJECT-DICT</strong>：拒绝。返回 HTTP 状态码 200，内容为空的JSON对象</p>
+<p><strong>REJECT-ARRAY</strong>：拒绝。返回 HTTP 状态码 200，内容为空的JSON数组</p>
+<p><strong>REJECT-200</strong>：拒绝。返回 HTTP 状态码 200，没有内容</p>
+<p><strong>REJECT-IMG</strong>：拒绝。返回 HTTP 状态码 200，内容为 1 像素 GIF</p>
+<p><strong>REJECT-TINYGIF</strong>：拒绝。返回HTTP状态码200，内容为 1 像素 GIF</p>
+<p><strong>REJECT-DROP</strong>：拒绝。丢弃 IP 包</p>
+<p><strong>REJECT-NO-DROP</strong>：拒绝。返回 ICMP 端口不可达</p>
+<p>除此之外，规则策略还可以选择 <strong>分组</strong>、<strong>代理分组</strong>、<strong>订阅</strong>、<strong>服务器节点</strong> 等</p>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">策略扩展参数</a></h3>
+<blockquote>
+<p><strong>Extended Matching</strong>：扩展匹配。代表将尝试同时匹配 <code class="notranslate">SNI</code> 和 <code class="notranslate">HTTP</code> 主机标头。适用于 <code class="notranslate">DOMAIN</code>、<code class="notranslate">DOMAIN-SUFFIX</code>、<code class="notranslate">DOMAIN-KEYWORD</code> 等域名规则。Shadowrocket 默认支持 <code class="notranslate">extended-matching</code>，已默认开启 <code class="notranslate">SNI</code> 匹配</p>
+<p><strong>Pre Matching</strong>：预匹配功能，可以快速、低开销地拒绝请求。对于使用 REJECT 策略的规则，可以通过 pre-matching 标记启用此功能预匹配。启用此参数的规则将在正常规则匹配过程之前生效，具有最高优先级</p>
+<p>纯文本示例：</p>
+<div class="highlight highlight-source-ruby"><pre class="notranslate"><span class="pl-kos">[</span><span class="pl-v">Rule</span><span class="pl-kos">]</span>
+<span class="pl-c1">DOMAIN</span><span class="pl-kos">,</span><span class="pl-en">ad</span><span class="pl-kos">.</span><span class="pl-en">com</span><span class="pl-kos">,</span><span class="pl-c1">REJECT</span><span class="pl-kos">,</span><span class="pl-s1">extended</span>-<span class="pl-en">matching</span><span class="pl-kos">,</span><span class="pl-en">pre</span>-<span class="pl-s1">matching</span></pre></div>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">APP分流</a></h3>
+<blockquote>
+<p>根据不同 App 或特定服务指定分流规则，并使其按照设定的规则执行代理策略</p>
+<p>示例：YouTube App 分流走代理</p>
+<ul>
+<li>复制 YouTube 的规则集链接
+<div class="highlight highlight-source-ruby"><pre class="notranslate"><span class="pl-en">https</span><span class="pl-pds">:/</span>/<span class="pl-en">raw</span><span class="pl-kos">.</span><span class="pl-en">githubusercontent</span><span class="pl-kos">.</span><span class="pl-en">com</span>/<span class="pl-en">blackmatrix7</span>/<span class="pl-en">ios_rule_script</span>/<span class="pl-en">master</span>/<span class="pl-en">rule</span>/<span class="pl-v">Shadowrocket</span>/<span class="pl-v">YouTube</span>/<span class="pl-v">YouTube</span><span class="pl-kos">.</span><span class="pl-en">list</span></pre></div>
+</li>
+<li>点击配置文件的 <code class="notranslate">ⓘ</code> 图标 &gt; 规则 &gt; 右上角 <code class="notranslate">➕</code>，<a href="#%E8%A7%84%E5%88%99%E7%B1%BB%E5%9E%8B">规则类型</a> 选择 <code class="notranslate">RULE-SET</code>，<a href="#%E8%A7%84%E5%88%99%E7%AD%96%E7%95%A5">规则策略</a> 选择 <code class="notranslate">PROXY</code>，输入框内粘贴 <strong>规则集链接</strong>，保存完成（规则策略可以根据需求使用其他选项或节点）</li>
+</ul>
+<p>iOS系统没有常规分应用代理的操作，只能通过 <strong>域名 / ip / ua</strong> 规则实现app分流效果。可自行抓包，或者订阅 <a href="https://github.com/blackmatrix7">blackmatrix7</a> 的 <a href="https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Shadowrocket">规则集</a>。如果引用的链接是域名集，添加规则时，<a href="#%E8%A7%84%E5%88%99%E7%B1%BB%E5%9E%8B">规则类型</a> 请选择 <code class="notranslate">DOMAIN-SET</code></p>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">更新规则集</a></h3>
+<blockquote>
+<ul>
+<li>手动更新：点击 <a href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6">配置文件</a> &gt; <a href="#%E4%BD%BF%E7%94%A8%E9%85%8D%E7%BD%AE">使用配置</a> / <a href="#%E7%BC%96%E8%AF%91%E9%85%8D%E7%BD%AE">编译配置</a></li>
+<li>自动更新：<a href="#%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0">自动更新</a></li>
+</ul>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">预览规则集</a></h3>
+<blockquote>
+<p>点击配置文件 &gt; 编辑配置 &gt; 规则 &gt; 在规则集上左滑 &gt; 预览</p>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">修改DNS</a></h3>
+<blockquote>
+<p><strong>DNS覆写</strong></p>
+<blockquote>
+<p>点击 配置文件 <code class="notranslate">ⓘ</code> 图标 &gt; 通用 &gt; DNS 覆写</p>
+<p>DNS 覆写仅针对直连类域名进行解析，代理类域名将经由代理服务器进行解析。DNS 覆写为并发查询，若填写多个 DNS 服务，则使用最快返回的解析结果。填 <code class="notranslate">system</code> 表示使用系统 DNS，支持普通 DNS 或加密 DNS（如 DoH、DoQ、DoT 等），也支持使用 <a href="#dns-over-proxy">通过代理转发 DNS 查询请求</a></p>
+<p><strong>普通 DNS 示例</strong><br></p>
+<div class="highlight highlight-source-ruby"><pre class="notranslate"><span class="pl-en">dns</span>-<span class="pl-s1">server</span> <span class="pl-c1">=</span> <span class="pl-c1">223.5</span><span class="pl-kos">.</span><span class="pl-c1">5.5</span><span class="pl-kos">,</span><span class="pl-c1">119.29</span><span class="pl-kos">.</span><span class="pl-c1">29.29</span></pre></div>
+<p><strong>加密 DNS 示例</strong><br></p>
+<ul>
+<li>DNS-over-HTTPS（DoH）</li>
+</ul>
+<div class="highlight highlight-source-ruby"><pre class="notranslate"><span class="pl-en">dns</span>-<span class="pl-s1">server</span> <span class="pl-c1">=</span> <span class="pl-en">https</span>:/<span class="pl-sr">/dns.alidns.com/dns</span>-<span class="pl-en">query</span></pre></div>
+<ul>
+<li>DNS-over-HTTP/3（DoH3）</li>
+</ul>
+<div class="highlight highlight-source-ruby"><pre class="notranslate"><span class="pl-en">dns</span>-<span class="pl-s1">server</span> <span class="pl-c1">=</span> <span class="pl-en">h3</span>:/<span class="pl-sr">/dns.alidns.com/dns</span>-<span class="pl-en">query</span></pre></div>
+<ul>
+<li>DNS-over-QUIC（DoQ）</li>
+</ul>
+<div class="highlight highlight-source-ruby"><pre class="notranslate"><span class="pl-en">dns</span>-<span class="pl-s1">server</span> <span class="pl-c1">=</span> <span class="pl-en">quic</span>://<span class="pl-c1">223.5</span><span class="pl-kos">.</span><span class="pl-c1">5.5</span></pre></div>
+<ul>
+<li>DNS-over-TLS（DoT）</li>
+</ul>
+<div class="highlight highlight-source-ruby"><pre class="notranslate"><span class="pl-en">dns</span>-<span class="pl-s1">server</span> <span class="pl-c1">=</span> <span class="pl-en">tls</span>://<span class="pl-c1">223.5</span><span class="pl-kos">.</span><span class="pl-c1">5.5</span></pre></div>
+<ul>
+<li><a href="#dns-over-proxy">DNS-over-PROXY</a></li>
+</ul>
+</blockquote>
+<p><strong>备用DNS</strong></p>
+<blockquote>
+<p>当覆写的 DNS 查询失败或查询时间超过2秒后回退备用 DNS 进行查询。如需指定多个 DNS，可用逗号分隔。填写 <code class="notranslate">system</code> 或者留空表示可回退到系统 DNS</p>
+</blockquote>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">DNS-over-PROXY</a></h3>
+<blockquote>
+<p>通过代理转发 DNS 查询请求</p>
+<p><strong>proxy</strong></p>
+<blockquote>
+<p>支持使用 <strong>默认节点</strong> 转发 DNS 查询请求，有以下两种写法：</p>
+<div class="highlight highlight-source-ruby"><pre class="notranslate"><span class="pl-en">dns</span>-<span class="pl-s1">server</span><span class="pl-c1">=</span><span class="pl-en">https</span>:/<span class="pl-sr">/dns.google/dns</span>-<span class="pl-en">query</span><span class="pl-c">#proxy</span></pre></div>
+<div class="highlight highlight-source-ruby"><pre class="notranslate"><span class="pl-en">dns</span>-<span class="pl-s1">server</span><span class="pl-c1">=</span><span class="pl-en">https</span>:/<span class="pl-sr">/dns.google/dns</span>-<span class="pl-en">query</span><span class="pl-c">#proxy=proxy</span></pre></div>
+</blockquote>
+<p><strong>proxy=name</strong></p>
+<blockquote>
+<p>支持使用 <strong>指定节点</strong> 转发 DNS 查询请求，需要注意此处的代理名称仅支持 URL 编码，以 <code class="notranslate">香港 01</code> 示例：</p>
+<div class="highlight highlight-source-ruby"><pre class="notranslate"><span class="pl-en">dns</span>-<span class="pl-s1">server</span><span class="pl-c1">=</span><span class="pl-en">https</span>:/<span class="pl-sr">/dns.google/dns</span>-<span class="pl-en">query</span><span class="pl-c">#proxy=%E9%A6%99%E6%B8%AF%2001</span></pre></div>
+<p>此处指定的节点若填写不规范会自动回退至默认节点</p>
+</blockquote>
+<p><strong>ecs=子网范围</strong></p>
+<blockquote>
+<p>ecs 参数用于设置 EDNS Client Subnet (ECS)，向 DNS 服务器传递客户端的子网信息。ECS 允许 DNS 服务器根据指定的子网范围（而非实际客户端 IP）来返回最优结果</p>
+<p>示例：</p>
+<div class="highlight highlight-source-ruby"><pre class="notranslate"><span class="pl-en">dns</span>-<span class="pl-s1">server</span><span class="pl-c1">=</span><span class="pl-en">https</span>:/<span class="pl-sr">/dns.google/dns</span>-<span class="pl-en">query</span><span class="pl-c">#ecs=120.76.0.0/14|2620:149:af0::10/56&amp;ecs-override=true</span></pre></div>
+</blockquote>
+<p><strong>ecs-override=true</strong></p>
+<blockquote>
+<p>ecs 参数的强制覆盖。即使客户端的实际 IP 提供了不同的地理位置，查询会强制使用 ecs 指定的子网范围</p>
+<p>示例：</p>
+<div class="highlight highlight-source-ruby"><pre class="notranslate"><span class="pl-en">dns</span>-<span class="pl-s1">server</span><span class="pl-c1">=</span><span class="pl-en">https</span>:/<span class="pl-sr">/dns.google/dns</span>-<span class="pl-en">query</span><span class="pl-c">#proxy=name&amp;ecs=1.1.0.0/14|2620:149:af0::10/56&amp;ecs-override=true</span></pre></div>
+</blockquote>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">no-resolve的作用</a></h3>
+<blockquote>
+<ul>
+<li>
+<p>当域名请求遇到 IP 类规则时，Shadowrocket 会向本地DNS服务器发送查询请求，以判断主机 IP 是否匹配规则</p>
+</li>
+<li>
+<p>若IP类规则加 <code class="notranslate">no-resolve</code>，则域名请求将会跳过此规则，不触发本地 DNS 查询。如：</p>
+<div class="highlight highlight-source-ruby"><pre class="notranslate"><span class="pl-c1">IP</span>-<span class="pl-c1">CIDR</span><span class="pl-kos">,</span><span class="pl-c1">172.16</span><span class="pl-kos">.</span><span class="pl-c1">0.0</span>/<span class="pl-c1">12</span><span class="pl-kos">,</span><span class="pl-c1">DIRECT</span><span class="pl-kos">,</span><span class="pl-en">no</span>-<span class="pl-en">resolve</span></pre></div>
+</li>
+</ul>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">代理分组</a></h3>
+<blockquote>
+<p><strong>代理分组</strong> 也可称之为 <strong>策略组</strong>，是用来 <strong>灵活管理和切换不同代理节点、自动分流网络请求</strong> 的一种核心功能。它的作用类似于一个 <strong>智能路由系统</strong>，可以根据设定的规则将不同的流量导向不同的代理节点或行为。简单来说，它就是一个 <strong>容器</strong>，里面可以包含多个代理节点或其他代理分组。你可以根据需求通过 <strong>规则 → 代理分组 → 代理节点</strong> 的路径手动或自动切换。代理分组支持的类型可以查看：<a href="#%E4%BB%A3%E7%90%86%E5%88%86%E7%BB%84%E7%B1%BB%E5%9E%8B">代理分组类型</a></p>
+<ul>
+<li>
+<p>点击配置文件的 <code class="notranslate">ⓘ</code> 图标 &gt; 代理分组 &gt; 右上角 <code class="notranslate">➕</code>。填写名称，根据需求选择 <a href="#%E4%BB%A3%E7%90%86%E5%88%86%E7%BB%84%E7%B1%BB%E5%9E%8B">代理分组类型</a>，通过 <strong>正则</strong> 匹配策略，或者从策略输入框后面的 <code class="notranslate">•••</code> 手动添加策略，保存</p>
+</li>
+<li>
+<p>策略是规则的组成部分，创建的代理分组只有放到规则里才能发挥作用</p>
+<ul>
+<li>进入对应规则的详情页，点击策略选项，从列表中选择所需的代理分组，保存</li>
+<li>代理分组中可以包含其他代理分组，形成层级结构，但需要注意各级代理分组的 <a href="#%E4%BB%A3%E7%90%86%E5%88%86%E7%BB%84%E7%B1%BB%E5%9E%8B">类型</a></li>
+</ul>
+</li>
+<li>
+<p>代理分组内的右上角设有 <strong>测试</strong> 按钮，点击 <strong>测试</strong> 可对当前分组内的节点进行延迟测试。测试按钮仅支持对节点进行测试，不支持测试分组内的其他策略</p>
+<ul>
+<li>代理分组下方设有 <strong>测试并选择最快服务器</strong> 选项</li>
+<li>该选项开启后，将在手动点击右上角的 <strong>测试</strong> 后自动选择并使用延迟最低的节点</li>
+<li>该选项的开启或关闭对全部代理分组同时生效</li>
+<li>该选项仅存在于版本号大于等于 <strong>2.2.65 (2604)</strong> 的软件上</li>
+</ul>
+</li>
+<li>
+<p>代理分组内设有 <strong>订阅</strong> 开关，开启开关会在下方出现 <strong>服务器节点</strong> 选项，需要进入选择所需要的订阅</p>
+<ul>
+<li>开启 <strong>订阅</strong> 开关并选择所需订阅后，下方 <strong>策略</strong> 内会出现该订阅的所有节点</li>
+<li>支持同时使用 <a href="#%E8%AE%A2%E9%98%85%E8%8A%82%E7%82%B9%E7%AD%9B%E9%80%89">正则表达式</a> 对节点进行筛选，筛选范围受限于所选择的订阅</li>
+</ul>
+</li>
+<li>
+<p>快捷进入代理分组</p>
+<ul>
+<li>首页下拉，可以快捷进入代理分组界面</li>
+<li>首页本地节点上方设有指示牌图标，点击该图标可以快捷进入代理分组界面，软件版本需大于等于 <strong>2.2.65 (2614)</strong></li>
+</ul>
+</li>
+<li>
+<p>代理分组其他设置参数</p>
+<ul>
+<li>interval：测试周期。指定间隔多长时间后需要重新发起测试</li>
+<li>timeout：超时时间。如果测试在超时前未完成，放弃测试</li>
+<li>tolerance：公差。只有当新优胜者的分数高于旧优胜者的分数加上公差时，才会进行线路更换</li>
+<li>url：测试地址。指定要测试的URL</li>
+<li>hidden：<a href="#%E9%9A%90%E8%97%8F%E4%BB%A3%E7%90%86%E5%88%86%E7%BB%84">隐藏代理分组</a></li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">代理分组类型</a></h3>
+<blockquote>
+<ul>
+<li>
+<p><strong>select</strong>：允许用户手动选择一个子策略，可以指定其他代理分组或代理服务器。纯文本中设置为 <code class="notranslate">0</code> 表示第一个策略，<code class="notranslate">1</code> 表示第二个策略，<code class="notranslate">2</code> 表示第三个策略，以此类推</p>
+</li>
+<li>
+<p><strong>url-test</strong>：根据设定的自动测试周期和结果自动切换延迟最低的节点</p>
+</li>
+<li>
+<p><strong>fallback</strong>：节点不可用时自动切换其他可用节点，可用节点范围被上次自动测试结果所限</p>
+</li>
+<li>
+<p><strong>load-balance</strong>：不同规则的请求使用分组里的不同节点进行 <a href="#%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1">负载均衡</a>，相同的域名会使用同一个节点</p>
+</li>
+<li>
+<p><strong>random</strong>：随机使用分组里的不同节点进行连接，相同的域名可能使用不同的节点，该类型也可以用作 <a href="#%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1">负载均衡</a></p>
+</li>
+</ul>
+<blockquote>
+<p>除 <strong>select</strong> 类型外，其余代理分组类型均基于自动测试机制运行。当连接命中此类分组时，系统将优先使用最近一次测试结果选定的节点，并按照该分组的设定执行下一轮测试</p>
+<p>在两次测试间隔期间，若当前节点状态发生变化（例如节点变为不可用），可能出现仍使用失效节点的情况。对此，可酌情使用 <strong><a href="#%E5%90%AF%E7%94%A8%E5%9B%9E%E9%80%80">启用回退</a></strong> 功能，以在节点异常时保障连接可用性。但需要详细阅读回退功能的详细说明</p>
+<p>自动测试类型的代理分组允许用户在界面中临时手动选择了该类分组所包含的节点，但实际连接行为仍受分组自身设置约束，且 UI 中显示的测试结果并不影响该分组在背景中的自动测试，代理分组将继续根据自动测试结果自动发生切换。基于上述特性，<strong>除 select 类型外，不建议在此类代理分组中嵌套包含其他代理分组</strong>，以避免服务器节点选择逻辑复杂化或出现不符合预期的切换行为</p>
+</blockquote>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">隐藏代理分组</a></h3>
+<blockquote>
+<p>自 <code class="notranslate">Shadowrocket Version 2.2.66 (2649)</code> 版本开始，新增参数 <code class="notranslate">hidden=1</code>，可用于在图形界面隐藏不希望展示的代理分组。当 <code class="notranslate">hidden</code> 设置为数值 <code class="notranslate">1</code> 时，表示隐藏当前代理分组；当设置为 <code class="notranslate">0</code> 时表示不隐藏，等同于不设置此参数。该功能仅提供纯文本编辑设置方式，无图形设置界面</p>
+<p>示例：</p>
+<div class="highlight highlight-source-ruby"><pre class="notranslate"><span class="pl-s1">香港节点</span> <span class="pl-c1">=</span> <span class="pl-en">url</span>-<span class="pl-en">test</span><span class="pl-kos">,</span><span class="pl-c1">HK</span> <span class="pl-c1">01</span><span class="pl-kos">,</span><span class="pl-c1">HK</span> <span class="pl-c1">02</span><span class="pl-kos">,</span><span class="pl-c1">HK</span> <span class="pl-c1">03</span><span class="pl-kos">,</span><span class="pl-en">policy</span>-<span class="pl-en">select</span>-<span class="pl-s1">name</span><span class="pl-c1">=</span><span class="pl-c1">HK</span> <span class="pl-c1">01</span><span class="pl-kos">,</span><span class="pl-s1">interval</span><span class="pl-c1">=</span><span class="pl-c1">600</span><span class="pl-kos">,</span><span class="pl-s1">tolerance</span><span class="pl-c1">=</span><span class="pl-c1">100</span><span class="pl-kos">,</span><span class="pl-s1">timeout</span><span class="pl-c1">=</span><span class="pl-c1">5</span><span class="pl-kos">,</span><span class="pl-s1">url</span><span class="pl-c1">=</span><span class="pl-en">http</span>:/<span class="pl-sr">/www.gstatic.com/generate</span><span class="pl-en">_204</span><span class="pl-kos">,</span><span class="pl-s1">hidden</span><span class="pl-c1">=</span><span class="pl-c1">1</span></pre></div>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">负载均衡</a></h3>
+<blockquote>
+<p><a href="#%E4%BB%A3%E7%90%86%E5%88%86%E7%BB%84%E7%B1%BB%E5%9E%8B">代理分组类型</a> 中的 <code class="notranslate">load-balance</code>、<code class="notranslate">random</code> 表示将连接请求随机使用分组里的节点进行连接，能够尽可能将流量平均分配给所有子策略或代理。其中 <code class="notranslate">load-balance</code> 会将相同的域名使用同一个节点进行连接，<code class="notranslate">random</code> 会将所有请求使用随机节点进行连接，不区分是否是同一个域名</p>
+<p>使用负载均衡的方法：</p>
+<p>点击配置文件的 <code class="notranslate">ⓘ</code> 图标 &gt; 代理分组 &gt; 右上角 <code class="notranslate">➕</code>，类型选择 <code class="notranslate">load-balance</code> 或者 <code class="notranslate">random</code></p>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">规则集URL</a></h3>
+<blockquote>
+<p>配置 &gt; 配置文件 &gt; 编辑配置 &gt; 规则集 URL</p>
+<p>当前使用的所有远程规则资源的展示页面，其后显示的数字为当前成功下载的数量和总共包含的数量。进入后所显示的 ✅ 表示当前规则下载成功，❎ 表示当前规则下载失败。点击相应地址可重新拉取并弹出状态提示，但不会重新编译更新配置文件，点击 <a href="#%E4%BD%BF%E7%94%A8%E9%85%8D%E7%BD%AE">使用配置</a> / <a href="#%E7%BC%96%E8%AF%91%E9%85%8D%E7%BD%AE">编译配置</a>，可以对当前所有 URL 进行更新并重新编译更新配置文件</p>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">脚本URL</a></h3>
+<blockquote>
+<p>配置 &gt; 配置文件 &gt; 编辑配置 &gt; 脚本 URL</p>
+<p>当前使用的所有远程脚本资源的展示页面，其后显示的数字为当前成功下载的数量和总共包含的数量。进入后所显示的 ✅ 表示当前脚本下载成功，❎ 表示当前脚本下载失败。点击相应地址可重新拉取并弹出状态提示，但不会重新编译更新配置文件，点击 <a href="#%E4%BD%BF%E7%94%A8%E9%85%8D%E7%BD%AE">使用配置</a> / <a href="#%E7%BC%96%E8%AF%91%E9%85%8D%E7%BD%AE">编译配置</a>，可以对当前所有 URL 进行更新并重新编译更新配置文件</p>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">复制配置文件</a></h3>
+<blockquote>
+<p>配置 &gt; 点击配置文件 &gt; 编辑配置 &gt; 复制</p>
+<p>点击该选项可将当前配置生成一份备份并命名为 <code class="notranslate">*-copy.conf</code></p>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">替换策略</a></h3>
+<blockquote>
+<p>配置 &gt; 点击配置文件 &gt; 编辑配置 &gt; 替换策略</p>
+<ul>
+<li>点击查找右侧的 <code class="notranslate">ⓘ</code> 图标选择准备替换的策略，或输入准备替换的策略</li>
+<li>点击替换右侧的 <code class="notranslate">ⓘ</code> 图标选择欲替换成的策略，或输入欲替换成的策略</li>
+<li>点击完成后替换完成</li>
+</ul>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">测试规则</a></h3>
+<blockquote>
+<p>配置 &gt; 测试规则</p>
+<p>配置 &gt; 点击配置文件 &gt; 编辑配置 &gt; 测试规则</p>
+<ul>
+<li>基于当前配置进行规则策略测试</li>
+</ul>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">Hosts</a></h3>
+<blockquote>
+<p>Shadowrocket 支持本地自定义 DNS 映射。包含 <strong>本地值</strong> 和 <strong>DNS服务器</strong> 两种设定方式。在 <a href="#%E7%BC%96%E8%BE%91%E7%BA%AF%E6%96%87%E6%9C%AC">纯文本编辑</a> 模式中位于 <a href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6">配置文件</a> 的 <code class="notranslate">[Host]</code> 字段。在默认情况下，对于代理类的 DNS 解析始终在远端服务器上执行，支持使用 <code class="notranslate">use-local-host-item-for-proxy</code> 等 <a href="#%E9%9A%90%E5%BC%8F%E5%8F%82%E6%95%B0">隐式参数</a></p>
+<blockquote>
+<ul>
+<li><strong>UI 编辑</strong>：点击配置文件的 <code class="notranslate">ⓘ</code> 图标 &gt; Hosts</li>
+<li><strong>文本编辑</strong>：点击配置文件 &gt; 编辑纯文本 &gt; <code class="notranslate">[Host]</code></li>
+</ul>
+</blockquote>
+<p>编辑示例：<br></p>
+<blockquote>
+<ul>
+<li>将特定域名映射到指定 IP 地址，绕过 DNS 解析，直接控制域名到 IP 的对应关系<br><br>
+<code class="notranslate">example.com = 1.2.3.4</code></li>
+<li>将特定域名指定特定的 DNS 服务器进行解析<br><br>
+<code class="notranslate">example.com = server:1.2.3.4</code></li>
+</ul>
+</blockquote>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">URL重写</a></h3>
+<blockquote>
+<p>修改 HTTP(S) 请求/响应，动态拦截并修改请求的 URL 或内容，在 <a href="#%E7%BC%96%E8%BE%91%E7%BA%AF%E6%96%87%E6%9C%AC">纯文本编辑</a> 模式中位于 <a href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6">配置文件</a> 的 <code class="notranslate">[URL Rewrite]</code> 字段。重写类型包含 <code class="notranslate">HEADER</code>、<code class="notranslate">302</code>、<code class="notranslate">307</code> 以及其他支持的代理策略。支持使用 <code class="notranslate">always-reject-url-rewrite</code> 等 <a href="#%E9%9A%90%E5%BC%8F%E5%8F%82%E6%95%B0">隐式参数</a></p>
+<blockquote>
+<ul>
+<li><strong>UI 编辑</strong>：点击配置文件的 <code class="notranslate">ⓘ</code> 图标 &gt; URL重写</li>
+<li><strong>文本编辑</strong>：点击配置文件 &gt; 编辑纯文本 &gt; <code class="notranslate">[URL Rewrite]</code></li>
+</ul>
+</blockquote>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">头部重写</a></h3>
+<blockquote>
+<p>支持 <strong>请求头/响应头</strong> 重写功能，即标头重写，包含 <code class="notranslate">del</code>、<code class="notranslate">add</code>、<code class="notranslate">replace</code>、<code class="notranslate">replace-regex</code> 几种操作。在 <a href="#%E7%BC%96%E8%BE%91%E7%BA%AF%E6%96%87%E6%9C%AC">纯文本编辑</a> 模式中位于 <a href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6">配置文件</a> 的 <code class="notranslate">[Header Rewrite]</code> 字段</p>
+<blockquote>
+<ul>
+<li><strong>UI 编辑</strong>：点击配置文件的 <code class="notranslate">ⓘ</code> 图标 &gt; 头部重写</li>
+<li><strong>文本编辑</strong>：点击配置文件 &gt; 编辑纯文本 &gt; <code class="notranslate">[Header Rewrite]</code></li>
+</ul>
+</blockquote>
+<p><strong>类型：</strong></p>
+<blockquote>
+<p><code class="notranslate">http-request</code>：作用于请求头<br><br>
+<code class="notranslate">http-response</code>：作用于响应头</p>
+</blockquote>
+<p><strong>行为：</strong></p>
+<blockquote>
+<p><code class="notranslate">header-del</code>：从请求头或响应头中删除指定字段<br><br>
+<code class="notranslate">header-add</code>：向请求头或响应头中添加字段及其对应的值<br><br>
+<code class="notranslate">header-replace</code>：在请求头或响应头中替换指定字段的值<br><br>
+<code class="notranslate">header-replace-regex</code>：使用正则表达式在请求头或响应头中替换字段的值</p>
+</blockquote>
+<p><strong>表达式：</strong></p>
+<blockquote>
+<p>正则表达式用于匹配目标网站的 URL</p>
+</blockquote>
+<p><strong>常用字段：</strong></p>
+<blockquote>
+<p><code class="notranslate">Content-Type</code>、<code class="notranslate">User-Agent</code>、<code class="notranslate">Accept-Language</code>、<code class="notranslate">Authorization</code>、<code class="notranslate">Host</code>、<code class="notranslate">Referer</code>、<code class="notranslate">Cookie</code>、<code class="notranslate">X-Forwarded-For</code>、<code class="notranslate">Location</code> 等</p>
+</blockquote>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">正文重写</a></h3>
+<blockquote>
+<p>支持 <strong>请求体/响应体</strong> 重写功能，支持使用 <code class="notranslate">jq</code> 语法。在 <a href="#%E7%BC%96%E8%BE%91%E7%BA%AF%E6%96%87%E6%9C%AC">纯文本编辑</a> 模式中位于 <a href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6">配置文件</a> 的 <code class="notranslate">[Body Rewrite]</code> 字段</p>
+<blockquote>
+<ul>
+<li><strong>UI 编辑</strong>：点击配置文件的 <code class="notranslate">ⓘ</code> 图标 &gt; 正文重写</li>
+<li><strong>文本编辑</strong>：点击配置文件 &gt; 编辑纯文本 &gt; <code class="notranslate">[Body Rewrite]</code></li>
+</ul>
+</blockquote>
+<p><strong>类型：</strong></p>
+<blockquote>
+<p><code class="notranslate">http-request</code>：作用于请求体<br><br>
+<code class="notranslate">http-response</code>：作用于响应体<br><br>
+<code class="notranslate">http-request-jq</code>：使用 <code class="notranslate">jq</code> 语法处理请求体<br><br>
+<code class="notranslate">http-response-jq</code>：使用 <code class="notranslate">jq</code> 语法处理响应体</p>
+</blockquote>
+<p><strong>表达式：</strong></p>
+<blockquote>
+<p>正则表达式用于匹配目标网站的 URL</p>
+</blockquote>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">本地映射</a></h3>
+<blockquote>
+<p>支持 <strong>本地映射</strong> 功能，在 <a href="#%E7%BC%96%E8%BE%91%E7%BA%AF%E6%96%87%E6%9C%AC">纯文本编辑</a> 模式中位于 <a href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6">配置文件</a> 的 <code class="notranslate">[Map Local]</code> 字段</p>
+<blockquote>
+<ul>
+<li><strong>UI 编辑</strong>：点击配置文件的 <code class="notranslate">ⓘ</code> 图标 &gt; 本地映射</li>
+<li><strong>文本编辑</strong>：点击配置文件 &gt; 编辑纯文本 &gt; <code class="notranslate">[Map Local]</code></li>
+</ul>
+</blockquote>
+<p><strong>类型：</strong></p>
+<blockquote>
+<p><code class="notranslate">text</code>：返回文本类型响应<br><br>
+<code class="notranslate">file</code>：返回文件类型响应。文件内容不一定是本地文件，支持引用远程文件地址<br><br>
+<code class="notranslate">tiny-gif</code>：返回一个 1x1 像素的 GIF 图片<br><br>
+<code class="notranslate">base64</code>：返回 base64 编码数据类型响应</p>
+</blockquote>
+<p><strong>表达式：</strong></p>
+<blockquote>
+<p>正则表达式用于匹配目标网站的 URL</p>
+</blockquote>
+<p><strong>数据：</strong></p>
+<blockquote>
+<p>填写所需返回的数据</p>
+</blockquote>
+<p><strong>额外请求头：</strong></p>
+<blockquote>
+<p>可选返回额外请求头</p>
+</blockquote>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">HTTPS解密</a></h3>
+<blockquote>
+<p>对正在使用的配置开启 HTTPS 解密才能使包含 MITM 的模块完整生效，不包含 MITM 的模块除外<br></p>
+<p>打开HTTPS解密方法：</p>
+<ul>
+<li>点击配置文件的 <code class="notranslate">ⓘ</code> 图标 &gt; HTTPS 解密 &gt; 证书 &gt; 生成新的 CA 证书 &gt; 安装证书</li>
+<li>系统设置 &gt; 已下载描述文件 &gt; 安装</li>
+<li>系统设置 &gt; 通用 &gt; 关于本机 &gt; 证书信任设置 &gt; 开启对应 Shadowrocket 证书信任</li>
+</ul>
+<blockquote>
+<p>自版本 <code class="notranslate">2.2.81 (3096-3099)</code> 起支持通过 HTTP/2 协议进行中间人攻击来解密 HTTPS 流量</p>
+<ul>
+<li>点击配置文件的 <code class="notranslate">ⓘ</code> 图标 &gt; HTTPS 解密 &gt; 通过 HTTP/2 进行中间人攻击（MitM）</li>
+<li>或者在配置文件、模块纯文本模式中的 <code class="notranslate">[MITM]</code> 字段中使用 <code class="notranslate">h2 = true</code> 表示启用</li>
+</ul>
+<p>若模块中包含此命令，则会覆盖配置文件中的相关设置</p>
+</blockquote>
+<p><strong>HTTPS解密仅对启用此功能的配置文件生效，若切换或更换配置文件需要对新配置文件重新 <a href="#https%E8%A7%A3%E5%AF%86">开启解密</a>，为避免重复安装证书可使用 <a href="#%E8%AF%81%E4%B9%A6%E6%A8%A1%E5%9D%97">证书模块</a></strong></p>
+<p><strong>若多终端经 iCloud 使用同一个配置文件，需要使用证书 <code class="notranslate">ⓘ</code> 图标的复制粘贴功能将同一个证书在多个终端上进行安装信任</strong></p>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">脚本</a></h3>
+<blockquote>
+<p>使用 JavaScript 拓展 Shadowrocket 的功能，在 <a href="#%E7%BC%96%E8%BE%91%E7%BA%AF%E6%96%87%E6%9C%AC">纯文本编辑</a> 模式中位于 <a href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6">配置文件</a> 的 <code class="notranslate">[Script]</code> 字段</p>
+<blockquote>
+<ul>
+<li><strong>UI 编辑</strong>：点击配置文件的 <code class="notranslate">ⓘ</code> 图标 &gt; 脚本</li>
+<li><strong>文本编辑</strong>：点击配置文件 &gt; 编辑纯文本 &gt; <code class="notranslate">[Script]</code></li>
+</ul>
+</blockquote>
+<p><strong>类型：</strong></p>
+<blockquote>
+<p><code class="notranslate">http-request</code>：使用脚本修改 HTTP 请求<br><br>
+<code class="notranslate">http-response</code>：使用脚本修改 HTTP 响应<br><br>
+<code class="notranslate">event</code>：在指定事件发生时运行脚本<br><br>
+<code class="notranslate">rule</code>：使用脚本作为规则使用<br><br>
+<code class="notranslate">dns</code>：使用脚本作为DNS 解析器<br><br>
+<code class="notranslate">cron</code>：在指定时间运行脚本</p>
+</blockquote>
+<p><strong>引擎：</strong></p>
+<blockquote>
+<p><code class="notranslate">auto</code>：自动选择脚本引擎<br><br>
+<code class="notranslate">jsc</code>：适用于小型、简单、频繁调用的脚本，例如规则、DNS等<br><br>
+<code class="notranslate">webview</code>：适用于复杂、高内存需求的脚本，例如解析 MB 级别的 JSON</p>
+<p>若脚本类型为 <code class="notranslate">http-request</code> 或 <code class="notranslate">http-response</code>，则在配置 <code class="notranslate">engine=auto</code> 参数时，系统将默认调用 <code class="notranslate">WebView</code> 引擎，而非 <code class="notranslate">JSC</code> 引擎。因此，从使用规范与一致性角度考虑，该参数建议明确指定类型，以确保行为符合预期</p>
+</blockquote>
+<p><strong>其他参数：</strong></p>
+<blockquote>
+<p>参见软件内的具体选项及释义</p>
+</blockquote>
+<p>脚本文本示例如下：</p>
+<blockquote>
+<div class="highlight highlight-source-ruby"><pre class="notranslate"><span class="pl-kos">[</span><span class="pl-v">Script</span><span class="pl-kos">]</span>
+<span class="pl-s1">script</span> <span class="pl-c1">=</span> <span class="pl-s1">type</span><span class="pl-c1">=</span><span class="pl-en">rule</span><span class="pl-kos">,</span><span class="pl-s1">script</span>-<span class="pl-s1">path</span><span class="pl-c1">=</span><span class="pl-en">rule</span><span class="pl-kos">.</span><span class="pl-en">js</span></pre></div>
+</blockquote>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">模块</a></h3>
+<blockquote>
+<p>模块是指为 Shadowrocket 提供额外功能的插件或者扩展项，一般是以增强或自定义软件的使用体验为出发点。模块的写法与 <a href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6">配置文件</a> 相同，且模块的 <a href="#%E8%A7%84%E5%88%99%E4%BC%98%E5%85%88%E7%BA%A7">规则优先级</a> 高于配置文件。一般情况下，模块仅包含完整配置文件格式中的特定部分，以实现特定的特殊效果且不影响配置文件的其他功能。用户可以在模块里另外设置 <a href="#%E9%80%9A%E7%94%A8%E5%8F%82%E6%95%B0">通用参数</a> 以及添加 <a href="#%E6%B7%BB%E5%8A%A0%E8%A7%84%E5%88%99">规则</a>、<a href="#hosts">Hosts</a>、<a href="#url%E9%87%8D%E5%86%99">URL重写</a>、<a href="#%E8%AF%81%E4%B9%A6%E6%A8%A1%E5%9D%97">证书内容</a>、解密主机名、<a href="#%E8%84%9A%E6%9C%AC">脚本</a> 等内容</p>
+<p><strong>下载远程模块</strong></p>
+<blockquote>
+<ul>
+<li>配置 &gt; 模块 &gt; 右上角 <code class="notranslate">➕</code> &gt; 填写链接 &gt; 下载</li>
+</ul>
+</blockquote>
+<p><strong>本地新建模块</strong></p>
+<blockquote>
+<ul>
+<li>
+<p>配置 &gt; 模块 &gt; 新建模块 &gt; 编辑后保存</p>
+<p>模块 <code class="notranslate">[MITM]</code> 部分需要加 <code class="notranslate">%APPEND%</code>，表示把内容插入到配置中，不加时会覆盖配置中对应内容，并影响其他模块功能</p>
+<div class="highlight highlight-source-ruby"><pre class="notranslate"><span class="pl-kos">[</span><span class="pl-c1">MITM</span><span class="pl-kos">]</span>
+<span class="pl-s1">hostname</span> <span class="pl-c1">=</span> %<span class="pl-c1">APPEND</span>% <span class="pl-en">主机名</span></pre></div>
+</li>
+</ul>
+</blockquote>
+<p><strong>模块管理</strong></p>
+<blockquote>
+<ul>
+<li>
+<p>配置 &gt; 模块 &gt; 模块区域右上角 <code class="notranslate">···</code></p>
+<p>可以对模块顺序进行重新排序，并可以选择并批量删除/启用/禁用选定的模块</p>
+</li>
+</ul>
+</blockquote>
+<p><strong>备注</strong></p>
+<blockquote>
+<ul>
+<li>对正在使用的配置 <a href="#https%E8%A7%A3%E5%AF%86">开启 HTTPS 解密</a> 或使用 <a href="#%E8%AF%81%E4%B9%A6%E6%A8%A1%E5%9D%97">证书模块</a>，才能使包含 MITM 的模块完整生效，不包含 MITM 的模块除外</li>
+<li>因模块可能包含不同规则，所以大多数模块仅在 <a href="#%E5%85%A8%E5%B1%80%E8%B7%AF%E7%94%B1%E5%8C%BA%E5%88%AB">全局路由</a> 设为配置时生效，不包含规则类的模块除外</li>
+<li>iOS 15 之后，NE的内存限制由 15 MB 增加到了 50 MB，低版本系统可能因内存不足导致 <a href="#%E6%A8%A1%E5%9D%97%E5%A4%B1%E6%95%88">模块失效</a> 或 <a href="#vpn%E8%87%AA%E5%8A%A8%E6%96%AD%E5%BC%80">VPN 自动断开</a></li>
+<li>若出现以下问题可以查看相应说明：<a href="#%E6%A8%A1%E5%9D%97%E6%B6%88%E5%A4%B1">模块消失</a>、<a href="#%E6%A8%A1%E5%9D%97%E5%A4%B1%E6%95%88">模块失效</a></li>
+</ul>
+</blockquote>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">编辑参数</a></h3>
+<blockquote>
+<p>配置 &gt; 模块 &gt; 点击模块 &gt; 编辑参数 &gt; 按需填写或修改</p>
+<p>Shadowrocket 的 <strong>编辑参数 / 传递参数</strong> 功能，是用于对请求或响应中的参数进行动态修改的一个高级功能，可用于配合模块中的 <code class="notranslate">URL Rewrite</code>、<code class="notranslate">Script</code>、<code class="notranslate">MITM</code> 等代码使用，目的是实现对网络请求的精准控制与定制化处理。编辑参数所修改或填写的内容不会因为模块更新而丢失，若开启了 iCloud，其自定义参数保存在 <code class="notranslate">iCloud - Shadowrocket - Modules</code> 内与模块同名的 <code class="notranslate">*.meta</code> 文件内</p>
+<p>示例：</p>
+<div class="highlight highlight-source-ruby"><pre class="notranslate"><span class="pl-c">#!name=证书模块</span>
+<span class="pl-c">#!desc=需要以编辑参数的方式启用并填写完整</span>
+<span class="pl-c">#!arguments=证书模块:false, 证书内容:此处粘贴有效的证书内容, 证书密码:此处粘贴有效的证书密码</span>
+<span class="pl-c">#!arguments-desc=证书模块：启用并填写证书内容方可生效\n\n证书内容：粘贴自有效证书\n\n证书密码：若默认密码是Shadowrocket则可不动</span>
+
+<span class="pl-kos">[</span><span class="pl-c1">MITM</span><span class="pl-kos">]</span>
+<span class="pl-en">enable</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-kos">{</span><span class="pl-kos">{</span><span class="pl-en">证书模块</span><span class="pl-kos">}</span><span class="pl-kos">}</span><span class="pl-kos">}</span>
+<span class="pl-en">ca</span>-<span class="pl-en">passphrase</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-kos">{</span><span class="pl-kos">{</span><span class="pl-en">证书密码</span><span class="pl-kos">}</span><span class="pl-kos">}</span><span class="pl-kos">}</span>
+<span class="pl-en">ca</span>-<span class="pl-en">p12</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-kos">{</span><span class="pl-kos">{</span><span class="pl-en">证书内容</span><span class="pl-kos">}</span><span class="pl-kos">}</span><span class="pl-kos">}</span></pre></div>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">证书模块</a></h3>
+<blockquote>
+<p>在实际使用软件时如果需要切换或更换 <a href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6">配置文件</a>，且原配置已开启过 <a href="#https%E8%A7%A3%E5%AF%86">HTTPS 解密</a>，则需要对新的配置文件重新安装并信任证书，才可使解密继续生效。为免除重复安装 CA 证书，可以选择使用证书模块。证书模块是一组手动添加已生效解密证书的模块，由于模块的优先级高于配置文件，可以使解密状态不受更换配置的影响。其原理参见：<a href="#%E6%A8%A1%E5%9D%97">模块</a></p>
+<ul>
+<li>
+<p>新建模块：</p>
+<p>软件 <strong>配置 &gt; 模块 &gt; 新建模块</strong>，复制以下内容并粘贴进去保存备用：</p>
+<div class="highlight highlight-source-ruby"><pre class="notranslate"><span class="pl-c">#!name=证书（名字可更改）</span>
+<span class="pl-kos">[</span><span class="pl-c1">MITM</span><span class="pl-kos">]</span>
+<span class="pl-s1">enable</span><span class="pl-c1">=</span><span class="pl-c1">true</span>
+
+<span class="pl-c"># 在下方 “ca-passphrase=” 后面粘贴证书密码</span>
+<span class="pl-en">ca</span>-<span class="pl-s1">passphrase</span><span class="pl-c1">=</span>
+
+<span class="pl-c"># 在下方 “ca-p12=” 后面粘贴证书内容</span>
+<span class="pl-en">ca</span>-<span class="pl-s1">p12</span><span class="pl-c1">=</span><span class="pl-en"></span></pre></div>
+</li>
+<li>
+<p>点击「已安装证书的配置文件」后面的 <code class="notranslate">ⓘ</code> 图标 &gt; HTTPS 解密 &gt; 证书后面的 <code class="notranslate">ⓘ</code> 图标 &gt; 复制</p>
+</li>
+<li>
+<p>将复制的证书内容粘贴至第一步创建的证书模块内的 <code class="notranslate">ca-p12=</code> 后面保存</p>
+</li>
+</ul>
+<blockquote>
+<p>证书模块原本可以省略 <code class="notranslate">ca-passphrase</code> 这行参数。但由于引用的配置文件可能已经包含了证书密码，且证书密码可能不是 <code class="notranslate">Shadowrocket</code>，为防止出错，因此才增加 <code class="notranslate">ca-passphrase</code> 参数来覆盖引用的配置文件的证书密码</p>
+</blockquote>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">身份证书密码</a></h3>
+<blockquote>
+<p>Shadowrocket 安装 CA 证书时，如果遇到「输入证书 <strong>身份证书</strong> 的密码」页面，可以尝试输入：Shadowrocket</p>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">编写本地节点</a></h3>
+<blockquote>
+<p>Shadowrocket 支持在 <a href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6">配置文件</a> 中编写本地节点，但该操作方式仅是为了兼容部分其他类型的配置文件，不能当作 Shadowrocket <a href="#%E6%B7%BB%E5%8A%A0%E8%8A%82%E7%82%B9">添加节点</a> 的优先选择</p>
+<p><strong>Shadowsocks类型</strong></p>
+<blockquote>
+<p>节点名称=ss,地址,端口,password=密码,其他参数(如method=aes-256-cfb,obfs=websocket,plugin=none)</p>
+</blockquote>
+<p><strong>Vmess类型</strong></p>
+<blockquote>
+<p>节点名称=vmess,地址,端口,password=密码,其他参数(如alterId=0,method=auto,obfs=websocket,tfo=1)</p>
+</blockquote>
+<p><strong>VLESS类型</strong></p>
+<blockquote>
+<p>节点名称=vless,地址,端口,password=密码,tls=true,其他参数(如obfs=websocket,peer=example.com)</p>
+</blockquote>
+<p><strong>HTTP/HTTPS/Socks5/Socks5 Over TLS等类型</strong></p>
+<blockquote>
+<p>节点名称=http,地址,端口,用户,密码<br>
+节点名称=https,地址,端口,用户,密码<br>
+节点名称=socks5,地址,端口,用户,密码<br>
+节点名称=socks5-tls,地址,端口,用户,密码,skip-common-name-verify=true</p>
+</blockquote>
+<p><strong>Trojan类型</strong></p>
+<blockquote>
+<p>节点名称=trojan,地址,端口,password=密码,其他参数(如allowInsecure=1,peer=example.com)</p>
+</blockquote>
+<p><strong>Hysteria类型</strong></p>
+<blockquote>
+<p>节点名称=hysteria,地址,端口,auth=密码,obfsParam=混淆,protocol=协议,udp=1,其他参数(如peer=example.com,alpn=h2,upmbps=100,downmbps=100)</p>
+</blockquote>
+<p><strong>Hysteria2类型</strong></p>
+<blockquote>
+<p>节点名称=hysteria2,地址,端口,auth=密码,obfsParam=混淆,udp=1,其他参数(如peer=example.com,alpn=h3)</p>
+</blockquote>
+<p><strong>TUIC类型</strong></p>
+<blockquote>
+<p>节点名称=tuic,地址,端口,password=密码,udp=1,其他参数(如user=uuid值,peer=example.com,alpn=h2)</p>
+</blockquote>
+<p><strong>Juicity类型</strong></p>
+<blockquote>
+<p>节点名称=juicity,地址,端口,password=密码,udp=1,其他参数(如user=uuid值,peer=example.com,alpn=h2)</p>
+</blockquote>
+<p><strong>WireGuard类型</strong></p>
+<blockquote>
+<p>节点名称=wireguard,地址,端口,privateKey=私钥,publicKey=公钥,ip=子网IP,udp=1,其他参数(如dns=1.1.1.1,mtu=1350,keepalive=40,reserved=1/2/3)</p>
+</blockquote>
+<p><strong>Snell v2 类型</strong></p>
+<blockquote>
+<p>节点名称=snell,地址,端口,password=密码,udp=1,其他参数(如obfs=http,obfs-host=example.com,obfs-uri=/abc)</p>
+</blockquote>
+</blockquote>
+<hr>
+<h2><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">数据页面</a></h2>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">代理日志</a></h3>
+<blockquote>
+<p><strong>代理日志</strong> 记录了网络活动过程中 Shadowrocket 处理请求的具体信息</p>
+<ul>
+<li>
+<p>数据 &gt; 代理 &gt; 启用日志记录</p>
+</li>
+<li>
+<p>产生网络活动时，返回 <strong>数据 &gt; 代理</strong> 页面查看日志文件</p>
+</li>
+<li>
+<p>每条记录包含信息：</p>
+<ul>
+<li>请求 URL</li>
+<li>请求匹配的规则策略</li>
+<li>请求传输协议</li>
+<li>请求发送时间</li>
+</ul>
+</li>
+<li>
+<p>记录显示 <code class="notranslate">MITM</code>，表示请求域名已启用解密</p>
+</li>
+<li>
+<p>点击每条记录查看详情，详情页右上角 <code class="notranslate">•••</code> 可以选择类型添加规则</p>
+</li>
+<li>
+<p><strong>数据 &gt; 代理</strong> 页面，右上角 <code class="notranslate">•••</code> 可以手动删除所有日志文件。日志文件页面，右上角 <code class="notranslate">•••</code> 可以选择导出</p>
+<p><strong>数据 &gt; 自动删除 &gt; 打开</strong>，程序会自动删除7天前的日志文件。Shadowrocket 已连接状态，手动删除将保留最新的日志文件，未连接时，手动删除所有</p>
+</li>
+</ul>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">DNS日志</a></h3>
+<blockquote>
+<p><strong>DNS 日志</strong> 记录了网络活动过程中 DNS 服务器处理域名查询请求的具体信息</p>
+<ul>
+<li>
+<p>数据 &gt; 代理 &gt; DNS &gt; 启用日志记录</p>
+</li>
+<li>
+<p>产生网络活动时，返回 <strong>数据 &gt; DNS</strong> 页面查看日志文件</p>
+</li>
+<li>
+<p>每条记录包含信息：</p>
+<ul>
+<li>请求域名</li>
+<li>查询结果</li>
+<li>DNS 响应时间</li>
+<li>处理请求的 DNS</li>
+</ul>
+</li>
+<li>
+<p>旗帜是根据返回IP地址的地理位置信息自动显示</p>
+</li>
+<li>
+<p><strong>覆写 DNS</strong> 不可用或未返回有效响应时，将回退至 <strong>备用 DNS</strong> 来查询域名</p>
+<p><strong>记录信息中如果响应时间超过2秒，意味着系统正在触发回退机制</strong></p>
+</li>
+</ul>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">iCloud自动同步</a></h3>
+<blockquote>
+<p>Shadowrocket 支持将服务器节点、配置文件、模块和脚本文件等数据类型自动同步至 iCloud 云端</p>
+<ul>
+<li>
+<p>数据 &gt; iCloud &gt; 自动同步 &gt; 打开</p>
+</li>
+<li>
+<p>设备 <strong>设置 &gt; 账号 &gt; iCloud</strong>，确保使用 iCloud 的 APP 列表中已经开启 Shadowrocket 和 <strong>iCloud 云盘</strong> 项目，否则会出现 <strong>iCloud 自动同步失败</strong> 的提示</p>
+</li>
+<li>
+<p>同步成功时，点击 <strong>iCloud 文件</strong> 可以看到存储云端的配置文件</p>
+</li>
+<li>
+<p><strong>文件app &gt; iCloud 云盘 &gt; Shadowrocket</strong>，可以看到存储云端的所有数据。其中的 <strong>shadowrocket.v2.model</strong> 文件包含服务器节点的配置信息</p>
+</li>
+<li>
+<p>iCloud 服务中断、网络连接问题以及其他复杂原因可能导致 iCloud 同步异常，这种情况建议选择手动删除 iCloud 备份并重新同步数据</p>
+<p><strong>如果用户删除首页某个节点后发现它又自动恢复，可以尝试以下解决方法：数据 &gt; iCloud，服务器节点下面点击删除 iCloud 备份和同步服务器节点</strong></p>
+</li>
+<li>
+<p>添加的 <strong>场景</strong> 和 <strong>分组</strong> 不属于 iCloud 自动同步的数据类型，需要手动备份下载，才能在设备间共享数据</p>
+</li>
+</ul>
+</blockquote>
+<div class="markdown-alert markdown-alert-tip"><p class="markdown-alert-title"><svg class="octicon octicon-light-bulb mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p><p>由于 iCloud 的同步机制存在一定限制，在使用 iCloud 进行多设备数据同步时，建议采用以下方式：</p>
+<ul>
+<li><strong>主设备</strong>：开启自动同步</li>
+<li><strong>副设备</strong>：保持关闭自动同步，仅在需要更新数据时手动执行同步操作</li>
+</ul>
+<p>这种方式可以有效降低多设备同时同步所导致的数据冲突或覆盖问题</p>
+</div>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">节点数据管理</a></h3>
+<blockquote>
+<p><strong>导出节点</strong>：将首页的所有节点数据整合成一个 JSON 文件，选择存储在本地或云端，也可以通过其他共享方式传输文件</p>
+<p><strong>导入节点</strong>：将存储在本地或云端 JSON 文件中的节点数据解析并添加到首页</p>
+<p><strong>删除本地节点</strong>：一键删除首页所有节点数据</p>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">流量统计信息</a></h3>
+<blockquote>
+<p><strong>统计</strong> 是 Shadowrocket 开启连接后接管设备所有网络传输的流量统计信息</p>
+<blockquote>
+<ul>
+<li>数据 &gt; 统计</li>
+<li>统计包含信息：
+<ul>
+<li>开始时间</li>
+<li>连接时间</li>
+<li>Wi-Fi 和蜂窝数据的上下行流量</li>
+<li>流量分流的柱形图统计</li>
+</ul>
+</li>
+<li>默认记录所有流量统计信息。打开 <strong>启用存档</strong> 将会单独记录每一次连接的流量统计信息，关闭首页连接后可以从 <strong>归档</strong> 查看</li>
+<li>点击右上角 <code class="notranslate">•••</code> 可以重置统计信息</li>
+</ul>
+</blockquote>
+<p>首页 <strong>订阅</strong> 支持显示流量统计信息</p>
+<blockquote>
+<ul>
+<li>方法一，订阅链接添加响应头：<code class="notranslate">subscription-userinfo: upload=xxx; download=xxx; total=xxx; expire=xxx</code></li>
+<li>方法二，在订阅链接指向的纯文本 base64 编码前添加 <code class="notranslate">STATUS=xxx</code> 或 <code class="notranslate">REMARKS=xxx</code> 字段，这样订阅名称下方就能显示自定义信息。如果没有添加字段或者隐藏用户代理字符串，可能导致不返回相关统计信息，只显示时间</li>
+</ul>
+</blockquote>
+</blockquote>
+<hr>
+<h2><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">设置页面</a></h2>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">延迟测试方法</a></h3>
+<blockquote>
+<p>详见词条 <a href="#%E8%BF%9E%E9%80%9A%E6%80%A7%E6%B5%8B%E8%AF%95">连通性测试</a></p>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">小组件</a></h3>
+<blockquote>
+<p>设置 &gt; 小组件</p>
+<blockquote>
+<ul>
+<li>
+<p><strong>服务器节点</strong>：根据需求添加6个常用节点，点击 <strong>Today 小组件</strong> 右上角的 <code class="notranslate">&gt;</code> 可以展开查看，方便手动切换节点</p>
+</li>
+<li>
+<p><strong>显示Ping值</strong>：启用后，长按 <strong>Today小组件</strong> 中心位置可以测试 <strong>服务器节点</strong> 连通性并显示延迟数字</p>
+</li>
+<li>
+<p><strong>根据Ping排序</strong>：启用后，长按 <strong>Today小组件</strong> 中心位置可以测试 <strong>服务器节点</strong> 连通性并依延迟大小自动排序</p>
+</li>
+</ul>
+</blockquote>
+<p>添加小组件方法：</p>
+<p>Today 小组件</p>
+<blockquote>
+<ul>
+<li>负一屏 &gt; 编辑 &gt; 自定 &gt; 点击 Shadowrocket 旁边的 <strong>添加</strong> 按钮  <code class="notranslate">➕</code>。（系统要求低于 iOS 18）</li>
+</ul>
+</blockquote>
+<p>屏幕小组件</p>
+<blockquote>
+<ul>
+<li>长按屏幕 &gt; 左上角 <code class="notranslate">➕</code> &gt; Shadowrocket，选择合适类型添加。（系统要求≥ iOS 17）</li>
+</ul>
+</blockquote>
+<p>更新 Shadowrocket 后，如果找不到小组件添加按钮，请尝试重启手机。如果小组件显示 <strong>无法加载</strong>，请尝试以下方法：</p>
+<blockquote>
+<ul>
+<li>系统设置 &gt; 通用 &gt; 语言与地区，添加或删除一种其他语言</li>
+</ul>
+</blockquote>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">颜色</a></h3>
+<blockquote>
+<p>设置 &gt; 颜色</p>
+<p>Shadowrocket 支持自定义设置软件配色方案，可以根据个人喜好调整各个板块的颜色，并可以随时恢复默认颜色。同时支持分享和安装已有配色方案，配色案例参考 <a href="https://github.com/LOWERTOP/Shadowrocket-First#shadowrocket-%E9%85%8D%E8%89%B2%E6%96%87%E4%BB%B6">此处</a></p>
+<p>配色安装方法：复制已知的配色链接，在配置页面点击 <code class="notranslate">➕</code> 号粘贴安装</p>
+<blockquote>
+<ul>
+<li><strong>外观</strong>：支持匹配系统的自动色彩方案，以及深色、浅色模式</li>
+<li><strong>传统样式</strong>：使用传统应用样式</li>
+<li><strong>颜色</strong>：自定义设置颜色，编码为 <strong>十六进制颜色编码（Hex Color Code）</strong></li>
+<li><strong>重设颜色</strong>：恢复默认配色</li>
+<li><strong>复制网址</strong>：复制当前配色的 URL 地址，可用以分享或保存</li>
+</ul>
+</blockquote>
+<p>以下为软件配色项目的名称及其中文译名，需要注意因系统限制，部分项目不可自定义</p>
+<blockquote>
+<div class="highlight highlight-source-ruby"><pre class="notranslate"><span class="pl-v">NavigationBarColor</span> / <span class="pl-en">导航栏背景色</span>
+<span class="pl-v">NavigationBar2Color</span> / <span class="pl-en">导航栏背景色2</span>
+<span class="pl-v">NavigationBarTextColor</span> / <span class="pl-en">导航栏文字颜色</span>
+<span class="pl-v">NavigationBar2TextColor</span> / <span class="pl-en">导航栏文字颜色2</span>
+<span class="pl-v">TabBarColor</span> / <span class="pl-en">标签栏背景色</span>
+<span class="pl-v">TabBarBorderColor</span> / <span class="pl-en">标签栏边框颜色</span>
+<span class="pl-v">TabBarSelectedColor</span> / <span class="pl-en">标签栏选中项颜色</span>
+<span class="pl-v">TabBarUnselectedColor</span> / <span class="pl-en">标签栏未选中项颜色</span>
+<span class="pl-v">TableBackgroundColor</span> / <span class="pl-en">表格背景颜色</span>
+<span class="pl-v">TableCellBackgroundColor</span> / <span class="pl-en">表格单元格背景颜色</span>
+<span class="pl-v">TableCellSelectedBackgroundColor</span> / <span class="pl-en">表格单元格选中项背景颜色</span>
+<span class="pl-v">TableSeparatorColor</span> / <span class="pl-en">表格分隔线颜色</span>
+<span class="pl-v">TextFieldTextColor</span> / <span class="pl-en">文本框文字颜色</span>
+<span class="pl-v">PlaceholderColor</span> / <span class="pl-en">占位符颜色</span>
+<span class="pl-v">TextLabelTextColor</span> / <span class="pl-en">文本标签文字颜色</span>
+<span class="pl-v">DetailLabelTextColor</span> / <span class="pl-en">详细标签文字颜色</span>
+<span class="pl-v">TextLabelDeleteColor</span> / <span class="pl-en">文本标签删除文字颜色</span>
+<span class="pl-v">HeaderFooterTextColor</span> / <span class="pl-en">页眉页脚文字颜色</span>
+<span class="pl-v">SearchFieldBackgroundColor</span> / <span class="pl-en">搜索框背景颜色</span>
+<span class="pl-v">IndicatorColor</span> / <span class="pl-en">指示器颜色</span>
+<span class="pl-v">ButtonIconColor</span> / <span class="pl-en">按钮图标颜色</span>
+<span class="pl-v">ButtonNormalColor</span> / <span class="pl-en">按钮正常状态颜色</span>
+<span class="pl-v">ButtonNormal2Color</span> / <span class="pl-en">按钮正常状态颜色2</span>
+<span class="pl-v">ButtonNormal3Color</span> / <span class="pl-en">按钮正常状态颜色3</span>
+<span class="pl-v">ButtonHighlightedColor</span> / <span class="pl-en">按钮高亮状态颜色</span>
+<span class="pl-v">ButtonHighlighted2Color</span> / <span class="pl-en">按钮高亮状态颜色2</span>
+<span class="pl-v">ButtonHighlighted3Color</span> / <span class="pl-en">按钮高亮状态颜色3</span>
+<span class="pl-v">ButtonDisabledColor</span> / <span class="pl-en">按钮禁用状态颜色</span>
+<span class="pl-v">ButtonDisabled2Color</span> / <span class="pl-en">按钮禁用状态颜色2</span>
+<span class="pl-v">PingSuccessTextColor</span> / <span class="pl-en">测试Ping成功文字颜色</span>
+<span class="pl-v">PingTimeoutTextColor</span> / <span class="pl-en">测试Ping超时文字颜色</span>
+<span class="pl-v">DefaultDotColor</span> / <span class="pl-en">默认指示点颜色</span>
+<span class="pl-v">HUDBackgroundColor</span> / <span class="pl-en">弹窗HUD背景颜色</span></pre></div>
+</blockquote>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">按需求连接</a></h3>
+<blockquote>
+<p><strong>始终开启</strong></p>
+<blockquote>
+<ul>
+<li>
+<p>VPN 保持连接状态。<a href="#vpn%E8%87%AA%E5%8A%A8%E6%96%AD%E5%BC%80">意外断开</a> 或者重启设备，也会自动连接</p>
+</li>
+<li>
+<p><strong>脚本 / 模块 / 解密</strong> 等需求比较多时建议开启</p>
+</li>
+</ul>
+</blockquote>
+<p><strong>按需求连接</strong></p>
+<blockquote>
+<ul>
+<li>
+<p>根据添加的 <strong>按需求规则</strong> 自动切换 VPN 状态。默认规则是任意网络类型下保持连接状态，相当于 <strong>始终开启</strong></p>
+</li>
+<li>
+<p>按需求规则：</p>
+<ul>
+<li>当访问列表中的 <strong>域名</strong> 时，系统会向 Shadowrocket 发送请求，如果响应成功，VPN 自动连接</li>
+<li>网络中指定的 <code class="notranslate">DNS</code>（通常认为是网络运营商/Wi-Fi路由器提供的 DNS 服务器地址）与列表任一内容相匹配时，VPN 自动连接或断开</li>
+<li><code class="notranslate">SSIDS</code> 填写需要匹配的 Wi-Fi 名称</li>
+<li>VPN 连接行为可以通过 <strong>网络类型 / 域名 / DNS</strong> 条件触发</li>
+<li>VPN 断开行为可以通过 <strong>网络类型 / DNS</strong> 条件触发，不能通过 <strong>域名</strong> 条件触发</li>
+<li>从上到下依次匹配添加的 <strong>按需求规则</strong></li>
+</ul>
+</li>
+<li>
+<p>添加 <strong>按需求规则</strong> 后，打开 <strong>按需求连接</strong> 开关，规则才能生效</p>
+</li>
+<li>
+<p>同时打开 <strong>始终开启</strong> 和 <strong>按需求连接</strong>，只有 <strong>始终开启</strong> 选项能够生效</p>
+</li>
+<li>
+<p>按需求连接是系统管理行为，域名通过系统 DNS 触发开启 VPN，如果域名被解析过或者有缓存则可能不会触发，Shadowrocket 只负责按需求规则的配置，是否生效取决于系统行为</p>
+</li>
+</ul>
+</blockquote>
+<p><strong>睡眠时断开</strong></p>
+<blockquote>
+<ul>
+<li>
+<p>当设备进入睡眠状态，VPN 自动断开连接</p>
+</li>
+<li>
+<p>Shadowrocket 响应系统发送的睡眠指令才会断开连接，有时候熄屏的系统未必处于睡眠状态</p>
+</li>
+</ul>
+</blockquote>
+<p><strong>显示断开信息</strong></p>
+<blockquote>
+<ul>
+<li>显示 VPN 断开连接的通知信息</li>
+</ul>
+</blockquote>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">隧道</a></h3>
+<blockquote>
+<p><strong>强制路由</strong></p>
+<blockquote>
+<p>如果开启，这个隧道的路由规则将优先于任何本地自定义的路由，默认是关闭状态</p>
+</blockquote>
+<p><strong>包括所有网络</strong></p>
+<blockquote>
+<p>启用后系统会通过隧道进行路由所有的网络流量，但为维持预期设备功能所必需的指定系统服务的流量除外</p>
+<ul>
+<li><strong>包括本地网络</strong>：如果开启，所有发送到本地网络的流量都将包含在隧道中，如 AirPlay、AirDrop 和 CarPlay 的网络连接</li>
+<li><strong>包括APNs</strong>：如果开启，苹果的 Apple Push Notification 推送通知服务（APN）的网络流量将包含在隧道中</li>
+<li><strong>包括蜂窝服务</strong>：如果开启，来自蜂窝服务的互联网可路由网络流量（VoLTE、Wi-Fi通话、IMS、MMS、视觉语音信箱等）将包含在隧道中。</li>
+</ul>
+</blockquote>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">兼容模式</a></h3>
+<blockquote>
+<p>设置 &gt; 代理 &gt; 兼容模式</p>
+<p>HomeKit 与摄像头建立连接时，会主动将本机 IP 发送给摄像头端逆向连接。部分情况下 iOS 可能并未处理 VPN 开启时的情况，会将 VPN 的内网地址发送给摄像头，导致 RTSP 数据回包无法发回到 iOS 设备上。若当前设备与家庭中枢设备处于同一局域网下且开启代理时，如果出现无法正常使用 <strong>家庭</strong> 应用查看流式传输的 HomeKit 实况影像时，可以尝试开启此项以提高相应的兼容性。此处的设置是配置文件通用隐式参数中 <code class="notranslate">compatibility-mode</code> 的一种，开启该选项效果等同于 <a href="#%E9%80%9A%E7%94%A8%E5%8F%82%E6%95%B0">配置文件</a> 内设置 <code class="notranslate">compatibility-mode=5</code></p>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">前置代理</a></h3>
+<blockquote>
+<p>设置 &gt; 代理 &gt; 前置代理</p>
+<p>「前置代理」表示所有流量先通过 HTTP/SOCKS5 代理转发，再根据配置规则向节点服务器发送请求</p>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">代理共享</a></h3>
+<blockquote>
+<p>代理共享指的是将你当前配置的代理设置分享给其他设备使用。通过代理共享，你可以把自己配置好的代理服务器（如Shadowsocks、Vmess等）通过局域网或者热点网络的方式让其他设备也能够通过相同的代理设置访问互联网</p>
+<p><strong>在局域网条件下</strong></p>
+<blockquote>
+<ul>
+<li>A设备：设置 &gt; 代理 &gt; 代理共享 &gt; 启用共享</li>
+<li>B设备：系统设置 &gt; WiFi &gt; WiFi 名称后面的 <code class="notranslate">ⓘ</code> 图标 &gt; HTTP代理 &gt; 手动输入Shadowrocket「代理共享」的IP和端口</li>
+</ul>
+</blockquote>
+<p><strong>使用热点条件下</strong></p>
+<blockquote>
+<ul>
+<li>A设备：开启热点</li>
+<li>B设备：连接热点</li>
+<li>然后按照局域网条件下方法进行设置<br><br>
+<strong>此处需要注意下操作顺序，原理是连接设备热点后先形成局域网环境，然后按照局域网条件进行设置</strong></li>
+</ul>
+</blockquote>
+<p><strong>备注</strong></p>
+<blockquote>
+<ul>
+<li>当 iOS 设备开启代理共享时，或需保持该设备屏幕常亮或连接充电器，以防意外退出</li>
+<li>如果配置文件开启了 HTTPS 解密，请确保其他设备已安装并信任相同的证书才能正常使用。当其他设备不需要使用解密功能时，可以在 <strong>代理共享</strong> 页面关闭「HTTPS解密」开关</li>
+<li>使用代理共享时需要对应的 APP 打开系统设置中的 <strong>本地网络</strong> 开关</li>
+<li>Telegram 可能不被系统代理接管，可单独在应用内添加 SOCKS5 代理</li>
+</ul>
+</blockquote>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">代理类型</a></h3>
+<blockquote>
+<p>Shadowrocket 代理类型：</p>
+<ul>
+<li>
+<p>设置 &gt; 代理 &gt; 代理类型</p>
+</li>
+<li>
+<p><strong>HTTP</strong>：系统代理模式，对于不支持的程序会交给 TUN 接管网络连接</p>
+</li>
+<li>
+<p><strong>None</strong>：TUN 模式，全部网络请求都将通过 TUN 接口进行处理。效果等同于 <a href="#%E9%80%9A%E7%94%A8%E5%8F%82%E6%95%B0">配置文件</a> 内设置 <code class="notranslate">compatibility-mode=3</code></p>
+</li>
+</ul>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">开启UDP转发</a></h3>
+<blockquote>
+<ul>
+<li>
+<p>设置 &gt; UDP &gt; 启用转发 &gt; 打开</p>
+</li>
+<li>
+<p>首页 &gt; 订阅后面的 <code class="notranslate">ⓘ</code> 图标 &gt; UDP转发 &gt; 打开</p>
+</li>
+<li>
+<p>首页 &gt; 节点后面的 <code class="notranslate">ⓘ</code> 图标 &gt; UDP转发 &gt; 打开</p>
+</li>
+</ul>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">禁用STUN</a></h3>
+<blockquote>
+<p>设置 &gt; UDP &gt; 禁用STUN &gt; 打开</p>
+<p>禁用 STUN（Session Traversal Utilities for NAT） 的意思是完全阻止 WebRTC 通过 STUN 服务器获取公网 IP，从而彻底杜绝 WebRTC IP 泄露的问题</p>
+<p>若在配置文件 <a href="#%E9%80%9A%E7%94%A8%E5%8F%82%E6%95%B0">通用参数</a> 中使用 <code class="notranslate">stun-response-ip</code> 的相关命令，则此处的开关状态将被忽略</p>
+</blockquote>
+<h3><a href="#%E6%9D%83%E9%99%90">权限</a></h3>
+<blockquote>
+<ul>
+<li>
+<p><strong>位置</strong></p>
+<p>iOS 系统要求必须开启位置权限才可以读取 Wi-Fi 网络的 SSID 名称。在 Shadowrocket 中，此权限仅在需要使用基于连接 Wi-Fi 网络触发特定配置的 <strong><a href="#%E5%9C%BA%E6%99%AF">场景</a></strong> 功能时才需要</p>
+</li>
+<li>
+<p><strong>通知</strong></p>
+<p>开启通知权限才可允许软件发送重要通知或警报，包括：脚本执行结果、订阅更新通知、VPN 断开通知等</p>
+</li>
+<li>
+<p><strong>剪贴板</strong></p>
+<p>开启剪贴板权限后，Shadowrocket 将在打开应用程序后尝试识别剪贴板中的内容是否是代理服务器的 URL，若是则会提示将其导入到应用。若未启用此权限，Shadowrocket 主页的本地节点上方将出现一个专用的粘贴按钮，以允许手动粘贴和导入剪贴板的内容</p>
+</li>
+</ul>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">隐藏VPN图标</a></h3>
+<blockquote>
+<p>设置 &gt; 排除路由 0.0.0.0/31 &gt; 打开</p>
+<p><strong>注意</strong>：该选项是利用系统漏洞实现的，打开开关可能会导致网络异常，不推荐开启此项</p>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">GEOIP数据库</a></h3>
+<blockquote>
+<p>设置 &gt; GeoLite2 数据库</p>
+<blockquote>
+<p>软件已内置常规 GeoIP 数据库，一般情况下无需设置，若有需要请参考以下设置方式</p>
+</blockquote>
+<p>方法一</p>
+<ul>
+<li>填写 <a href="https://www.maxmind.com" rel="nofollow">MaxMind官网</a> 注册的账户 ID 和密钥，点击下方的 <strong>更新</strong> 按钮</li>
+</ul>
+<p>方法二</p>
+<ul>
+<li>
+<p>关注 GitHub 的 IP 数据库项目，复制 mmdb 格式的下载链接，粘贴在国家/ASN 对应的 URL 位置，点击 <strong>更新</strong> 按钮。当点击 <strong>重置</strong> 时，可以恢复为系统自带的数据库</p>
+<p><a href="https://github.com/Loyalsoldier/geoip">Loyalsoldier</a> 的 IP 数据库：</p>
+<div class="highlight highlight-source-ruby"><pre class="notranslate"><span class="pl-en">https</span><span class="pl-pds">:/</span>/<span class="pl-en">raw</span><span class="pl-kos">.</span><span class="pl-en">githubusercontent</span><span class="pl-kos">.</span><span class="pl-en">com</span>/<span class="pl-v">Loyalsoldier</span>/<span class="pl-en">geoip</span>/<span class="pl-en">release</span>/<span class="pl-v">Country</span><span class="pl-kos">.</span><span class="pl-en">mmdb</span></pre></div>
+<p><a href="https://github.com/Hackl0us/GeoIP2-CN">Hackl0us</a> 的 IP 数据库：</p>
+<div class="highlight highlight-source-ruby"><pre class="notranslate"><span class="pl-en">https</span><span class="pl-pds">:/</span>/<span class="pl-en">github</span><span class="pl-kos">.</span><span class="pl-en">com</span>/<span class="pl-v">Hackl0us</span>/<span class="pl-v">GeoIP2</span>-<span class="pl-c1">CN</span>/<span class="pl-en">raw</span>/<span class="pl-en">release</span>/<span class="pl-v">Country</span><span class="pl-kos">.</span><span class="pl-en">mmdb</span></pre></div>
+<p><a href="https://github.com/Masaiki/GeoIP2-CN">Masaiki</a> 的 IP 数据库：</p>
+<div class="highlight highlight-source-ruby"><pre class="notranslate"><span class="pl-en">https</span><span class="pl-pds">:/</span>/<span class="pl-en">github</span><span class="pl-kos">.</span><span class="pl-en">com</span>/<span class="pl-v">Masaiki</span>/<span class="pl-v">GeoIP2</span>-<span class="pl-c1">CN</span>/<span class="pl-en">raw</span>/<span class="pl-en">release</span>/<span class="pl-v">Country</span><span class="pl-kos">.</span><span class="pl-en">mmdb</span></pre></div>
+<p><a href="https://github.com/P3TERX/GeoLite.mmdb">P3TERX</a> 的 ASN 数据库：</p>
+<div class="highlight highlight-source-ruby"><pre class="notranslate"><span class="pl-en">https</span><span class="pl-pds">:/</span>/<span class="pl-en">github</span><span class="pl-kos">.</span><span class="pl-en">com</span>/<span class="pl-c1">P3TERX</span>/<span class="pl-v">GeoLite</span><span class="pl-kos">.</span><span class="pl-en">mmdb</span>/<span class="pl-en">raw</span>/<span class="pl-en">download</span>/<span class="pl-v">GeoLite2</span>-<span class="pl-c1">ASN</span><span class="pl-kos">.</span><span class="pl-en">mmdb</span></pre></div>
+</li>
+</ul>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">自动更新</a></h3>
+<blockquote>
+<p>现阶段软件的自动更新包含配置文件自动更新、模块自动更新、服务器订阅自动更新以及 GeoLite2 数据库自动更新。需要在 <strong>系统设置 &gt; 通用 &gt; 后台App刷新</strong> 中为 Shadowrocket 启用后台刷新。在重新启动设备、杀死应用程序等结束了程序进程或后台的情况下，后台任务将不能自动启动</p>
+<ul>
+<li>
+<p><strong>配置</strong>：根据设置自动 <a href="#%E6%9B%B4%E6%96%B0%E9%85%8D%E7%BD%AE">更新配置</a> 以及当前所用的 <a href="#%E8%A7%84%E5%88%99%E9%9B%86url">规则集</a>、<a href="#%E8%84%9A%E6%9C%ACurl">脚本</a> 等远程资源。</p>
+<ul>
+<li>自动后台更新：开启后可根据设置自动更新配置文件</li>
+<li>更新提醒：开启后，更新时会弹出相应提醒。需要开启设备推送通知</li>
+<li>更新间隔：单位为  <strong>天</strong>，可选 1-7 天</li>
+<li>若当前配置文件是不含更新地址的本地配置文件，则自动更新功能仅会更新当前所用的规则集、脚本等远程资源，参见：<a href="#%E4%BD%BF%E7%94%A8%E9%85%8D%E7%BD%AE">使用配置</a> / <a href="#%E7%BC%96%E8%AF%91%E9%85%8D%E7%BD%AE">编译配置</a>、<a href="#%E8%A7%84%E5%88%99%E9%9B%86url">规则集URL</a>、<a href="#%E8%84%9A%E6%9C%ACurl">脚本URL</a></li>
+<li>规则集/脚本资源手动更新方法：点击 <a href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6">配置文件</a> &gt; <a href="#%E4%BD%BF%E7%94%A8%E9%85%8D%E7%BD%AE">使用配置</a> / <a href="#%E7%BC%96%E8%AF%91%E9%85%8D%E7%BD%AE">编译配置</a></li>
+<li>需要注意：自动更新配置会覆盖自定义设置，参见 <a href="#%E6%9B%B4%E6%96%B0%E9%85%8D%E7%BD%AE">更新配置</a></li>
+</ul>
+</li>
+<li>
+<p><strong>模块</strong>：根据设置自动更新远程模块资源</p>
+<ul>
+<li>自动后台更新：开启后可根据设置自动更新模块</li>
+<li>更新提醒：开启后，更新时会弹出相应提醒。需要开启设备推送通知</li>
+<li>更新间隔：单位为  <strong>天</strong>，可选 1-7 天</li>
+</ul>
+</li>
+<li>
+<p><strong>订阅</strong>：根据设置自动更新服务器订阅，另外可 <a href="#%E6%9B%B4%E6%96%B0%E8%AE%A2%E9%98%85%E8%8A%82%E7%82%B9">参见此处</a></p>
+<ul>
+<li>自动后台更新：开启后可根据设置自动更新订阅</li>
+<li>更新提醒：开启后，更新时会弹出相应提醒。需要开启设备推送通知</li>
+<li>更新间隔：单位为  <strong>小时</strong>，可选 1-24 小时</li>
+<li>DNS：使用指定的 HTTPS DNS 来解析订阅链接的域名，点击右侧的 <code class="notranslate">ⓘ</code> 可以挑选内置的 DNS</li>
+<li>根据 PING 排序：以连通性测试的结果从小到大排列服务器节点</li>
+<li>发送 HWID：开启该开关后，Shadowrocket 将在更新订阅时发送 X-HWID 标头</li>
+<li>显示删除确认：连通性测试结束后，显示是否删除超时节点的对话框</li>
+</ul>
+</li>
+<li>
+<p><strong>GeoLite2 数据库</strong>：包含自动后台更新选项、更新提醒选项、更新间隔选项，其中更新间隔单位为 <strong>天</strong>。其他设置 <a href="#geoip%E6%95%B0%E6%8D%AE%E5%BA%93">参见此处</a></p>
+</li>
+</ul>
+</blockquote>
+<div class="markdown-alert markdown-alert-tip"><p class="markdown-alert-title"><svg class="octicon octicon-light-bulb mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p><p><strong>若当前配置是远程配置，希望定期更新远程资源，且不希望自定义设置被覆盖或丢失时，可参考以下两种方法：</strong></p>
+<ul>
+<li><strong>进入 <a href="#%E7%BC%96%E8%BE%91%E7%BA%AF%E6%96%87%E6%9C%AC">纯文本编辑</a> 删除或注释掉 <code class="notranslate">update-url = *</code>，然后再使用自动更新功能</strong></li>
+<li><strong>使用 <a href="#%E6%89%A9%E5%B1%95%E9%85%8D%E7%BD%AE">扩展配置/包含配置</a> 功能后，再使用自动更新功能</strong></li>
+</ul>
+</div>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">温和策略机制</a></h3>
+<blockquote>
+<p>当使用温和策略机制时，切换策略不会打断之前与之相关的TCP连接，仅会对之后的网络请求使用新的策略进行连接<br><br>
+当不使用该功能机制时，切换策略会打断与该策略相关的旧有 TCP 连接，若继续使用则使用新的策略重新连接</p>
+<p>例如：打断会使旧有策略相关的连接所进行的下载任务中断</p>
+</blockquote>
+<hr>
+<h2><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">其他问题</a></h2>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">自动切换节点</a></h3>
+<blockquote>
+<p>自动切换延迟低的节点：</p>
+<p><strong>方法一</strong></p>
+<blockquote>
+<ul>
+<li>首页 &gt; 全局路由 &gt; 分组 &gt; <a href="#%E7%AE%80%E5%8D%95%E6%A8%A1%E5%BC%8F">简单模式</a> &gt; 打开</li>
+</ul>
+</blockquote>
+<p><strong>方法二</strong></p>
+<blockquote>
+<ul>
+<li>点击配置文件的 <code class="notranslate">ⓘ</code> 图标 &gt; 代理分组 &gt; 右上角 <code class="notranslate">➕</code> &gt; <a href="#%E4%BB%A3%E7%90%86%E5%88%86%E7%BB%84%E7%B1%BB%E5%9E%8B">类型</a> <code class="notranslate">url-test</code></li>
+</ul>
+</blockquote>
+<p><strong>备注</strong></p>
+<blockquote>
+<ul>
+<li>如果节点不稳定，可同时 <a href="#%E5%90%AF%E7%94%A8%E5%9B%9E%E9%80%80">开启回退</a></li>
+</ul>
+</blockquote>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">订阅异常</a></h3>
+<blockquote>
+<p>添加/更新订阅时异常的原因：</p>
+<ul>
+<li><strong>forbidden</strong> 表示订阅被重置或令牌 token 错误</li>
+<li><strong>not found</strong> 表示订阅路径或链接信息错误</li>
+<li><strong>service unavailable</strong> 表示域名信息错误或域名被运营商屏蔽</li>
+<li><strong>SSL 错误</strong> 表示无法建立与该服务器的安全连接</li>
+</ul>
+<p>添加/更新订阅链接时，如果发生异常，可以尝试的解决方法：</p>
+<ul>
+<li>全局路由选代理，使用另外一个节点来添加/更新订阅链接</li>
+<li>切换网络后再添加/更新订阅链接</li>
+<li>检查订阅链接是否错误或失效</li>
+</ul>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">节点旗帜</a></h3>
+<blockquote>
+<p>节点优先根据备注名称匹配旗帜，如果匹配不成功，由节点地址解析出 IP，通过数据库判断该IP的国家或地区，然后显示对应的旗帜</p>
+<blockquote>
+<ul>
+<li>节点后面的 <code class="notranslate">ⓘ</code> 图标 &gt; 地址栏的图标，可以手动修改旗帜</li>
+<li>订阅后面的 <code class="notranslate">ⓘ</code> 图标 &gt; 订阅界面的 <strong>筛选</strong> 输入框，输入相关脚本能批量修改旗帜，参考：<a href="#%E8%AE%A2%E9%98%85%E8%8A%82%E7%82%B9%E7%AD%9B%E9%80%89">订阅节点筛选</a></li>
+</ul>
+</blockquote>
+<p>如果把旗帜的 Emoji 放在节点备注开头，保存时会自动显示对应的旗帜，且不显示开头的 Emoji</p>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">节点感叹号</a></h3>
+<blockquote>
+<p>节点显示感叹号 <code class="notranslate">⚠</code> 的原因：</p>
+<ul>
+<li>您的节点使用了 TLS，地址是 IP，却没有设 SNI</li>
+</ul>
+<p>这不是正确的服务器设置，但为了可以正常连接，Shadowrocket 会主动开启 <strong>允许不安全</strong>。<strong>允许不安全</strong> 将跳过TLS证书验证，这将导致一些安全问题。如果您使用自签名证书，请将证书导入系统并信任它，否则请及时续订服务器端证书，以防止证书过期。在 <code class="notranslate">2.2.23</code> 等特定版本中，该选项可能默认为关闭状态</p>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">微信转圈</a></h3>
+<blockquote>
+<p>如果使用 Shadowrocket 时微信一直显示 <strong>连接中/收取中</strong>，可以尝试的解决方法：</p>
+<ul>
+<li>
+<p>微信分流走直连</p>
+</li>
+<li>
+<p>点击配置文件的 <code class="notranslate">ⓘ</code> 图标 &gt; 通用 &gt; 启用IPv6 &gt; 关闭</p>
+</li>
+</ul>
+<p>本质上该问题是由于现阶段某些地区的运营商对 IPv6 的支持不够稳定，或是路由器设置不当，可能会引发微信加载异常的问题</p>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">模块消失</a></h3>
+<blockquote>
+<p>模块页面已经开启 <strong>保存到 iCloud</strong>，如果出现模块消失的问题，请检查：</p>
+<ul>
+<li>
+<p>系统设置 &gt; Apple ID &gt; iCloud &gt; 使用iCloud的APP中，确保Shadowrocket/iCloud云盘已经打开同步</p>
+</li>
+<li>
+<p>文件app &gt; iCloud云盘 &gt; Shadowrocket，确定其中包含 <code class="notranslate">Modules</code> 和 <code class="notranslate">Script</code> 两个子文件夹</p>
+</li>
+<li>
+<p>文件app &gt; iCloud云盘 &gt; Shadowrocket &gt; Modules，如果iCloud的本地缓存被清理，此时模块文件是未下载状态，请等待自动下载或手动下载</p>
+</li>
+</ul>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">模块失效</a></h3>
+<blockquote>
+<ul>
+<li>切换配置文件需要重新 <a href="#https%E8%A7%A3%E5%AF%86">开启解密</a>，为避免解密失效可使用 <a href="#%E8%AF%81%E4%B9%A6%E6%A8%A1%E5%9D%97">证书模块</a></li>
+<li>若 <a href="#%E6%A8%A1%E5%9D%97">模块</a> 确认有效且解密设置无误时存在模块失效的情况，则可能是加载资源时因内存、网络等原因导致部分内容出现漏编译的情况。尝试对当前配置点击 <a href="#%E4%BD%BF%E7%94%A8%E9%85%8D%E7%BD%AE">使用配置</a> / <a href="#%E7%BC%96%E8%AF%91%E9%85%8D%E7%BD%AE">编译配置</a>，以使远程资源进行重新拉取，一般可恢复正常</li>
+</ul>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">VPN自动断开</a></h3>
+<blockquote>
+<p>因系统版本低于 <code class="notranslate">iOS 15</code>、处理复杂请求、加解密数据、运行脚本等因素或多种因素相互作用之下可能导致 NE 内存占用过高，从而造成 VPN 自动断开，解决方法：</p>
+<p><strong>设置 &gt; 按需求连接 &gt; 始终开启 &gt; 启用</strong></p>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">检测代理</a></h3>
+<blockquote>
+<p>如果在使用 Shadowrocket 的时候，遇到某些 APP 提示需关闭代理才能使用，可以在 <strong>Shadowrocket &gt; 设置 &gt; 代理类型 &gt; 选择 None</strong></p>
+<p>该设置将使用 <a href="#%E4%BB%A3%E7%90%86%E7%B1%BB%E5%9E%8B">TUN 模式</a> 接管代理，能很大程度上缓解上述情况，但对于某些直接检测系统 VPN 状态或使用其他检测手段的 APP 无效</p>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">编译原因</a></h3>
+<blockquote>
+<p>Shadowrocket 2.2.29 之前的版本是使用 Xcode 13.2.1 编译的</p>
+<p>2023年4月份以后，苹果官方要求开发者在提交应用到 App Store 时必须至少使用 Xcode 14 编译，所以 iOS12 以下系统无法使用</p>
+<p>Shadowrocket 在版本 <code class="notranslate">2.2.30</code> 之后设置最低安装要求 iOS12，然后停止 <code class="notranslate">2.2.29</code> 版本，iOS 低版本用户可以安装 <code class="notranslate">2.2.28</code> 版本</p>
+</blockquote>
+<h3><a href="#%E4%BD%BF%E7%94%A8%E7%9B%AE%E5%BD%95">URL-Schemes</a></h3>
+<p>请使用相应内容直接替换代码中的大括号及其内容</p>
+<blockquote>
+<p>Shadowrocket 支持 <code class="notranslate">X-callback-urls</code>，允许其他应用程序在 Shadowrocket 中触发某些操作</p>
+<p>支持添加 <code class="notranslate">autoclose=true</code> 查询值，可在动作触发后退出 Shadowrocket</p>
+</blockquote>
+<blockquote>
+<p><strong>启动 VPN 隧道</strong></p>
+<div class="highlight highlight-source-ruby"><pre class="notranslate"><span class="pl-en">shadowrocket</span><span class="pl-pds">:/</span>/<span class="pl-en">connect</span></pre></div>
+<div class="highlight highlight-source-ruby"><pre class="notranslate"><span class="pl-en">shadowrocket</span><span class="pl-pds">:/</span>/<span class="pl-en">open</span></pre></div>
+<p><strong>停止 VPN 隧道</strong></p>
+<div class="highlight highlight-source-ruby"><pre class="notranslate"><span class="pl-en">shadowrocket</span><span class="pl-pds">:/</span>/<span class="pl-en">disconnect</span></pre></div>
+<div class="highlight highlight-source-ruby"><pre class="notranslate"><span class="pl-en">shadowrocket</span><span class="pl-pds">:/</span>/<span class="pl-en">close</span></pre></div>
+<p><strong>切换 VPN 开关状态</strong></p>
+<div class="highlight highlight-source-ruby"><pre class="notranslate"><span class="pl-en">shadowrocket</span><span class="pl-pds">:/</span>/<span class="pl-en">toggle</span></pre></div>
+<p><strong>连通性测试</strong></p>
+<div class="highlight highlight-source-ruby"><pre class="notranslate"><span class="pl-en">shadowrocket</span><span class="pl-pds">:/</span>/<span class="pl-en">connectivity</span>-<span class="pl-en">test</span></pre></div>
+<p><strong>使用特定节点</strong></p>
+<div class="highlight highlight-source-ruby"><pre class="notranslate"><span class="pl-en">shadowrocket</span><span class="pl-pds">:/</span>/select?<span class="pl-s1">s</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-pds">节点名称</span><span class="pl-kos">}</span></pre></div>
+<p><strong>添加 订阅/节点</strong></p>
+<div class="highlight highlight-source-ruby"><pre class="notranslate"><span class="pl-en">shadowrocket</span><span class="pl-pds">:/</span>/<span class="pl-en">add</span>/<span class="pl-kos">{</span><span class="pl-en">url</span><span class="pl-kos">}</span></pre></div>
+<p><strong>更新 订阅</strong></p>
+<div class="highlight highlight-source-ruby"><pre class="notranslate"><span class="pl-en">shadowrocket</span><span class="pl-pds">:/</span>/<span class="pl-en">update</span>-<span class="pl-en">subs</span></pre></div>
+<p><strong>安装/使用 配置</strong></p>
+<div class="highlight highlight-source-ruby"><pre class="notranslate"><span class="pl-en">shadowrocket</span><span class="pl-pds">:/</span>/<span class="pl-en">config</span>/<span class="pl-en">add</span>/<span class="pl-kos">{</span><span class="pl-en">url</span><span class="pl-kos">}</span></pre></div>
+<p><strong>安装/使用 模块</strong></p>
+<div class="highlight highlight-source-ruby"><pre class="notranslate"><span class="pl-en">shadowrocket</span><span class="pl-pds">:/</span>/<span class="pl-en">install?</span><span class="pl-en">module</span><span class="pl-c1">=</span><span class="pl-kos">{</span><span class="pl-en">url</span><span class="pl-kos">}</span></pre></div>
+<p><strong>切换全局路由（代理/配置/直连/场景）</strong></p>
+<div class="highlight highlight-source-ruby"><pre class="notranslate"><span class="pl-en">shadowrocket</span><span class="pl-pds">:/</span>/<span class="pl-en">route</span>/<span class="pl-en">proxy</span></pre></div>
+<div class="highlight highlight-source-ruby"><pre class="notranslate"><span class="pl-en">shadowrocket</span><span class="pl-pds">:/</span>/<span class="pl-en">route</span>/<span class="pl-en">config</span></pre></div>
+<div class="highlight highlight-source-ruby"><pre class="notranslate"><span class="pl-en">shadowrocket</span><span class="pl-pds">:/</span>/<span class="pl-en">route</span>/<span class="pl-en">direct</span></pre></div>
+<div class="highlight highlight-source-ruby"><pre class="notranslate"><span class="pl-en">shadowrocket</span><span class="pl-pds">:/</span>/<span class="pl-en">route</span>/<span class="pl-en">scene</span></pre></div>
+<p><strong>安装/使用 配色</strong></p>
+<div class="highlight highlight-source-ruby"><pre class="notranslate"><span class="pl-en">shadowrocket</span><span class="pl-pds">:/</span>/<span class="pl-en">color?</span><span class="pl-kos">{</span><span class="pl-en">配色设置</span><span class="pl-kos">}</span></pre></div>
+</blockquote>
+<hr></div>
+<div style="font-size:small;margin-top:8px;float:right;"></div>
+
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+
+</div>
+    <div id="footer"><div id="footer1">Copyright © <span id="copyrightYear"></span> <a href="https://neo.realityme.top">Reality Me</a></div>
+<div id="footer2">
+    <span id="runday"></span><span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a></span>
+</div>
+
+<script>
+var now=new Date();
+document.getElementById("copyrightYear").innerHTML=now.getFullYear();
+
+if("11/01/2025"!=""){
+    var startSite=new Date("11/01/2025");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("runday").innerHTML="网站运行 "+diffDay+" 天"+" • ";
+}
+</script></div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z', 'copy': 'M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z', 'check': 'M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.disabled=true;
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","10086Coda10086/10086Coda10086.github.io");
+    script.setAttribute("issue-term","title");
+    
+    if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
+    else if(localStorage.getItem("meek_theme")=="light") {script.setAttribute("theme","github-light");}
+    else{script.setAttribute("theme","preferred-color-scheme");}
+    
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const createClipboardHTML = (codeContent, additionalClasses = '') => `
+        <pre class="notranslate"><code class="notranslate">${codeContent}</code></pre>
+        <div class="clipboard-container position-absolute right-0 top-0 ${additionalClasses}">
+            <clipboard-copy class="ClipboardButton btn m-2 p-0" role="button" style="display: inherit;">
+                <svg height="16" width="16" class="octicon octicon-copy m-2"><path d="${IconList["copy"]}"></path></svg>
+                <svg height="16" width="16" class="octicon octicon-check color-fg-success m-2 d-none"><path d="${IconList["check"]}"></path></svg>
+            </clipboard-copy>
+            <div class="copy-feedback">Copied!</div>
+        </div>
+    `;
+
+    const handleCodeElements = (selector = '') => {
+        document.querySelectorAll(selector).forEach(codeElement => {
+            const codeContent = codeElement.innerHTML;
+            const newStructure = document.createElement('div');
+            newStructure.className = 'snippet-clipboard-content position-relative overflow-auto';
+            newStructure.innerHTML = createClipboardHTML(codeContent);
+
+            const parentElement = codeElement.parentElement;
+            if (selector.includes('highlight')) {
+                parentElement.insertBefore(newStructure, codeElement.nextSibling);
+                parentElement.removeChild(codeElement);
+            } else {
+                parentElement.parentElement.replaceChild(newStructure, parentElement);
+            }
+        });
+    };
+
+    handleCodeElements('pre.notranslate > code.notranslate');
+    handleCodeElements('div.highlight > pre.notranslate');
+
+    let currentFeedback = null;
+    document.querySelectorAll('clipboard-copy').forEach(copyButton => {
+        copyButton.addEventListener('click', () => {
+            const codeContent = copyButton.closest('.snippet-clipboard-content').innerText;
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = codeContent;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextArea);
+
+            const copyIcon = copyButton.querySelector('.octicon-copy');
+            const checkIcon = copyButton.querySelector('.octicon-check');
+            const copyFeedback = copyButton.nextElementSibling;
+
+            if (currentFeedback && currentFeedback !== copyFeedback) {currentFeedback.style.display = 'none';}
+            currentFeedback = copyFeedback;
+
+            copyIcon.classList.add('d-none');
+            checkIcon.classList.remove('d-none');
+            copyFeedback.style.display = 'block';
+            copyButton.style.borderColor = 'var(--color-success-fg)';
+
+            setTimeout(() => {
+                copyIcon.classList.remove('d-none');
+                checkIcon.classList.add('d-none');
+                copyFeedback.style.display = 'none';
+                copyButton.style.borderColor = '';
+            }, 2000);
+        });
+    });
+});
+
+</script>
+<script src='https://blog.meekdai.com/Gmeek/plugins/GmeekTOC.js'></script>
+
+</html>
