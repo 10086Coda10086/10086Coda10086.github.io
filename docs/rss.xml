@@ -1,5 +1,23 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>我愿意说的一切</title><link>https://10086coda10086.github.io/</link><description>我不在乎过去和未来 再怎么着我活在今天</description><copyright>我愿意说的一切</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/103094747?s=400&amp;u=54690c656e8bf740633710628214ac5a495f4838&amp;v=4</url><title>avatar</title><link>https://10086coda10086.github.io/</link></image><lastBuildDate>Sun, 12 Apr 2026 14:34:04 +0000</lastBuildDate><managingEditor>我愿意说的一切</managingEditor><ttl>60</ttl><webMaster>我愿意说的一切</webMaster><item><title>LSPatch使用手册</title><link>https://10086coda10086.github.io//post/16.html</link><description>## 注：LSPatch支持系统：Android，且需要使用Shizuku
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>我愿意说的一切</title><link>https://10086coda10086.github.io/</link><description>我不在乎过去和未来 再怎么着我活在今天</description><copyright>我愿意说的一切</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/103094747?s=400&amp;u=54690c656e8bf740633710628214ac5a495f4838&amp;v=4</url><title>avatar</title><link>https://10086coda10086.github.io/</link></image><lastBuildDate>Sun, 12 Apr 2026 14:37:09 +0000</lastBuildDate><managingEditor>我愿意说的一切</managingEditor><ttl>60</ttl><webMaster>我愿意说的一切</webMaster><item><title>cn名人堂（断载）（具体细节请访问仓库https://github.com/10086Coda10086/savemyblog）</title><link>https://10086coda10086.github.io//post/17.html</link><description>---
+title: cn名人堂（连载）
+date: 2025-07-10 22:39:08
+tags: [写点别的]
+categories: [写点别的]
+thumbnail: /images/cnop1.jpg
+banner: /images/cnop1.jpg
+author: [老白]
+sticky: 1
+---
+{% tabs cnop %}
+
+&lt;!-- tab 时评 --&gt;
+
+![](/images/photo_1_2025-08-10_09-42-40.webp)
+![](/images/photo_2_2025-08-10_09-42-40.webp)
+![](/images/photo_3_2025-08-10_09-42-40.webp)
+## 评价
+我认为这是有组织有纪律的，因为无论从霸凌导致的结果（轻微伤），还是与之呈对比的矛盾的江油警察采取的封禁措施（注:笔者现在还没有看到游行队伍与警察对峙的影像资料）（封路，打人），都表现出一种“小事化大”的感觉。</description><guid isPermaLink="true">https://10086coda10086.github.io//post/17.html</guid><pubDate>Sun, 12 Apr 2026 14:36:39 +0000</pubDate></item><item><title>LSPatch使用手册</title><link>https://10086coda10086.github.io//post/16.html</link><description>## 注：LSPatch支持系统：Android，且需要使用Shizuku
 ## 下载并安装LSPatch
 1. 点击[**下载**](https://github.com/LSPosed/LSPatch/releases/download/v0.6/manager-v0.6-398-release.apk)，下载安装包（.apk）
 2. 点击安装包，**安装**软件
