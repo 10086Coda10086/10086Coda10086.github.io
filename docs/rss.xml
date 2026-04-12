@@ -1,5 +1,39 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>我愿意说的一切</title><link>https://10086coda10086.github.io/</link><description>我不在乎过去和未来 再怎么着我活在今天</description><copyright>我愿意说的一切</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/103094747?s=400&amp;u=54690c656e8bf740633710628214ac5a495f4838&amp;v=4</url><title>avatar</title><link>https://10086coda10086.github.io/</link></image><lastBuildDate>Sun, 12 Apr 2026 14:44:15 +0000</lastBuildDate><managingEditor>我愿意说的一切</managingEditor><ttl>60</ttl><webMaster>我愿意说的一切</webMaster><item><title>咖啡</title><link>https://10086coda10086.github.io//post/19.html</link><description>刚冲好一杯咖啡（并非刚刚，写一篇稿子怎么着也要快半小时吧）。</description><guid isPermaLink="true">https://10086coda10086.github.io//post/19.html</guid><pubDate>Sun, 12 Apr 2026 14:43:49 +0000</pubDate></item><item><title>hexo博客搭建手册</title><link>https://10086coda10086.github.io//post/18.html</link><description>## 注：教程以Windows系统为例
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>我愿意说的一切</title><link>https://10086coda10086.github.io/</link><description>我不在乎过去和未来 再怎么着我活在今天</description><copyright>我愿意说的一切</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/103094747?s=400&amp;u=54690c656e8bf740633710628214ac5a495f4838&amp;v=4</url><title>avatar</title><link>https://10086coda10086.github.io/</link></image><lastBuildDate>Sun, 12 Apr 2026 14:46:09 +0000</lastBuildDate><managingEditor>我愿意说的一切</managingEditor><ttl>60</ttl><webMaster>我愿意说的一切</webMaster><item><title>Shizuku使用手册</title><link>https://10086coda10086.github.io//post/20.html</link><description>## 注：Shizuku支持系统：Android
+## 下载并安装shizuku
+1. 点击[**下载**](https://apt.izzysoft.de/fdroid/repo/moe.shizuku.privileged.api_1049.apk)，下载安装包（.apk）
+2. 点击安装包，**安装**软件
+## 激活shizuku
+1. 打开**开发人员选项**
+	通常是进入**关于**后点击**版本号**5或7次，可能会要求输入密码，不同品牌可能会有区别，视情况而定
+2. 进入**开发人员选项**
+3. 找到调试一栏中的**USB调试**和**仅充电模式下允许ADB调试**（没有仅充电模式下允许ADB调试可以不开），将其开启
+---
+### 接下来的步骤会分为两大类，请视自己情况而定
+若在调试一栏中找到**无线调试**，可以跳转到[**下一章节**](https://blog.realityme.top/2025/04/12/shizuku%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8C%97/#%E9%80%9A%E8%BF%87%E6%97%A0%E7%BA%BF%E8%B0%83%E8%AF%95%E5%90%AF%E5%8A%A8)
+若没有无线调试，请准备一台搭载**Windows系统的电脑**并继续往下看
+## 通过电脑启动（无无线调试，适用于Windows）
+1. 下载[**ADB调试工具**](https://googledownloads.cn/android/repository/platform-tools-latest-windows.zip)
+2. 解压缩后将解压出来的文件夹重命名为adb并移动到C盘根目录（非必需，但是推荐这么做）
+3. 进入电脑**设置**，搜索**高级系统设置**并进入
+4. 选择**环境变量**
+5. 点击**系统变量**一栏中的**path**并双击进行编辑
+6. 点击右侧**新建**
+7. 输入刚才的**文件路径**（C:\adb）
+8. 然后一路确定，**保存并退出**
+	![adb](/images/adb.webp)
+9. 接下来将手机（或其他设备）连接电脑，
+10. 打开**cmd**（直接在搜索栏输入并回车），输入&lt;code&gt;adb devices&lt;/code&gt;，此时若正确开起了开发人员选项中的USB调试，此时设备上可能会出现**是否允许调试**的对话框，勾选**总是允许**，接下来可以在通知中心看到USB调试的信息
+11. 再次在终端中输入&lt;code&gt;adb devices&lt;/code&gt;，如无问题将会看到类似如下内容
+~~~
+List of devices attached
+XXX      device
+~~~
+12. 复制以下指令并粘贴到cmd中，如无问题你将会在 Shizuku 中看到已启动成功
+~~~
+adb shell sh /sdcard/Android/data/moe.shizuku.privileged.api/start.sh
+~~~
+### 该启动方式适用于未 root 且运行 Android 10 及以下版本或者HarmonyOS的设备。</description><guid isPermaLink="true">https://10086coda10086.github.io//post/20.html</guid><pubDate>Sun, 12 Apr 2026 14:45:40 +0000</pubDate></item><item><title>咖啡</title><link>https://10086coda10086.github.io//post/19.html</link><description>刚冲好一杯咖啡（并非刚刚，写一篇稿子怎么着也要快半小时吧）。</description><guid isPermaLink="true">https://10086coda10086.github.io//post/19.html</guid><pubDate>Sun, 12 Apr 2026 14:43:49 +0000</pubDate></item><item><title>hexo博客搭建手册</title><link>https://10086coda10086.github.io//post/18.html</link><description>## 注：教程以Windows系统为例
 
 ## 1. 安装[Node.js](https://nodejs.org/dist/v22.15.0/node-v22.15.0-x64.msi)
 ## 2. 安装[git](https://git-scm.com/downloads/win)
