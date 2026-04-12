@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Reality Me</title><link>https://neo.realityme.top</link><description>我不在乎过去和未来 再怎么着我活在今天</description><copyright>Reality Me</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/103094747?v=4</url><title>avatar</title><link>https://neo.realityme.top</link></image><lastBuildDate>Sun, 05 Apr 2026 03:13:48 +0000</lastBuildDate><managingEditor>Reality Me</managingEditor><ttl>60</ttl><webMaster>Reality Me</webMaster><item><title>clash使用手册</title><link>https://neo.realityme.top/post/15.html</link><description>*墙国有我，请挡放心*
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>我愿意说的一切</title><link>https://10086coda10086.github.io/</link><description>我不在乎过去和未来 再怎么着我活在今天</description><copyright>我愿意说的一切</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/103094747?s=400&amp;u=54690c656e8bf740633710628214ac5a495f4838&amp;v=4</url><title>avatar</title><link>https://10086coda10086.github.io/</link></image><lastBuildDate>Sun, 12 Apr 2026 14:26:00 +0000</lastBuildDate><managingEditor>我愿意说的一切</managingEditor><ttl>60</ttl><webMaster>我愿意说的一切</webMaster><item><title>clash使用手册</title><link>https://10086coda10086.github.io//post/15.html</link><description>*墙国有我，请挡放心*
 
 ---
-# 此文档为学习交流而分享，建议您在下载后24小时内删除。</description><guid isPermaLink="true">https://neo.realityme.top/post/15.html</guid><pubDate>Sun, 05 Apr 2026 03:13:21 +0000</pubDate></item><item><title>shadowrocket使用手册（搬运）</title><link>https://neo.realityme.top/post/14.html</link><description>[![Shadowrocket](https://socialify.git.ci/LOWERTOP/Shadowrocket/image?custom_description=%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C%0AUser+Manual&amp;description=1&amp;font=Rokkitt&amp;logo=https%3A%2F%2Fraw.githubusercontent.com%2FLOWERTOP%2FShadowrocket-First%2Frefs%2Fheads%2Fmain%2Fimg%2FShadowrocket.png&amp;name=1&amp;pattern=Plus&amp;theme=Light)](https://github.com/LOWERTOP/Shadowrocket '仓库地址')
+# 此文档为学习交流而分享，建议您在下载后24小时内删除。</description><guid isPermaLink="true">https://10086coda10086.github.io//post/15.html</guid><pubDate>Sun, 05 Apr 2026 03:13:21 +0000</pubDate></item><item><title>shadowrocket使用手册（搬运）</title><link>https://10086coda10086.github.io//post/14.html</link><description>[![Shadowrocket](https://socialify.git.ci/LOWERTOP/Shadowrocket/image?custom_description=%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C%0AUser+Manual&amp;description=1&amp;font=Rokkitt&amp;logo=https%3A%2F%2Fraw.githubusercontent.com%2FLOWERTOP%2FShadowrocket-First%2Frefs%2Fheads%2Fmain%2Fimg%2FShadowrocket.png&amp;name=1&amp;pattern=Plus&amp;theme=Light)](https://github.com/LOWERTOP/Shadowrocket '仓库地址')
 
-本使用手册以 **[Shadowrocket 官方群组](https://t.me/ShadowrocketApp)** 使用的关键词列表文件为基础进行完善更新，包含软件绝大多数功能的介绍和部分常见问题的解答，以期能够帮助用户更好的理解和使用 Shadowrocket 软件。</description><guid isPermaLink="true">https://neo.realityme.top/post/14.html</guid><pubDate>Sun, 05 Apr 2026 02:51:55 +0000</pubDate></item><item><title>趵突泉</title><link>https://neo.realityme.top/post/13.html</link><description>快到了。</description><guid isPermaLink="true">https://neo.realityme.top/post/13.html</guid><pubDate>Thu, 19 Feb 2026 04:32:17 +0000</pubDate></item><item><title>从零开始的小主机折腾记#6  ——Docker进阶</title><link>https://neo.realityme.top/post/12.html</link><description>## 1. 安装面板**Portainer**
+本使用手册以 **[Shadowrocket 官方群组](https://t.me/ShadowrocketApp)** 使用的关键词列表文件为基础进行完善更新，包含软件绝大多数功能的介绍和部分常见问题的解答，以期能够帮助用户更好的理解和使用 Shadowrocket 软件。</description><guid isPermaLink="true">https://10086coda10086.github.io//post/14.html</guid><pubDate>Sun, 05 Apr 2026 02:51:55 +0000</pubDate></item><item><title>趵突泉</title><link>https://10086coda10086.github.io//post/13.html</link><description>快到了。</description><guid isPermaLink="true">https://10086coda10086.github.io//post/13.html</guid><pubDate>Thu, 19 Feb 2026 04:32:17 +0000</pubDate></item><item><title>从零开始的小主机折腾记#6  ——Docker进阶</title><link>https://10086coda10086.github.io//post/12.html</link><description>## 1. 安装面板**Portainer**
 
 **定位**：最常用的 Docker 图形化管理面板
 **适用场景**：新手 + 中高级用户都合适
@@ -110,11 +110,11 @@ docker compose up -d
 docker ps
 ```
 
-你应该看到 `transmission` 正在运行。</description><guid isPermaLink="true">https://neo.realityme.top/post/12.html</guid><pubDate>Wed, 04 Feb 2026 09:55:09 +0000</pubDate></item><item><title>从零开始的小主机折腾记#5 ——文件迁移（NTFS）</title><link>https://neo.realityme.top/post/11.html</link><description>**插盘 → 挂载 NTFS → 拷贝 → 安全卸载**
+你应该看到 `transmission` 正在运行。</description><guid isPermaLink="true">https://10086coda10086.github.io//post/12.html</guid><pubDate>Wed, 04 Feb 2026 09:55:09 +0000</pubDate></item><item><title>从零开始的小主机折腾记#5 ——文件迁移（NTFS）</title><link>https://10086coda10086.github.io//post/11.html</link><description>**插盘 → 挂载 NTFS → 拷贝 → 安全卸载**
 
 ## 一、物理插盘后先确认设备名（非常关键）
 
-插上 **NTFS 硬盘** 后，不要急着挂载，先确认它是哪个盘。</description><guid isPermaLink="true">https://neo.realityme.top/post/11.html</guid><pubDate>Wed, 04 Feb 2026 09:54:36 +0000</pubDate></item><item><title>从零开始的小主机折腾记#4 ——Samba</title><link>https://neo.realityme.top/post/10.html</link><description>进一步配置成NAS
+插上 **NTFS 硬盘** 后，不要急着挂载，先确认它是哪个盘。</description><guid isPermaLink="true">https://10086coda10086.github.io//post/11.html</guid><pubDate>Wed, 04 Feb 2026 09:54:36 +0000</pubDate></item><item><title>从零开始的小主机折腾记#4 ——Samba</title><link>https://10086coda10086.github.io//post/10.html</link><description>进一步配置成NAS
 
 ## 一、Samba干什么
 
@@ -172,7 +172,7 @@ sudo apt update
 sudo apt install -y samba
 ```
 
-安装完成后，系统会自动启动服务。</description><guid isPermaLink="true">https://neo.realityme.top/post/10.html</guid><pubDate>Wed, 04 Feb 2026 02:41:51 +0000</pubDate></item><item><title>从零开始的小主机折腾记#3</title><link>https://neo.realityme.top/post/9.html</link><description>是时候把它改造成NAS了！
+安装完成后，系统会自动启动服务。</description><guid isPermaLink="true">https://10086coda10086.github.io//post/10.html</guid><pubDate>Wed, 04 Feb 2026 02:41:51 +0000</pubDate></item><item><title>从零开始的小主机折腾记#3</title><link>https://10086coda10086.github.io//post/9.html</link><description>是时候把它改造成NAS了！
 
 ## 一、NAS-Panel
 
@@ -198,11 +198,11 @@ sudo apt install -y samba
 docker version
 ```
 
-能看到 Client / Server 信息即可。</description><guid isPermaLink="true">https://neo.realityme.top/post/9.html</guid><pubDate>Wed, 04 Feb 2026 02:12:36 +0000</pubDate></item><item><title>从零开始的小主机折腾记#2</title><link>https://neo.realityme.top/post/8.html</link><description># 从零开始的小主机折腾记#2
+能看到 Client / Server 信息即可。</description><guid isPermaLink="true">https://10086coda10086.github.io//post/9.html</guid><pubDate>Wed, 04 Feb 2026 02:12:36 +0000</pubDate></item><item><title>从零开始的小主机折腾记#2</title><link>https://10086coda10086.github.io//post/8.html</link><description># 从零开始的小主机折腾记#2
 
 ## 续上一章：Docker 相关事项补充
 
-上一章中关于 Docker 的内容相对偏多，如果对 Docker 还不太熟悉，可以先用下面这个**最简单的验证与补救方法**。</description><guid isPermaLink="true">https://neo.realityme.top/post/8.html</guid><pubDate>Tue, 03 Feb 2026 13:19:39 +0000</pubDate></item><item><title>从零开始的小主机折腾机#1</title><link>https://neo.realityme.top/post/7.html</link><description>使用设备：惠普 t628
+上一章中关于 Docker 的内容相对偏多，如果对 Docker 还不太熟悉，可以先用下面这个**最简单的验证与补救方法**。</description><guid isPermaLink="true">https://10086coda10086.github.io//post/8.html</guid><pubDate>Tue, 03 Feb 2026 13:19:39 +0000</pubDate></item><item><title>从零开始的小主机折腾机#1</title><link>https://10086coda10086.github.io//post/7.html</link><description>使用设备：惠普 t628
 
 ![Image](https://github.com/user-attachments/assets/97c14621-6236-4908-8d65-d89638e65bc1)
 
@@ -210,8 +210,8 @@ docker version
 
 ## 1. 安装系统
 
-可用于家用服务器的系统选择其实很多。</description><guid isPermaLink="true">https://neo.realityme.top/post/7.html</guid><pubDate>Mon, 02 Feb 2026 14:20:55 +0000</pubDate></item><item><title>【实战记录】零基础编程？我如何完全靠AI开发了一款安卓手表应用</title><link>https://neo.realityme.top/post/6.html</link><description>**摘要**：没有编程基础，不懂 Java 或 Kotlin，甚至连 Android Studio 的界面都看不懂。</description><guid isPermaLink="true">https://neo.realityme.top/post/6.html</guid><pubDate>Sat, 22 Nov 2025 16:01:55 +0000</pubDate></item><item><title>三中非情景式喜剧  第二幕——香雪</title><link>https://neo.realityme.top/post/5.html</link><description>## 第二幕（上）
+可用于家用服务器的系统选择其实很多。</description><guid isPermaLink="true">https://10086coda10086.github.io//post/7.html</guid><pubDate>Mon, 02 Feb 2026 14:20:55 +0000</pubDate></item><item><title>【实战记录】零基础编程？我如何完全靠AI开发了一款安卓手表应用</title><link>https://10086coda10086.github.io//post/6.html</link><description>**摘要**：没有编程基础，不懂 Java 或 Kotlin，甚至连 Android Studio 的界面都看不懂。</description><guid isPermaLink="true">https://10086coda10086.github.io//post/6.html</guid><pubDate>Sat, 22 Nov 2025 16:01:55 +0000</pubDate></item><item><title>三中非情景式喜剧  第二幕——香雪</title><link>https://10086coda10086.github.io//post/5.html</link><description>## 第二幕（上）
 
-​	在加了她的微信后，他几乎没有和她说过一句话，只是互相确认了名字。</description><guid isPermaLink="true">https://neo.realityme.top/post/5.html</guid><pubDate>Sat, 01 Nov 2025 08:17:52 +0000</pubDate></item><item><title>三中非情景式喜剧</title><link>https://neo.realityme.top/post/4.html</link><description>## 第一幕
+​	在加了她的微信后，他几乎没有和她说过一句话，只是互相确认了名字。</description><guid isPermaLink="true">https://10086coda10086.github.io//post/5.html</guid><pubDate>Sat, 01 Nov 2025 08:17:52 +0000</pubDate></item><item><title>三中非情景式喜剧</title><link>https://10086coda10086.github.io//post/4.html</link><description>## 第一幕
 
-​	厕所门被拆下之后，围观的人就像闻到了某种甜腥气味的鱼群，从四面八方涌了过来。</description><guid isPermaLink="true">https://neo.realityme.top/post/4.html</guid><pubDate>Sat, 01 Nov 2025 08:16:02 +0000</pubDate></item></channel></rss>
+​	厕所门被拆下之后，围观的人就像闻到了某种甜腥气味的鱼群，从四面八方涌了过来。</description><guid isPermaLink="true">https://10086coda10086.github.io//post/4.html</guid><pubDate>Sat, 01 Nov 2025 08:16:02 +0000</pubDate></item></channel></rss>
