@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
+    <script src='https://blog.meekdai.com/Gmeek/plugins/GmeekVercount.js'></script>
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/103094747?s=400&u=54690c656e8bf740633710628214ac5a495f4838&v=4"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+<meta name="description" content="## 注：Shizuku支持系统：Android
+## 下载并安装shizuku
+1. 点击[**下载**](https://apt.izzysoft.de/fdroid/repo/moe.shizuku.privileged.api_1049.apk)，下载安装包（.apk）
+2. 点击安装包，**安装**软件
+## 激活shizuku
+1. 打开**开发人员选项**
+	通常是进入**关于**后点击**版本号**5或7次，可能会要求输入密码，不同品牌可能会有区别，视情况而定
+2. 进入**开发人员选项**
+3. 找到调试一栏中的**USB调试**和**仅充电模式下允许ADB调试**（没有仅充电模式下允许ADB调试可以不开），将其开启
+---
+### 接下来的步骤会分为两大类，请视自己情况而定
+若在调试一栏中找到**无线调试**，可以跳转到[**下一章节**](https://blog.realityme.top/2025/04/12/shizuku%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8C%97/#%E9%80%9A%E8%BF%87%E6%97%A0%E7%BA%BF%E8%B0%83%E8%AF%95%E5%90%AF%E5%8A%A8)
+若没有无线调试，请准备一台搭载**Windows系统的电脑**并继续往下看
+## 通过电脑启动（无无线调试，适用于Windows）
+1. 下载[**ADB调试工具**](https://googledownloads.cn/android/repository/platform-tools-latest-windows.zip)
+2. 解压缩后将解压出来的文件夹重命名为adb并移动到C盘根目录（非必需，但是推荐这么做）
+3. 进入电脑**设置**，搜索**高级系统设置**并进入
+4. 选择**环境变量**
+5. 点击**系统变量**一栏中的**path**并双击进行编辑
+6. 点击右侧**新建**
+7. 输入刚才的**文件路径**（C:\adb）
+8. 然后一路确定，**保存并退出**
+	![adb](/images/adb.webp)
+9. 接下来将手机（或其他设备）连接电脑，
+10. 打开**cmd**（直接在搜索栏输入并回车），输入<code>adb devices</code>，此时若正确开起了开发人员选项中的USB调试，此时设备上可能会出现**是否允许调试**的对话框，勾选**总是允许**，接下来可以在通知中心看到USB调试的信息
+11. 再次在终端中输入<code>adb devices</code>，如无问题将会看到类似如下内容
+~~~
+List of devices attached
+XXX      device
+~~~
+12. 复制以下指令并粘贴到cmd中，如无问题你将会在 Shizuku 中看到已启动成功
+~~~
+adb shell sh /sdcard/Android/data/moe.shizuku.privileged.api/start.sh
+~~~
+### 该启动方式适用于未 root 且运行 Android 10 及以下版本或者HarmonyOS的设备。">
+<meta property="og:title" content="Shizuku使用手册">
+<meta property="og:description" content="## 注：Shizuku支持系统：Android
+## 下载并安装shizuku
+1. 点击[**下载**](https://apt.izzysoft.de/fdroid/repo/moe.shizuku.privileged.api_1049.apk)，下载安装包（.apk）
+2. 点击安装包，**安装**软件
+## 激活shizuku
+1. 打开**开发人员选项**
+	通常是进入**关于**后点击**版本号**5或7次，可能会要求输入密码，不同品牌可能会有区别，视情况而定
+2. 进入**开发人员选项**
+3. 找到调试一栏中的**USB调试**和**仅充电模式下允许ADB调试**（没有仅充电模式下允许ADB调试可以不开），将其开启
+---
+### 接下来的步骤会分为两大类，请视自己情况而定
+若在调试一栏中找到**无线调试**，可以跳转到[**下一章节**](https://blog.realityme.top/2025/04/12/shizuku%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8C%97/#%E9%80%9A%E8%BF%87%E6%97%A0%E7%BA%BF%E8%B0%83%E8%AF%95%E5%90%AF%E5%8A%A8)
+若没有无线调试，请准备一台搭载**Windows系统的电脑**并继续往下看
+## 通过电脑启动（无无线调试，适用于Windows）
+1. 下载[**ADB调试工具**](https://googledownloads.cn/android/repository/platform-tools-latest-windows.zip)
+2. 解压缩后将解压出来的文件夹重命名为adb并移动到C盘根目录（非必需，但是推荐这么做）
+3. 进入电脑**设置**，搜索**高级系统设置**并进入
+4. 选择**环境变量**
+5. 点击**系统变量**一栏中的**path**并双击进行编辑
+6. 点击右侧**新建**
+7. 输入刚才的**文件路径**（C:\adb）
+8. 然后一路确定，**保存并退出**
+	![adb](/images/adb.webp)
+9. 接下来将手机（或其他设备）连接电脑，
+10. 打开**cmd**（直接在搜索栏输入并回车），输入<code>adb devices</code>，此时若正确开起了开发人员选项中的USB调试，此时设备上可能会出现**是否允许调试**的对话框，勾选**总是允许**，接下来可以在通知中心看到USB调试的信息
+11. 再次在终端中输入<code>adb devices</code>，如无问题将会看到类似如下内容
+~~~
+List of devices attached
+XXX      device
+~~~
+12. 复制以下指令并粘贴到cmd中，如无问题你将会在 Shizuku 中看到已启动成功
+~~~
+adb shell sh /sdcard/Android/data/moe.shizuku.privileged.api/start.sh
+~~~
+### 该启动方式适用于未 root 且运行 Android 10 及以下版本或者HarmonyOS的设备。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://10086Coda10086.github.io/post/20.html">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/103094747?s=400&u=54690c656e8bf740633710628214ac5a495f4838&v=4">
+<title>Shizuku使用手册</title>
+
+
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+.copy-feedback {
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 50px;
+    color: var(--color-fg-on-emphasis);
+    background-color: var(--color-fg-muted);
+    border-radius: 3px;
+    padding: 5px 8px;
+    font-size: 12px;
+}
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">Shizuku使用手册</h1>
+<div class="title-right">
+    <a href="https://10086Coda10086.github.io" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+    <a href="https://github.com/10086Coda10086/10086Coda10086.github.io/issues/20" target="_blank" class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><h2>注：Shizuku支持系统：Android</h2>
+<h2>下载并安装shizuku</h2>
+<ol>
+<li>点击<a href="https://apt.izzysoft.de/fdroid/repo/moe.shizuku.privileged.api_1049.apk" rel="nofollow"><strong>下载</strong></a>，下载安装包（.apk）</li>
+<li>点击安装包，<strong>安装</strong>软件</li>
+</ol>
+<h2>激活shizuku</h2>
+<ol>
+<li>打开<strong>开发人员选项</strong><br>
+通常是进入<strong>关于</strong>后点击<strong>版本号</strong>5或7次，可能会要求输入密码，不同品牌可能会有区别，视情况而定</li>
+<li>进入<strong>开发人员选项</strong></li>
+<li>找到调试一栏中的<strong>USB调试</strong>和<strong>仅充电模式下允许ADB调试</strong>（没有仅充电模式下允许ADB调试可以不开），将其开启</li>
+</ol>
+<hr>
+<h3>接下来的步骤会分为两大类，请视自己情况而定</h3>
+<p>若在调试一栏中找到<strong>无线调试</strong>，可以跳转到<a href="https://blog.realityme.top/2025/04/12/shizuku%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8C%97/#%E9%80%9A%E8%BF%87%E6%97%A0%E7%BA%BF%E8%B0%83%E8%AF%95%E5%90%AF%E5%8A%A8" rel="nofollow"><strong>下一章节</strong></a><br>
+若没有无线调试，请准备一台搭载<strong>Windows系统的电脑</strong>并继续往下看</p>
+<h2>通过电脑启动（无无线调试，适用于Windows）</h2>
+<ol>
+<li>下载<a href="https://googledownloads.cn/android/repository/platform-tools-latest-windows.zip" rel="nofollow"><strong>ADB调试工具</strong></a></li>
+<li>解压缩后将解压出来的文件夹重命名为adb并移动到C盘根目录（非必需，但是推荐这么做）</li>
+<li>进入电脑<strong>设置</strong>，搜索<strong>高级系统设置</strong>并进入</li>
+<li>选择<strong>环境变量</strong></li>
+<li>点击<strong>系统变量</strong>一栏中的<strong>path</strong>并双击进行编辑</li>
+<li>点击右侧<strong>新建</strong></li>
+<li>输入刚才的<strong>文件路径</strong>（C:\adb）</li>
+<li>然后一路确定，<strong>保存并退出</strong><br>
+<a target="_blank" rel="noopener noreferrer" href="/images/adb.webp"><img src="/images/adb.webp" alt="adb" style="max-width: 100%;"></a></li>
+<li>接下来将手机（或其他设备）连接电脑，</li>
+<li>打开<strong>cmd</strong>（直接在搜索栏输入并回车），输入<code class="notranslate">adb devices</code>，此时若正确开起了开发人员选项中的USB调试，此时设备上可能会出现<strong>是否允许调试</strong>的对话框，勾选<strong>总是允许</strong>，接下来可以在通知中心看到USB调试的信息</li>
+<li>再次在终端中输入<code class="notranslate">adb devices</code>，如无问题将会看到类似如下内容</li>
+</ol>
+<pre class="notranslate"><code class="notranslate">List of devices attached
+XXX      device
+</code></pre>
+<ol start="12">
+<li>复制以下指令并粘贴到cmd中，如无问题你将会在 Shizuku 中看到已启动成功</li>
+</ol>
+<pre class="notranslate"><code class="notranslate">adb shell sh /sdcard/Android/data/moe.shizuku.privileged.api/start.sh
+</code></pre>
+<h3>该启动方式适用于未 root 且运行 Android 10 及以下版本或者HarmonyOS的设备。很不幸，该启动方式需要连接电脑。且由于系统限制，每次重新启动后都需要再次进行启动步骤</h3>
+<h2>通过无线调试启动</h2>
+<ol>
+<li>进入开发人员选项中的<strong>无线调试</strong></li>
+<li><strong>启用</strong>无线调试</li>
+<li>配对（仅需一次）
+<ol>
+<li>在 Shizuku 内开始<strong>配对</strong><br>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/2914e74d62ec0f3e740ea666aef87c7ebde5f060a425f3dcb667d4bb41a3130f/68747470733a2f2f7368697a756b752e72696b6b612e6170702f696d616765732f73746172745f706172696e675f66726f6d5f7368697a756b752e77656270"><img src="https://camo.githubusercontent.com/2914e74d62ec0f3e740ea666aef87c7ebde5f060a425f3dcb667d4bb41a3130f/68747470733a2f2f7368697a756b752e72696b6b612e6170702f696d616765732f73746172745f706172696e675f66726f6d5f7368697a756b752e77656270" alt="shi" data-canonical-src="https://shizuku.rikka.app/images/start_paring_from_shizuku.webp" style="max-width: 100%;"></a></li>
+<li>点按无线调试中的<strong>使用配对码配对设备</strong><br>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/7fdcacfa0dc83a181b2876631cbf92c5774f86d791c830d658f671d0900ebd6e/68747470733a2f2f7368697a756b752e72696b6b612e6170702f696d616765732f73746172745f70616972696e672e77656270"><img src="https://camo.githubusercontent.com/7fdcacfa0dc83a181b2876631cbf92c5774f86d791c830d658f671d0900ebd6e/68747470733a2f2f7368697a756b752e72696b6b612e6170702f696d616765732f73746172745f70616972696e672e77656270" alt="zu" data-canonical-src="https://shizuku.rikka.app/images/start_pairing.webp" style="max-width: 100%;"></a></li>
+<li>在Shizuku的<strong>通知</strong>中<strong>填入配对码</strong><br>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/49a796b71f54be61c3ba704344adae62a494f59d9c138da42fe456e63b83aa82/68747470733a2f2f7368697a756b752e72696b6b612e6170702f696d616765732f656e7465725f70616972696e675f636f64652e77656270"><img src="https://camo.githubusercontent.com/49a796b71f54be61c3ba704344adae62a494f59d9c138da42fe456e63b83aa82/68747470733a2f2f7368697a756b752e72696b6b612e6170702f696d616765732f656e7465725f70616972696e675f636f64652e77656270" alt="ku" data-canonical-src="https://shizuku.rikka.app/images/enter_pairing_code.webp" style="max-width: 100%;"></a></li>
+</ol>
+</li>
+<li>启动Shizuku<br>
+<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/020e71bea659ea8661233d966b4a3fd70be021ab794303f41603c25a21d7db39/68747470733a2f2f7368697a756b752e72696b6b612e6170702f696d616765732f73746172745f7368697a756b752e77656270"><img src="https://camo.githubusercontent.com/020e71bea659ea8661233d966b4a3fd70be021ab794303f41603c25a21d7db39/68747470733a2f2f7368697a756b752e72696b6b612e6170702f696d616765732f73746172745f7368697a756b752e77656270" alt="shizukucontact" data-canonical-src="https://shizuku.rikka.app/images/start_shizuku.webp" style="max-width: 100%;"></a><br>
+如果无法启动，尝试禁用并启用无线调试</li>
+</ol>
+<h3>通过无线调试启动适用于 Android 11 或以上版本。这种启动方式无需连接电脑。由于系统限制，每次重新启动后都需要再次进行启动步骤</h3>
+<h2>通过 root 启动</h2>
+<p>如果您的设备已经 root，直接启动即可</p>
+<h2>常见问题</h2>
+<p>许多厂商对 Android 系统进行了修改，这会造成 Shizuku 无法正常工作。</p>
+<h3>通过无线调试启动：一直显示“正在搜索配对服务”</h3>
+<p>请允许 Shizuku 在后台运行。<br>
+搜索配对服务需要访问本地网络，许多厂商在应用不可见后立刻禁止应用访问网络。您可以在网络上搜索如何在您的设备上允许应用在后台运行。</p>
+<h3>通过无线调试启动：点击“输入配对码”后立刻提示失败</h3>
+<p>MIUI（小米、POCO）<br>
+在系统设置的“通知管理”-“通知显示设置”将通知样式切换为“原生样式”。</p>
+<h3>通过无线调试启动/通过连接电脑启动：adb 权限受限</h3>
+<h4>MIUI（小米、POCO）</h4>
+<p>在“开发者选项”中开启“USB 调试（安全设置）”。注意，这和“USB 调试”是两个分开的选项。</p>
+<h4>ColorOS（OPPO &amp; OnePlus）</h4>
+<p>在“开发者选项”中关闭“权限监控”。</p>
+<h4>Flyme（魅族）</h4>
+<p>在“开发者选项”中关闭“Flyme 支付保护”。</p>
+<h3>通过无线调试启动/通过连接电脑启动：Shizuku 随机停止</h3>
+<h4>所有设备</h4>
+<p>保证 Shizuku 可以在后台运行。</p>
+<p>不要关闭“USB 调试”及“开发者选项”。</p>
+<p>在“开发者选项”中将 USB 使用模式改为“仅充电”。</p>
+<p>在 Android 8 上的选项是“选择 USB 配置”-“仅充电”。<br>
+在 Android 9 及以上版本上选项是“默认 USB 配置”-“不进行数据传输”。</p>
+<p>（Android 11+）启用“停用 adb 授权超时功能”选项</p>
+<h4>EMUI (华为)</h4>
+<p>在“开发者选项”中开启「“仅充电”模式下允许 ADB 调试选项」。</p>
+<h4>MIUI（小米、POCO）</h4>
+<p>不要使用“手机管家”的扫描功能，因为它会禁用开发者选项。</p>
+<h4>Sony</h4>
+<p>不要点击连接 USB 后弹出的对话框，因为这会导致 USB 使用模式发生变化。</p>
+<h3>通过 root 启动：无法开机启动</h3>
+<p>请允许 Shizuku 在后台运行。</p></div>
+<div style="font-size:small;margin-top:8px;float:right;"></div>
+
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+
+</div>
+    <div id="footer"><div id="footer1">Copyright © <span id="copyrightYear"></span> <a href="https://10086Coda10086.github.io">我愿意说的一切</a></div>
+<div id="footer2">
+    <span id="runday"></span><span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a></span>
+</div>
+
+<script>
+var now=new Date();
+document.getElementById("copyrightYear").innerHTML=now.getFullYear();
+
+if("11/01/2025"!=""){
+    var startSite=new Date("11/01/2025");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("runday").innerHTML="网站运行 "+diffDay+" 天"+" • ";
+}
+</script></div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z', 'copy': 'M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z', 'check': 'M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.disabled=true;
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","10086Coda10086/10086Coda10086.github.io");
+    script.setAttribute("issue-term","title");
+    
+    if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
+    else if(localStorage.getItem("meek_theme")=="light") {script.setAttribute("theme","github-light");}
+    else{script.setAttribute("theme","preferred-color-scheme");}
+    
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const createClipboardHTML = (codeContent, additionalClasses = '') => `
+        <pre class="notranslate"><code class="notranslate">${codeContent}</code></pre>
+        <div class="clipboard-container position-absolute right-0 top-0 ${additionalClasses}">
+            <clipboard-copy class="ClipboardButton btn m-2 p-0" role="button" style="display: inherit;">
+                <svg height="16" width="16" class="octicon octicon-copy m-2"><path d="${IconList["copy"]}"></path></svg>
+                <svg height="16" width="16" class="octicon octicon-check color-fg-success m-2 d-none"><path d="${IconList["check"]}"></path></svg>
+            </clipboard-copy>
+            <div class="copy-feedback">Copied!</div>
+        </div>
+    `;
+
+    const handleCodeElements = (selector = '') => {
+        document.querySelectorAll(selector).forEach(codeElement => {
+            const codeContent = codeElement.innerHTML;
+            const newStructure = document.createElement('div');
+            newStructure.className = 'snippet-clipboard-content position-relative overflow-auto';
+            newStructure.innerHTML = createClipboardHTML(codeContent);
+
+            const parentElement = codeElement.parentElement;
+            if (selector.includes('highlight')) {
+                parentElement.insertBefore(newStructure, codeElement.nextSibling);
+                parentElement.removeChild(codeElement);
+            } else {
+                parentElement.parentElement.replaceChild(newStructure, parentElement);
+            }
+        });
+    };
+
+    handleCodeElements('pre.notranslate > code.notranslate');
+    handleCodeElements('div.highlight > pre.notranslate');
+
+    let currentFeedback = null;
+    document.querySelectorAll('clipboard-copy').forEach(copyButton => {
+        copyButton.addEventListener('click', () => {
+            const codeContent = copyButton.closest('.snippet-clipboard-content').innerText;
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = codeContent;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextArea);
+
+            const copyIcon = copyButton.querySelector('.octicon-copy');
+            const checkIcon = copyButton.querySelector('.octicon-check');
+            const copyFeedback = copyButton.nextElementSibling;
+
+            if (currentFeedback && currentFeedback !== copyFeedback) {currentFeedback.style.display = 'none';}
+            currentFeedback = copyFeedback;
+
+            copyIcon.classList.add('d-none');
+            checkIcon.classList.remove('d-none');
+            copyFeedback.style.display = 'block';
+            copyButton.style.borderColor = 'var(--color-success-fg)';
+
+            setTimeout(() => {
+                copyIcon.classList.remove('d-none');
+                checkIcon.classList.add('d-none');
+                copyFeedback.style.display = 'none';
+                copyButton.style.borderColor = '';
+            }, 2000);
+        });
+    });
+});
+
+</script>
+<script src='https://blog.meekdai.com/Gmeek/plugins/articletoc.js'></script><script src='https://blog.meekdai.com/Gmeek/plugins/lightbox.js'></script>
+
+</html>

@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
+    <script src='https://blog.meekdai.com/Gmeek/plugins/GmeekVercount.js'></script>
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/103094747?s=400&u=54690c656e8bf740633710628214ac5a495f4838&v=4"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+<meta name="description" content="使用设备：惠普 t628
+
+![Image](https://github.com/user-attachments/assets/97c14621-6236-4908-8d65-d89638e65bc1)
+
+安安静静地躺在我的书柜上
+
+## 1. 安装系统
+
+可用于家用服务器的系统选择其实很多。">
+<meta property="og:title" content="从零开始的小主机折腾机#1">
+<meta property="og:description" content="使用设备：惠普 t628
+
+![Image](https://github.com/user-attachments/assets/97c14621-6236-4908-8d65-d89638e65bc1)
+
+安安静静地躺在我的书柜上
+
+## 1. 安装系统
+
+可用于家用服务器的系统选择其实很多。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://10086Coda10086.github.io/post/7.html">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/103094747?s=400&u=54690c656e8bf740633710628214ac5a495f4838&v=4">
+<title>从零开始的小主机折腾机#1</title>
+<link href="//unpkg.com/@wooorm/starry-night@2.1.1/style/both.css" rel="stylesheet" />
+
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+.copy-feedback {
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 50px;
+    color: var(--color-fg-on-emphasis);
+    background-color: var(--color-fg-muted);
+    border-radius: 3px;
+    padding: 5px 8px;
+    font-size: 12px;
+}
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">从零开始的小主机折腾机#1</h1>
+<div class="title-right">
+    <a href="https://10086Coda10086.github.io" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+    <a href="https://github.com/10086Coda10086/10086Coda10086.github.io/issues/7" target="_blank" class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><p>使用设备：惠普 t628</p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/97c14621-6236-4908-8d65-d89638e65bc1"><img src="https://github.com/user-attachments/assets/97c14621-6236-4908-8d65-d89638e65bc1" alt="Image" style="max-width: 100%;"></a></p>
+<p>安安静静地躺在我的书柜上</p>
+<h2>1. 安装系统</h2>
+<p>可用于家用服务器的系统选择其实很多。国内有非开源的 FNOS，国外则有开源的 TrueNAS、Unraid 等；通用 Linux 发行版方面，还有 Ubuntu Server、Debian、甚至 Arch（？）；如果确实存在刚需，也可以选择 Windows Server。</p>
+<p>但除传统 Linux 发行版以外，其余系统整体都偏向“成品化”和集成化，功能齐全的同时也相对臃肿。NAS 本身对性能要求不高，但考虑到 t628 的硬件性能较为有限，过于复杂的系统在长期折腾下仍可能成为瓶颈。</p>
+<p>综合性能开销、系统自由度以及可控性，我最终选择了 <strong>Ubuntu Server</strong>。相较于 Debian，Ubuntu Server 的确更偏臃肿一些，但这种“臃肿”也换来了更友好的生态和更低的使用门槛。至于常被诟病的 Snap，虽然谈不上喜欢，但在可接受范围内，实际使用中确实能带来一定便利。</p>
+<p>Debian 在简洁性和稳定性上依然更胜一筹，但权衡之后，我个人仍然可以接受 Ubuntu Server——毕竟在大多数场景下，Snap 等机制确实能省下不少时间和精力。</p>
+<h3>1.1 安装过程</h3>
+<p>Ubuntu Server 的安装流程本身较为简单。首先前往 [<a href="https://ubuntu.com/download/server" rel="nofollow">Ubuntu 官方网站</a>](<a href="https://ubuntu.com/download/server" rel="nofollow">https://ubuntu.com/download/server</a>) 下载系统镜像，然后通过启动盘完成安装即可。无论是使用 <strong>Rufus</strong> 还是 <strong>Ventoy</strong>，方式并无本质区别，只要能正常引导并完成安装即可。</p>
+<p>需要注意的是：如果你计划将主机放置在<strong>无人值守</strong>或<strong>不便连接显示器与键盘</strong>的位置，建议在安装阶段就配置好 <strong>SSH</strong>，以便后续远程管理。</p>
+<p>下面是具体的 SSH 配置流程。</p>
+<hr>
+<h4>1.1.1 SSH 配置教程</h4>
+<p>首先，在你<strong>日后用于管理服务器的电脑</strong>上打开终端（如果找不到，可以直接在搜索栏中搜索“终端”或“PowerShell”）。</p>
+<p>执行以下命令生成 SSH 密钥：</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">ssh-keygen -t ed25519 -C <span class="pl-s"><span class="pl-pds">"</span>your_email@example.com<span class="pl-pds">"</span></span></pre></div>
+<blockquote>
+<p>请将 <code class="notranslate">your_email@example.com</code> 替换为你自己的邮箱。虽然该字段并不影响功能，但用于标识密钥，建议填写。</p>
+</blockquote>
+<p>随后一路回车（通常 3～4 次），直到命令执行结束。</p>
+<p>生成完成后，密钥文件默认位于：</p>
+<pre class="notranslate"><code class="notranslate">C:\Users\你的用户名\.ssh\
+├─ id_ed25519        （私钥，**务必妥善保管，绝不可泄露**）
+└─ id_ed25519.pub    （公钥，用于服务器或 GitHub）
+</code></pre>
+<p>接下来复制公钥内容（供后续使用）：</p>
+<div class="highlight highlight-source-powershell"><pre class="notranslate">type <span class="pl-smi">$<span class="pl-c1">env:</span>USERPROFILE</span>\.ssh\id_ed25519.pub</pre></div>
+<p>请<strong>完整复制输出的整行内容</strong>。</p>
+<hr>
+<h5>将 SSH Key 添加到 GitHub</h5>
+<p>如果尚未注册 GitHub 账号，请先完成注册。</p>
+<ol>
+<li>打开 GitHub</li>
+<li>点击右上角头像 → <strong>Settings</strong></li>
+<li>左侧选择 <strong>SSH and GPG keys</strong></li>
+<li>点击 <strong>New SSH key</strong></li>
+<li>填写以下信息：
+<ul>
+<li><strong>Title</strong>：<br>
+任意，用于区分设备<br>
+示例：<code class="notranslate">debian-server</code> / <code class="notranslate">laptop</code> / <code class="notranslate">home-nas</code></li>
+<li><strong>Key type</strong>：<br>
+保持默认 <code class="notranslate">Authentication Key</code></li>
+<li><strong>Key</strong>：<br>
+粘贴刚才复制的<strong>完整公钥</strong></li>
+</ul>
+</li>
+<li>点击 <strong>Add SSH key</strong></li>
+<li>按提示输入 GitHub 密码确认</li>
+</ol>
+<hr>
+<p>最后，在 <strong>Ubuntu Server 安装过程中</strong>：</p>
+<ul>
+<li>启用 <strong>SSH 服务</strong></li>
+<li>选择 <strong>从 GitHub 导入 SSH key</strong></li>
+<li>输入对应的 <strong>GitHub 用户名</strong></li>
+</ul>
+<p>这样在系统安装完成后，即可直接通过 SSH 使用密钥登录服务器，无需再进行额外配置。</p>
+<p>要想登录也很简单，终端输入</p>
+<p><code class="notranslate">ssh 用户名@ip地址</code></p>
+<p>有可能会问你yes/no/fingerprint，直接yes即可。</p>
+<p>然后输入账号密码就行了。</p>
+<h4>1.1.2 配置软件源</h4>
+<p>Ubuntu 默认使用的官方软件源在国内访问速度和稳定性都不理想，实际使用中容易出现下载慢甚至失败的情况。因此，建议在安装阶段或安装完成后，将软件源切换为国内镜像站，例如 <strong>清华大学开源软件镜像站</strong>。</p>
+<p>在 <strong>Ubuntu Server 安装过程中</strong>，当安装程序询问软件源地址时，可以直接填写清华源：</p>
+<pre class="notranslate"><code class="notranslate">https://mirrors.tuna.tsinghua.edu.cn/ubuntu/
+</code></pre>
+<p>如果在安装阶段未进行配置，也可以在系统安装完成后手动修改 <code class="notranslate">/etc/apt/sources.list</code> 来完成切换。切换完成后，执行以下命令更新软件索引：</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo apt update</pre></div>
+<p>更换为国内镜像源后，<code class="notranslate">apt</code> 在下载软件包和更新系统时的速度与稳定性都会有明显改善，尤其是在首次安装大量依赖时效果尤为明显。</p>
+<h2>2. 初步配置系统</h2>
+<h3>2.1 更新系统与基础工具</h3>
+<p>在开始进一步配置之前，建议先对系统进行一次完整更新，并安装一些常用的基础工具。</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo apt update <span class="pl-k">&amp;&amp;</span> sudo apt upgrade -y
+sudo apt install -y curl wget vim htop net-tools</pre></div>
+<p>这两行是 <strong>Debian / Ubuntu 系列</strong>里非常常见的初始化命令，作用可以分开精确说明。</p>
+<p>第一行</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo apt update <span class="pl-k">&amp;&amp;</span> sudo apt upgrade -y</pre></div>
+<p><code class="notranslate">sudo</code></p>
+<p>以 <strong>root 权限</strong>执行。普通用户默认不能改系统软件。</p>
+<p><code class="notranslate">apt update</code></p>
+<ul>
+<li><strong>更新软件源索引</strong></li>
+<li>从 <code class="notranslate">/etc/apt/sources.list</code> 及 <code class="notranslate">/etc/apt/sources.list.d/</code> 中配置的镜像站：
+<ul>
+<li>下载“有哪些软件、有哪些版本”的<strong>清单</strong></li>
+</ul>
+</li>
+<li>❗不会安装或升级任何软件</li>
+</ul>
+<p>可以理解为：<strong>刷新可用软件列表</strong></p>
+<p><code class="notranslate">&amp;&amp;</code></p>
+<ul>
+<li><strong>逻辑与</strong></li>
+<li>含义是：<br>
+👉 <strong>只有前一个命令成功，才执行后一个</strong></li>
+</ul>
+<p>如果 <code class="notranslate">apt update</code> 失败，<code class="notranslate">apt upgrade</code> 不会执行。</p>
+<p><code class="notranslate">apt upgrade -y</code></p>
+<ul>
+<li><strong>升级已安装的软件包</strong></li>
+<li>只升级：
+<ul>
+<li>已安装</li>
+<li>且不需要删除旧包、不引入冲突的新包</li>
+</ul>
+</li>
+<li><code class="notranslate">-y</code> 表示：
+<ul>
+<li>自动回答 “yes”</li>
+<li>不再交互确认</li>
+</ul>
+</li>
+</ul>
+<p><g-emoji class="g-emoji" alias="warning">⚠️</g-emoji> 不会升级内核大版本、不会自动移除包<br>
+（那是 <code class="notranslate">full-upgrade</code> / <code class="notranslate">dist-upgrade</code> 干的事）</p>
+<p>第一行总结</p>
+<blockquote>
+<p><strong>刷新软件源 → 把系统中能安全升级的软件全部升级到最新版本</strong></p>
+</blockquote>
+<p>第二行</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo apt install -y curl wget vim htop net-tools</pre></div>
+<p>含义</p>
+<ul>
+<li>使用 <code class="notranslate">apt</code> 安装一组<strong>常用工具</strong></li>
+<li><code class="notranslate">-y</code>：不询问，直接安装</li>
+</ul>
+<p>各软件具体作用</p>
+<p><code class="notranslate">curl</code></p>
+<ul>
+<li>命令行 <strong>HTTP/HTTPS 客户端</strong></li>
+<li>常见用途：
+<ul>
+<li>调用 API</li>
+<li>下载文件</li>
+<li>一键脚本（<code class="notranslate">curl | bash</code>）</li>
+</ul>
+</li>
+</ul>
+<p>示例：</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">curl https://example.com</pre></div>
+<p><code class="notranslate">wget</code></p>
+<ul>
+<li>命令行 <strong>文件下载工具</strong></li>
+<li>更偏向“稳定下载”</li>
+</ul>
+<p>示例：</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">wget https://example.com/file.zip</pre></div>
+<p>📌 <code class="notranslate">curl</code> 更灵活，<code class="notranslate">wget</code> 更专注下载<br>
+很多服务器教程会<strong>两个都装</strong></p>
+<p><code class="notranslate">vim</code></p>
+<ul>
+<li>终端文本编辑器</li>
+<li>常用于：
+<ul>
+<li>编辑配置文件</li>
+<li>改 systemd / nginx / docker 配置</li>
+</ul>
+</li>
+</ul>
+<p>示例：</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">vim /etc/ssh/sshd_config</pre></div>
+<p><code class="notranslate">htop</code></p>
+<ul>
+<li>交互式 <strong>进程/资源监控</strong></li>
+<li>比 <code class="notranslate">top</code>：
+<ul>
+<li>更直观</li>
+<li>支持鼠标</li>
+<li>彩色界面</li>
+</ul>
+</li>
+</ul>
+<p>示例：</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">htop</pre></div>
+<p><code class="notranslate">net-tools</code></p>
+<ul>
+<li>提供老一代网络命令：
+<ul>
+<li><code class="notranslate">ifconfig</code></li>
+<li><code class="notranslate">netstat</code></li>
+<li><code class="notranslate">route</code></li>
+</ul>
+</li>
+<li><g-emoji class="g-emoji" alias="warning">⚠️</g-emoji> 已被 <code class="notranslate">iproute2</code>（<code class="notranslate">ip a</code>, <code class="notranslate">ss</code>）取代</li>
+<li>但<strong>很多老教程仍依赖它</strong></li>
+</ul>
+<p>第二行总结</p>
+<blockquote>
+<p><strong>安装一套几乎所有服务器 / Linux 新系统都会装的基础工具</strong></p>
+</blockquote>
+<p>整体一句话总结</p>
+<p>这两行命令的目的就是：</p>
+<blockquote>
+<p><strong>更新系统 → 升级已有软件 → 安装一套常用的命令行工具，作为系统的“基础环境”</strong></p>
+</blockquote>
+<hr>
+<p>接下来可以通过安装一款简单的工具来验证软件源和系统是否工作正常。这里以 <strong>neofetch</strong> 为例，该工具用于在终端中展示系统的基本信息。</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo apt install neofetch</pre></div>
+<p>按提示输入 <code class="notranslate">y</code> 确认安装。安装完成后，直接执行：</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">neofetch</pre></div>
+<p>即可看到系统信息的汇总展示界面，例如下图所示：</p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/8fa03b28-1b6e-4b91-8eae-9cd9f0c2d820"><img width="1920" height="1048" alt="Image" src="https://github.com/user-attachments/assets/8fa03b28-1b6e-4b91-8eae-9cd9f0c2d820" style="max-width: 100%; height: auto; max-height: 1048px;; aspect-ratio: 1920 / 1048; background-color: var(--bgColor-muted); border-radius: 6px; display: block" class="js-gh-image-fallback"></a></p>
+<p>如果能够正常显示，说明当前软件源配置与基础环境均工作正常，可以继续后续的系统配置与服务部署。</p>
+<h4>2.1.1 安装“扶手梯”</h4>
+<p>名字叫“扶手梯”，但实际上就是你理解的那个——网络代理工具。</p>
+<p>由于后续会大量使用 <strong>Docker</strong>，包括拉取镜像、访问 GitHub 等资源，如果没有稳定的网络环境，实际体验会非常糟糕。因此，这一步几乎是必需的前置条件。</p>
+<p>这里直接使用 [<a href="https://github.com/nelvko">nelvko</a>](<a href="https://github.com/nelvko">https://github.com/nelvko</a>) 大佬提供的脚本，整体安装过程相对省心。</p>
+<p>在终端中执行以下命令即可开始安装：</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">git clone --branch master --depth 1 https://gh-proxy.org/https://github.com/nelvko/clash-for-linux-install.git \
+  <span class="pl-k">&amp;&amp;</span> <span class="pl-c1">cd</span> clash-for-linux-install \
+  <span class="pl-k">&amp;&amp;</span> bash install.sh</pre></div>
+<p>安装过程中按照脚本提示操作即可，基本不需要额外干预。</p>
+<p>如果你还没有可用的订阅链接，可以参考我之前写的一篇文章：<br>
+👉 [<a href="https://blog.realityme.top/2025/08/02/%E4%BD%8E%E4%BB%B7%E6%9C%BA%E5%9C%BA%E6%8E%A8%E8%8D%90/" rel="nofollow">低价机场推荐</a>](<a href="https://blog.realityme.top/2025/08/02/%E4%BD%8E%E4%BB%B7%E6%9C%BA%E5%9C%BA%E6%8E%A8%E8%8D%90/" rel="nofollow">https://blog.realityme.top/2025/08/02/低价机场推荐/</a>)</p>
+<p>接着重启。</p>
+<p>**注：**一些可能用到的命令：</p>
+<pre class="notranslate"><code class="notranslate">Usage: 
+  clashctl COMMAND [OPTIONS]
+
+Commands:
+    on                    开启代理
+    off                   关闭代理
+    status                内核状况
+    proxy                 系统代理
+    ui                    Web 面板
+    secret                Web 密钥
+    sub                   订阅管理
+    upgrade               升级内核
+    tun                   Tun 模式
+    mixin                 Mixin 配置
+
+Global Options:
+    -h, --help            显示帮助信息
+    
+更优雅的方式：
+$ clashon
+😼 已开启代理环境
+
+$ clashoff
+😼 已关闭代理环境
+</code></pre>
+<p>更多内容查看[<a href="https://github.com/nelvko/clash-for-linux-install">GitHub仓库</a>](<a href="https://github.com/nelvko/clash-for-linux-install">https://github.com/nelvko/clash-for-linux-install</a>)</p>
+<p>完成以上配置后，后续无论是 Docker 拉镜像还是访问各类国外服务，整体体验都会顺畅许多，可以继续安心折腾了。</p>
+<h4>2.1.2 安装 Docker 与 Compose</h4>
+<p>Docker 是后续服务部署的核心组件，这里直接使用官方提供的一键安装脚本进行安装，省去手动配置依赖的步骤。</p>
+<p>下面我会<strong>逐条、逐命令解释</strong>在 Ubuntu 上安装 <strong>Docker Engine + Docker Compose（v2）</strong> 的全过程。内容偏“原理 + 实操”，适合理解而不是只照抄。</p>
+<blockquote>
+<p>适用系统：Ubuntu 20.04 / 22.04 / 24.04（Desktop / Server 通用）</p>
+</blockquote>
+<hr>
+<h5>一、为什么不直接 <code class="notranslate">apt install docker</code></h5>
+<p>Ubuntu 自带仓库里的 Docker 版本通常：</p>
+<ul>
+<li><strong>版本旧</strong></li>
+<li><strong>功能不全</strong></li>
+<li><strong>Compose 不是 v2</strong></li>
+</ul>
+<p>因此官方推荐：</p>
+<blockquote>
+<p><strong>使用 Docker 官方仓库安装</strong></p>
+</blockquote>
+<hr>
+<h5>二、准备系统依赖</h5>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo apt update
+sudo apt install -y ca-certificates curl gnupg lsb-release</pre></div>
+<h6>逐项解释</h6>
+<h6>1️⃣ <code class="notranslate">apt update</code></h6>
+<ul>
+<li>更新本地 <strong>软件索引</strong></li>
+<li>不安装任何东西</li>
+<li>相当于“刷新应用商店”</li>
+</ul>
+<hr>
+<h6>2️⃣ <code class="notranslate">ca-certificates</code></h6>
+<ul>
+<li>提供 <strong>HTTPS 证书</strong></li>
+<li>没它：
+<ul>
+<li>HTTPS 源可能报错</li>
+<li>curl 访问 <a href="https://download.docker.com/" rel="nofollow">https://download.docker.com/</a> 会失败</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h6>3️⃣ <code class="notranslate">curl</code></h6>
+<ul>
+<li>命令行下载工具</li>
+<li>后面用它：
+<ul>
+<li>下载 Docker 的 GPG 公钥</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h6>4️⃣ <code class="notranslate">gnupg</code></h6>
+<ul>
+<li>GPG 加密工具</li>
+<li>用来：
+<ul>
+<li>验证 Docker 软件包 <strong>是否被篡改</strong></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h6>5️⃣ <code class="notranslate">lsb-release</code></h6>
+<ul>
+<li>用来识别 Ubuntu 版本代号</li>
+<li>比如：
+<ul>
+<li>22.04 → <code class="notranslate">jammy</code></li>
+<li>24.04 → <code class="notranslate">noble</code></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h5>三、添加 Docker 官方 GPG Key（安全核心）</h5>
+<h6>1️⃣ 创建 keyrings 目录</h6>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo install -m 0755 -d /etc/apt/keyrings</pre></div>
+<p>解释</p>
+<ul>
+<li><code class="notranslate">/etc/apt/keyrings</code><br>
+用来存放 <strong>第三方仓库的公钥</strong></li>
+<li><code class="notranslate">0755</code>
+<ul>
+<li>所有人可读</li>
+<li>root 可写</li>
+</ul>
+</li>
+<li><code class="notranslate">install -d</code>
+<ul>
+<li>比 <code class="notranslate">mkdir</code> 更安全、规范</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h6>2️⃣ 下载并转换 Docker 公钥</h6>
+<div class="highlight highlight-source-shell"><pre class="notranslate">curl -fsSL https://download.docker.com/linux/ubuntu/gpg <span class="pl-k">|</span> \
+sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg</pre></div>
+<p>拆解理解</p>
+<p><code class="notranslate">curl -fsSL</code></p>
+<ul>
+<li><code class="notranslate">-f</code>：失败时不输出 HTML</li>
+<li><code class="notranslate">-s</code>：静默</li>
+<li><code class="notranslate">-S</code>：出错时显示错误</li>
+<li><code class="notranslate">-L</code>：跟随重定向</li>
+</ul>
+<p><code class="notranslate">|</code> 管道</p>
+<ul>
+<li>把下载的公钥内容传给 <code class="notranslate">gpg</code></li>
+</ul>
+<p><code class="notranslate">gpg --dearmor</code></p>
+<ul>
+<li>Docker 提供的是 <strong>ASCII 格式公钥</strong></li>
+<li>apt 需要 <strong>二进制格式</strong></li>
+<li><code class="notranslate">--dearmor</code> 就是转换格式</li>
+</ul>
+<hr>
+<h6>3️⃣ 设置读取权限</h6>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo chmod a+r /etc/apt/keyrings/docker.gpg</pre></div>
+<p>解释</p>
+<ul>
+<li>apt 是普通用户进程</li>
+<li>如果不能读这个 key：
+<ul>
+<li>apt update 会失败</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h5>四、添加 Docker 官方软件源</h5>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c1">echo</span> \
+<span class="pl-s"><span class="pl-pds">"</span>deb [arch=<span class="pl-s"><span class="pl-pds">$(</span>dpkg --print-architecture<span class="pl-pds">)</span></span> signed-by=/etc/apt/keyrings/docker.gpg] <span class="pl-cce">\</span></span>
+<span class="pl-s">https://download.docker.com/linux/ubuntu <span class="pl-cce">\</span></span>
+<span class="pl-s"><span class="pl-s"><span class="pl-pds">$(</span>lsb_release -cs<span class="pl-pds">)</span></span> stable<span class="pl-pds">"</span></span> <span class="pl-k">|</span> \
+sudo tee /etc/apt/sources.list.d/docker.list <span class="pl-k">&gt;</span> /dev/null</pre></div>
+<hr>
+<h6>逐段解释</h6>
+<p>1️⃣ <code class="notranslate">dpkg --print-architecture</code></p>
+<p>输出：</p>
+<ul>
+<li><code class="notranslate">amd64</code>（你的 i5-1135G7 就是）</li>
+<li>用于确保架构匹配</li>
+</ul>
+<hr>
+<p>2️⃣ <code class="notranslate">signed-by=...</code></p>
+<p>告诉 apt：</p>
+<blockquote>
+<p><strong>这个仓库必须用 docker.gpg 验证</strong></p>
+</blockquote>
+<p>这是现代 apt 的安全写法<br>
+（旧的 <code class="notranslate">apt-key</code> 已被弃用）</p>
+<hr>
+<p>3️⃣ <code class="notranslate">$(lsb_release -cs)</code></p>
+<p>自动识别版本代号：</p>
+<ul>
+<li>20.04 → <code class="notranslate">focal</code></li>
+<li>22.04 → <code class="notranslate">jammy</code></li>
+<li>24.04 → <code class="notranslate">noble</code></li>
+</ul>
+<p>避免手写出错</p>
+<hr>
+<p>4️⃣ <code class="notranslate">/etc/apt/sources.list.d/docker.list</code></p>
+<ul>
+<li>单独放 Docker 的源</li>
+<li>不污染系统主 sources.list</li>
+<li>方便以后删除或管理</li>
+</ul>
+<hr>
+<p>5️⃣ <code class="notranslate">&gt; /dev/null</code></p>
+<ul>
+<li>屏蔽输出</li>
+<li>防止终端显示重复内容</li>
+</ul>
+<hr>
+<h5>五、刷新索引</h5>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo apt update</pre></div>
+<p>此时 apt 会：</p>
+<ul>
+<li>访问 Docker 官方服务器</li>
+<li>校验 GPG 签名</li>
+<li>拉取 Docker 软件包列表</li>
+</ul>
+<p>如果这一步不报错，说明：</p>
+<blockquote>
+<p><strong>仓库配置完全正确</strong></p>
+</blockquote>
+<hr>
+<h5>六、安装 Docker 与 Compose</h5>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo apt install -y \
+docker-ce \
+docker-ce-cli \
+containerd.io \
+docker-buildx-plugin \
+docker-compose-plugin</pre></div>
+<hr>
+<h6>每个包是干嘛的</h6>
+<p>🧱 <code class="notranslate">docker-ce</code></p>
+<ul>
+<li>Docker <strong>核心服务</strong></li>
+<li>后台守护进程（dockerd）</li>
+</ul>
+<hr>
+<p>🖥 <code class="notranslate">docker-ce-cli</code></p>
+<ul>
+<li><code class="notranslate">docker</code> 命令本体</li>
+<li>没它你无法敲 docker</li>
+</ul>
+<hr>
+<p>📦 <code class="notranslate">containerd.io</code></p>
+<ul>
+<li>容器运行时</li>
+<li>实际负责：
+<ul>
+<li>拉镜像</li>
+<li>创建容器</li>
+<li>管理生命周期</li>
+</ul>
+</li>
+</ul>
+<p>Docker 本质上是 containerd 的“上层管理器”</p>
+<hr>
+<p>🏗 <code class="notranslate">docker-buildx-plugin</code></p>
+<ul>
+<li>新一代构建引擎</li>
+<li>支持：
+<ul>
+<li>多架构镜像</li>
+<li>cache</li>
+<li>并行构建</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>🧩 <code class="notranslate">docker-compose-plugin</code></p>
+<ul>
+<li><strong>Compose v2</strong></li>
+<li>集成进 docker 命令</li>
+<li>使用方式是：</li>
+</ul>
+<div class="highlight highlight-source-shell"><pre class="notranslate">docker compose ...</pre></div>
+<p>❌ 不再是：</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">docker-compose</pre></div>
+<hr>
+<h5>七、验证安装是否成功</h5>
+<div class="highlight highlight-source-shell"><pre class="notranslate">docker version</pre></div>
+<p>你应该看到：</p>
+<ul>
+<li>Client</li>
+<li>Server</li>
+<li>API version</li>
+<li>Engine version</li>
+</ul>
+<hr>
+<div class="highlight highlight-source-shell"><pre class="notranslate">docker compose version</pre></div>
+<p>确认：</p>
+<ul>
+<li>是 v2.x</li>
+<li>不是 python compose</li>
+</ul>
+<hr>
+<h5>八、测试 Docker 是否能跑容器</h5>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo docker run --rm hello-world</pre></div>
+<h6>发生了什么？</h6>
+<ol>
+<li>本地没镜像 → 自动拉取</li>
+<li>创建容器</li>
+<li>打印欢迎信息</li>
+<li><code class="notranslate">--rm</code> 自动删除容器</li>
+</ol>
+<p>这一步成功：</p>
+<blockquote>
+<p>Docker 运行链路完整</p>
+</blockquote>
+<hr>
+<h5>九、为什么默认要 sudo？</h5>
+<h6>原因</h6>
+<ul>
+<li>Docker 守护进程运行在 root</li>
+<li>socket 在：</li>
+</ul>
+<div class="highlight highlight-source-shell"><pre class="notranslate">/var/run/docker.sock</pre></div>
+<hr>
+<h5>十、免 sudo 使用 Docker（关键）</h5>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo usermod -aG docker <span class="pl-smi">$USER</span></pre></div>
+<h6>解释</h6>
+<ul>
+<li>把当前用户加入 <code class="notranslate">docker</code> 用户组</li>
+<li>该组对 docker.sock 有权限</li>
+</ul>
+<hr>
+<p><g-emoji class="g-emoji" alias="warning">⚠️</g-emoji> <strong>必须注销 / 重新登录</strong><br>
+否则组权限不会生效</p>
+<p>验证：</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">groups</pre></div>
+<hr>
+<h5>十一、Compose 工作原理（简述）</h5>
+<ul>
+<li><code class="notranslate">docker-compose.yml</code>：
+<ul>
+<li>定义多个容器</li>
+<li>网络</li>
+<li>卷挂载</li>
+</ul>
+</li>
+<li><code class="notranslate">docker compose up</code>
+<ul>
+<li>自动创建网络</li>
+<li>自动拉镜像</li>
+<li>自动启动顺序</li>
+</ul>
+</li>
+</ul>
+<h5>总结：</h5>
+<hr>
+<h6>一、准备工作</h6>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo apt update
+sudo apt install -y ca-certificates curl gnupg lsb-release</pre></div>
+<hr>
+<h6>二、添加 Docker 官方仓库</h6>
+<ol>
+<li>导入 GPG key</li>
+</ol>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg <span class="pl-k">|</span> \
+sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+sudo chmod a+r /etc/apt/keyrings/docker.gpg</pre></div>
+<ol start="2">
+<li>添加源</li>
+</ol>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c1">echo</span> \
+<span class="pl-s"><span class="pl-pds">"</span>deb [arch=<span class="pl-s"><span class="pl-pds">$(</span>dpkg --print-architecture<span class="pl-pds">)</span></span> signed-by=/etc/apt/keyrings/docker.gpg] <span class="pl-cce">\</span></span>
+<span class="pl-s">https://download.docker.com/linux/ubuntu <span class="pl-cce">\</span></span>
+<span class="pl-s"><span class="pl-s"><span class="pl-pds">$(</span>lsb_release -cs<span class="pl-pds">)</span></span> stable<span class="pl-pds">"</span></span> <span class="pl-k">|</span> \
+sudo tee /etc/apt/sources.list.d/docker.list <span class="pl-k">&gt;</span> /dev/null</pre></div>
+<ol start="3">
+<li>更新索引</li>
+</ol>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo apt update</pre></div>
+<hr>
+<h6>三、安装 Docker Engine 与 Compose</h6>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin</pre></div>
+<blockquote>
+<p>注意：</p>
+<ul>
+<li><strong>docker-compose-plugin</strong> 即 <strong>Compose v2</strong>（推荐）</li>
+<li>不再建议单独安装旧的 <code class="notranslate">docker-compose</code>（Python 版）</li>
+</ul>
+</blockquote>
+<hr>
+<h6>四、验证安装</h6>
+<div class="highlight highlight-source-shell"><pre class="notranslate">docker version
+docker compose version</pre></div>
+<p>测试容器：</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo docker run --rm hello-world</pre></div>
+<hr>
+<h6>五、免 sudo 使用 Docker（强烈建议）</h6>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo usermod -aG docker <span class="pl-smi">$USER</span></pre></div>
+<p>然后<strong>注销并重新登录</strong>，再测试：</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">docker ps</pre></div>
+<hr>
+<h6>六、Docker Compose 使用示例</h6>
+<div class="highlight highlight-source-shell"><pre class="notranslate">mkdir <span class="pl-k">~</span>/compose-test <span class="pl-k">&amp;&amp;</span> <span class="pl-c1">cd</span> <span class="pl-k">~</span>/compose-test</pre></div>
+<p><code class="notranslate">docker-compose.yml</code>：</p>
+<div class="highlight highlight-source-yaml"><pre class="notranslate"><span class="pl-ent">services</span>:
+  <span class="pl-ent">nginx</span>:
+    <span class="pl-ent">image</span>: <span class="pl-s">nginx:alpine</span>
+    <span class="pl-ent">ports</span>:
+      - <span class="pl-s"><span class="pl-pds">"</span>8080:80<span class="pl-pds">"</span></span></pre></div>
+<p>启动：</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">docker compose up -d</pre></div>
+<p>停止：</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">docker compose down</pre></div>
+<hr>
+<h6>七、常见问题排查</h6>
+<ul>
+<li><strong>权限错误（permission denied）</strong><br>
+→ 没有重新登录，或未加入 <code class="notranslate">docker</code> 组</li>
+<li><strong>compose 命令不存在</strong><br>
+→ 确认安装的是 <code class="notranslate">docker-compose-plugin</code>，命令是<br>
+<code class="notranslate">docker compose</code>（中间有空格）</li>
+<li><strong>服务器环境</strong><br>
+Ubuntu Server 与 Desktop 安装方式完全一致</li>
+</ul></div>
+<div style="font-size:small;margin-top:8px;float:right;"></div>
+
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+
+</div>
+    <div id="footer"><div id="footer1">Copyright © <span id="copyrightYear"></span> <a href="https://10086Coda10086.github.io">我愿意说的一切</a></div>
+<div id="footer2">
+    <span id="runday"></span><span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a></span>
+</div>
+
+<script>
+var now=new Date();
+document.getElementById("copyrightYear").innerHTML=now.getFullYear();
+
+if("11/01/2025"!=""){
+    var startSite=new Date("11/01/2025");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("runday").innerHTML="网站运行 "+diffDay+" 天"+" • ";
+}
+</script></div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z', 'copy': 'M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z', 'check': 'M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.disabled=true;
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","10086Coda10086/10086Coda10086.github.io");
+    script.setAttribute("issue-term","title");
+    
+    if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
+    else if(localStorage.getItem("meek_theme")=="light") {script.setAttribute("theme","github-light");}
+    else{script.setAttribute("theme","preferred-color-scheme");}
+    
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const createClipboardHTML = (codeContent, additionalClasses = '') => `
+        <pre class="notranslate"><code class="notranslate">${codeContent}</code></pre>
+        <div class="clipboard-container position-absolute right-0 top-0 ${additionalClasses}">
+            <clipboard-copy class="ClipboardButton btn m-2 p-0" role="button" style="display: inherit;">
+                <svg height="16" width="16" class="octicon octicon-copy m-2"><path d="${IconList["copy"]}"></path></svg>
+                <svg height="16" width="16" class="octicon octicon-check color-fg-success m-2 d-none"><path d="${IconList["check"]}"></path></svg>
+            </clipboard-copy>
+            <div class="copy-feedback">Copied!</div>
+        </div>
+    `;
+
+    const handleCodeElements = (selector = '') => {
+        document.querySelectorAll(selector).forEach(codeElement => {
+            const codeContent = codeElement.innerHTML;
+            const newStructure = document.createElement('div');
+            newStructure.className = 'snippet-clipboard-content position-relative overflow-auto';
+            newStructure.innerHTML = createClipboardHTML(codeContent);
+
+            const parentElement = codeElement.parentElement;
+            if (selector.includes('highlight')) {
+                parentElement.insertBefore(newStructure, codeElement.nextSibling);
+                parentElement.removeChild(codeElement);
+            } else {
+                parentElement.parentElement.replaceChild(newStructure, parentElement);
+            }
+        });
+    };
+
+    handleCodeElements('pre.notranslate > code.notranslate');
+    handleCodeElements('div.highlight > pre.notranslate');
+
+    let currentFeedback = null;
+    document.querySelectorAll('clipboard-copy').forEach(copyButton => {
+        copyButton.addEventListener('click', () => {
+            const codeContent = copyButton.closest('.snippet-clipboard-content').innerText;
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = codeContent;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextArea);
+
+            const copyIcon = copyButton.querySelector('.octicon-copy');
+            const checkIcon = copyButton.querySelector('.octicon-check');
+            const copyFeedback = copyButton.nextElementSibling;
+
+            if (currentFeedback && currentFeedback !== copyFeedback) {currentFeedback.style.display = 'none';}
+            currentFeedback = copyFeedback;
+
+            copyIcon.classList.add('d-none');
+            checkIcon.classList.remove('d-none');
+            copyFeedback.style.display = 'block';
+            copyButton.style.borderColor = 'var(--color-success-fg)';
+
+            setTimeout(() => {
+                copyIcon.classList.remove('d-none');
+                checkIcon.classList.add('d-none');
+                copyFeedback.style.display = 'none';
+                copyButton.style.borderColor = '';
+            }, 2000);
+        });
+    });
+});
+
+</script>
+<script src='https://blog.meekdai.com/Gmeek/plugins/articletoc.js'></script><script src='https://blog.meekdai.com/Gmeek/plugins/lightbox.js'></script>
+
+</html>
